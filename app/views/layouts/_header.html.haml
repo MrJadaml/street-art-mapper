@@ -1,0 +1,12 @@
+%nav.navbar.navbar-default{:role => "navigation"}
+  .navbar-header
+    %a.navbar-brand{:href => "#"} Streetheart
+  .collapse.navbar-collapse.navbar-ex1-collapse
+    %ul.nav.navbar-nav.navbar-right
+      %li= link_to "Home", root_path
+      %li= link_to "Artists", '#'
+      %li= link_to "About", about_path
+      %li= link_to "Contact", contact_path
+      -# - if user_signed_in?
+      -#   %li= link_to "Log out", '#', method: :delete
+      -# - else
