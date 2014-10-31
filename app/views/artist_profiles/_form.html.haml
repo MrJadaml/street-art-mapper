@@ -1,0 +1,27 @@
+= form_for @artist_profile, html: { multipart: true } do |f|
+  - if @artist_profile.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@artist_profile.errors.count, "error")
+        prohibited this profile from being saved:
+      %ul
+        - @artist_profile.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :first_name
+    %br/
+    = f.text_field :first_name
+  .field
+    = f.label :second_name
+    %br/
+    = f.text_field :second_name
+  .field
+    = f.label :twitter
+    %br/
+    = f.text_field :twitter
+  .field
+    = f.label :instagram
+    %br/
+    = f.text_field :instagram
+  .actions
+    = f.submit

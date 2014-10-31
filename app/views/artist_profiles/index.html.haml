@@ -1,0 +1,7 @@
+.container
+  %h1 Artist Profiles
+  - @artist_profiles.each do |profile|
+    .box.panel.panel-default
+      .panel-body.text-center
+        = profile.first_name
+        = profile.second_name
