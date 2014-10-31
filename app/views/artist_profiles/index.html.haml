@@ -1,7 +1,14 @@
 .container
   %h1 Artist Profiles
   - @artist_profiles.each do |profile|
-    .box.panel.panel-default
+    .box.panel.panel-default.col-lg-4
       .panel-body.text-center
         = profile.first_name
         = profile.second_name
+        = link_to edit_artist_profile_path(profile) do
+          %span.glyphicon.glyphicon-pencil
+        = link_to method: :delete, data: { confirm: 'Are you sure?' } do
+          %span.glyphicon.glyphicon-trash
+.container        
+  .btn.btn-info
+    = link_to 'New Artist', new_artist_profile_path
