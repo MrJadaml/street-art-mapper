@@ -24,14 +24,21 @@ class ArtistProfilesController < ApplicationController
 
   def edit
     set_artist_profile
+
   end
 
   def update
     set_artist_profile
+    if @artist_profile.update(artist_profile_params)
+      redirect_to @artist_profile
+    else
+      render :edit
+    end
   end
 
   def destroy
-    set_artist_profile
+    ArtistProfile.find(params[:id]).destroy
+    redirect_to artist_profiles_path
   end
 
   private
