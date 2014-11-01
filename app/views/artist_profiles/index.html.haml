@@ -3,8 +3,7 @@
   - @artist_profiles.each do |profile|
     .box.panel.panel-default.col-lg-3
       .panel-body.text-center
-        = profile.first_name
-        = profile.second_name
+        = link_to profile.full_moniker, artist_profile_path(profile)
         = link_to edit_artist_profile_path(profile) do
           %span.glyphicon.glyphicon-pencil
         = link_to artist_profile_path(profile), method: :delete do
