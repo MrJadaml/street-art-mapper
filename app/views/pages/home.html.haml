@@ -1,6 +1,7 @@
 .jumbotron
-  %img{:alt => "Denver Street Art", :src => "https://s3.amazonaws.com/streetheart/denver+street+art+hero.jpg"}
-    .container
+  -# %img{:alt => "Denver Street Art", :src => "https://s3.amazonaws.com/streetheart/denver+street+art+hero.jpg"}
+  = image_tag('denver-street-art-hero.jpg')
+.container
   %p.photocred Street art by Daniel Chavez  Keno Gonzales | Eddie Huang, Michael Kraus  Jacobo Gonzalez
   .container
     .row
@@ -15,6 +16,3 @@
       .col-md-4
         %h2 Want a mural?
         %p Get in touch with us if you’re interested in having an artist paint a mural on your property. Street art will draw attention to your business, and it's a great way to beautify your community. We’re working with artists and alongside the city to make the process of matching artists to your businesses easier every day.
-    %hr
-      %footer
-        %p ©Denver Streetheart 2014
