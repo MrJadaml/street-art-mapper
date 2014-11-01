@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :artist_profiles
+  resources :artist_profiles, :users
 
   get 'users/new'
 

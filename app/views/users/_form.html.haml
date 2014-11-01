@@ -1,23 +1,23 @@
-= form_for @user, html: { multipart: true } do |f|
+= form_for @user, html: {class: 'form-horizontal'} do |f|
   - if @user.errors.any?
     #error_explanation
       %h2
         = pluralize(@user.errors.count, "error")
-        prohibited this profile from being saved:
+        prohibited this task from being saved:
       %ul
-        - @user.errors.full_messages.each do |msg|
-          %li= msg
-  .field
-    = f.label :first_name
-    %br/
-    = f.text_field :first_name
-  .field
-    = f.label :last_name
-    %br/
-    = f.text_field :last_name
-  .field
-    = f.label :email
-    %br/
-    = f.text_field :email
-  .actions
-    = f.submit
+        - @user.errors.full_messages.each do |message|
+          %li= message
+  .field.form-group.col-md-offset-1
+    = f.label :first_name, class: "col-md-1"
+    = f.text_field :first_name, class: "col-md-3"
+
+  .field.form-group.col-md-offset-1
+    = f.label :last_name, class: "col-md-1"
+    = f.text_field :last_name, class: "col-md-3"
+
+  .field.form-group.col-md-offset-1
+    =f.label :email, class: "col-md-1"
+    =f.email_field :email, class: "col-md-3"
+
+  .actions.form-group.col-md-offset-1
+    = f.submit class: "btn btn-primary col-md-offset-1"
