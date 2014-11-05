@@ -9,5 +9,9 @@ class ApplicationController < ActionController::Base
     User.find_by(id: session[:id])
   end
 
+  def full_name
+    first_name + ' ' + last_name
+  end
+
   helper_method :current_user
 end

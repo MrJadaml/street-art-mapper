@@ -1,8 +1,8 @@
 - provide(:title, 'Log in')
 .container
   .well.col-md-4.col-md-offset-4
-    %h2 Log in
-    - if @sign_in_error
+    %h2.text-center Log in
+    - if flash
       .alert.alert-danger
         .text-center= @sign_in_error
     = form_tag login_path do |f|
