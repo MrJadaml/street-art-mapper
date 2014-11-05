@@ -13,13 +13,14 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'sass-rails', '>= 3.2'
 gem 'autoprefixer-rails'
 gem 'faker'
-gem 'capybara'
-
-group :development, :test do
-  gem 'sqlite3'
-end
+gem 'pg'
 
 group :production do
   gem 'rails_12factor'
-  gem 'pg'
+end
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'launchy'
 end
