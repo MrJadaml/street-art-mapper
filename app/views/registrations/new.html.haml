@@ -1,0 +1,26 @@
+.container
+  .well.col-md-5.col-md-offset-3
+    %h1.text-center Sign Up
+    = form_for @user, url: signup_path do |f|
+      - if @user.errors.any?
+        .alert.alert-danger
+          - @user.errors.full_messages.each do |message|
+            .text-center.no-decoration= message
+      .field.form-group
+        = f.label :first_name, 'Name'
+        = f.text_field :first_name, class: 'form-control'
+
+      .field.form-group
+        =f.label :email
+        =f.email_field :email, class: 'form-control'
+
+      .field.form-group
+        =f.label :password
+        =f.password_field :password, class: 'form-control'
+
+      .field.form-group
+        =f.label :password_confirmation
+        =f.email_field :password_confirmation, class: 'form-control'
+
+      .actions.form-group
+        = f.submit 'Sign up', class: 'btn btn-primary'
