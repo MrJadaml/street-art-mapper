@@ -14,6 +14,7 @@ gem 'sass-rails', '>= 3.2'
 gem 'autoprefixer-rails'
 gem 'faker'
 gem 'pg'
+gem 'carrierwave'
 
 group :production do
   gem 'rails_12factor'

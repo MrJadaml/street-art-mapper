@@ -1,0 +1,6 @@
+%h1.text-center Add some street art!
+= form_for @street_gallery do |f|
+  = f.label :active
+  = f.check_box :active
+
+  =f.submit 'Submit', class: 'btn btn-primary'

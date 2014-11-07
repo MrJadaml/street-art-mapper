@@ -1,0 +1,12 @@
+.container
+  %h1.text-center Streets Gallery
+  -# - @street_galleries.each do |street_gallery|
+    .box.panel.panel-default.col-lg-2
+      .panel-body.text-center
+
+
+
+
+.container
+  .btn.btn-info
+    = link_to 'New Mural', new_street_gallery_path
