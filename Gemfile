@@ -15,6 +15,11 @@ gem 'autoprefixer-rails'
 gem 'faker'
 gem 'pg'
 gem 'carrierwave'
+gem 'mini_magick', '~> 4.0.0.rc'
+gem 'aws-sdk'
+gem 'fog'
+gem 'figaro'
+gem 'dotenv-rails'
 
 group :production do
   gem 'rails_12factor'
