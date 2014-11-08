@@ -1,9 +1,10 @@
 .container
   %h1.text-center Streets Gallery
   -@street_galleries.each do |street_gallery|
-    .box.panel.panel-default.col-lg-2
+    .box.panel.panel-default.col-lg-4
       .panel-body.text-center
-        = image_tag(street_gallery.mural_image)
+        = link_to street_gallery do
+          = image_tag street_gallery.mural_image.url(:thumb)
 
 
 

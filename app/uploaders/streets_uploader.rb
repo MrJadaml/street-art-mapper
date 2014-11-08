@@ -20,6 +20,11 @@ class StreetsUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg png)
   end
 
+  # Create different versions of your uploaded files:
+  version :thumb do
+    process :resize_to_limit => [313, 344]
+  end
+
 end
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
@@ -34,11 +39,6 @@ end
   #
   # def scale(width, height)
   #   # do something
-  # end
-
-  # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process :resize_to_fit => [50, 50]
   # end
 
   # Override the filename of the uploaded files:
