@@ -1,0 +1,14 @@
+%h1.text-center Add some street art!
+
+= params
+
+= form_for @street_gallery do |f|
+  = f.label :mural_image
+  = f.file_field :mural_image
+  = f.hidden_field :mural_image_cache
+  = image_tag(@street_gallery.mural_image) if @street_gallery.mural_image?
+
+  = f.label :active
+  = f.check_box :active
+
+  =f.submit 'Submit', class: 'btn btn-primary'

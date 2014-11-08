@@ -184,7 +184,7 @@ DEPENDENCIES
   bcrypt
   bootstrap-sass (~> 3.2.0)
   capybara
-  carrierwave (~> 0.10.0)
+  carrierwave
   coffee-rails (~> 4.0.0)
   faker
   haml (~> 4.0.5)

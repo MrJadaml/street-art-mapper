@@ -1,12 +1,12 @@
 # encoding: utf-8
 
-class AvatarUploader < CarrierWave::Uploader::Base
+class StreetsUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   storage :file
-  # storage :fog
+  #storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -20,9 +20,12 @@ class AvatarUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg png)
   end
 
+  # Create different versions of your uploaded files:
+  version :thumb do
+    process :resize_to_limit => [313, 344]
+  end
+
 end
-
-
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
   #   # For Rails 3.1+ asset pipeline compatibility:
@@ -36,11 +39,6 @@ end
   #
   # def scale(width, height)
   #   # do something
-  # end
-
-  # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process :resize_to_fit => [50, 50]
   # end
 
   # Override the filename of the uploaded files:
