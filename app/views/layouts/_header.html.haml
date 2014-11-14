@@ -6,8 +6,8 @@
       -if current_user
         %li= link_to 'Log out', logout_path
       -else
-        %li= link_to 'Sign up', signup_path
-        %li= link_to 'Log in', login_path
-      %li= link_to 'Home', root_path
-      %li= link_to 'Gallery', street_galleries_path
-      %li= link_to 'Artists', artist_profiles_path
+        = link_unless_on_own_page(signup_path, 'Sign up')
+        = link_unless_on_own_page(login_path, 'Log in')
+      = link_unless_on_own_page(root_path, 'Home')
+      = link_unless_on_own_page(street_galleries_path, 'Gallery')
+      = link_unless_on_own_page(artist_profiles_path, 'Artists')
