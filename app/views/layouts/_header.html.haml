@@ -1,13 +1,19 @@
 %nav.navbar.navbar-default{:role => "navigation"}
   .navbar-header
-    %a.navbar-brand{:href => "#"} Streetheart
+    %a.navbar-brand{:href => root_path} Streetheart
   .collapse.navbar-collapse.navbar-ex1-collapse
     %ul.nav.navbar-nav.navbar-right
+      = link_unless_on_own_page(street_galleries_path, 'Gallery')
+      = link_unless_on_own_page(artist_profiles_path, 'Artists')
       -if current_user
-        %li= link_to 'Log out', logout_path
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => ""}
+            = current_user.first_name
+            %b.caret
+          %ul.dropdown-menu
+            %li= link_to "Profile", current_user
+            %li.divider
+            %li= link_to 'Log out', logout_path
       -else
         = link_unless_on_own_page(signup_path, 'Sign up')
         = link_unless_on_own_page(login_path, 'Log in')
-      = link_unless_on_own_page(root_path, 'Home')
-      = link_unless_on_own_page(street_galleries_path, 'Gallery')
-      = link_unless_on_own_page(artist_profiles_path, 'Artists')
