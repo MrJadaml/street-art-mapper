@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141115033800) do
+ActiveRecord::Schema.define(version: 20141115044218) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,11 +33,6 @@ ActiveRecord::Schema.define(version: 20141115033800) do
   create_table "murals", force: true do |t|
     t.string  "image"
     t.boolean "buffed"
-  end
-
-  create_table "street_galleries", force: true do |t|
-    t.string  "mural_image"
-    t.boolean "active"
   end
 
   create_table "users", force: true do |t|

@@ -1,23 +1,15 @@
 %br
 %br
 .container
-  %h1.col-md-11 Users
-  %table.table
-    %thead
-      %tr
-        %th.col-md-1
-          = link_to 'Name', '#sort'
-        %th.col-md-5
-          = link_to 'Email', '#sort'
-  %tbody
+  %h1 Artist Profiles
   - @users.each do |user|
-    .col-md-12.panel
-    %tr
-      %td
-        .col-md-2= link_to user.first_name, user_path(user)
-      %td
-        .col-md-9= mail_to user.email
-      %td
-        .col-md-1
-          = link_to 'Edit', edit_user_path(user), class: 'btn btn-warning'
-%br/
+    .box.panel.panel-default.col-lg-3
+      .panel-body.text-center
+        = link_to user.first_name, user_path(user)
+        = link_to edit_user_path(user) do
+          %span.glyphicon.glyphicon-pencil
+        = link_to user_path(user), method: :delete do
+          %span.glyphicon.glyphicon-trash
+.container
+  .btn.btn-info
+    = link_to 'New Artist', new_user_path

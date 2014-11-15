@@ -1,7 +1,7 @@
 .container
   %h1.text-center Streets Gallery
   -@murals.each do |mural|
-    .col-lg-4.text-center
+    .col-lg-3.text-center
       = link_to mural do
         = image_tag mural.image.url(:thumb)
 

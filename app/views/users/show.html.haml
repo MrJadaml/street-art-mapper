@@ -1,3 +1,6 @@
 .container
   %h1= @user.first_name
+
+  -# link to page that describes artist status and request/submission to gain artist status
+  Are you an artist?
   = link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-primary'

@@ -1,11 +1,15 @@
-30.times do
+40.times do
 
-  ArtistProfile.create first_name: Faker::Name.first_name,
-                       second_name: Faker::Name.last_name,
+  User.create! first_name: Faker::Name.first_name,
+                       last_name: Faker::Name.last_name,
+                       email: Faker::Internet.email,
+                       password: 'password',
+                       password_confirmation: 'password',
                        twitter: Faker::Internet.user_name,
-                       instagram: Faker::Internet.user_name
+                       instagram: Faker::Internet.user_name,
+                       artist: [true, false, false].sample
 end
 
 12.times do
-  StreetGallery.create mural_image: File.open(File.join(Rails.root, 'test.jpg'))
+  Mural.create image: File.open(File.join(Rails.root, 'test.jpg'))
 end
