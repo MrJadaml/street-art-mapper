@@ -1,6 +1,6 @@
 .container
   %h1.text-center Edit Mural
   .text-center
-    = image_tag @street_gallery.mural_image
-  = link_to 'Delete', street_gallery_path, class: 'btn btn-danger',
+    = image_tag @mural.image
+  = link_to 'Delete', mural_path, class: 'btn btn-danger',
                                            method: :delete

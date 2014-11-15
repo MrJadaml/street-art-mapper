@@ -1,0 +1,10 @@
+.container
+  %h1.text-center Streets Gallery
+  -@murals.each do |mural|
+    .col-lg-4.text-center
+      = link_to mural do
+        = image_tag mural.image.url(:thumb)
+
+.container
+  .btn.btn-info
+    = link_to 'New Mural', new_mural_path

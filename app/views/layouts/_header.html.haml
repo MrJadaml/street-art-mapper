@@ -3,7 +3,7 @@
     %a.navbar-brand{:href => root_path} Streetheart
   .collapse.navbar-collapse.navbar-ex1-collapse
     %ul.nav.navbar-nav.navbar-right
-      = link_unless_on_own_page(street_galleries_path, 'Gallery')
+      = link_unless_on_own_page(murals_path, 'Gallery')
       = link_unless_on_own_page(artist_profiles_path, 'Artists')
       -if current_user
         %li.dropdown
