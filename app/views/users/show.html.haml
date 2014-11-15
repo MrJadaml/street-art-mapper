@@ -1,6 +1,21 @@
 .container
-  %h1= @user.first_name
-
-  -# link to page that describes artist status and request/submission to gain artist status
-  Are you an artist?
-  = link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-primary'
+  .col-md-9
+    -# Gallery of users's images
+    -# -@murals.each do |mural|
+    -#   .col-lg-3.text-center
+    -#     = link_to mural do
+    -#       = image_tag mural.image.url(:thumb)
+  .col-md-3
+    %h1.tube-sm= @user.first_name
+    %p
+      %strong Twitter
+      %br
+      = link_to @user.twitter, "http://www.twitter.com/" + @user.twitter, :target => "_blank"
+    %p
+      %strong Instagram
+      %br
+      = link_to @user.instagram, "http://www.instagram.com/" + @user.instagram, :target => "_blank"
+    %p
+      = link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-primary'
+      %br
+      = link_to 'Are you an artist?', '#'

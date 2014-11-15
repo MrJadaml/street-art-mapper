@@ -4,7 +4,7 @@
   .collapse.navbar-collapse.navbar-ex1-collapse
     %ul.nav.navbar-nav.navbar-right
       = link_unless_on_own_page(murals_path, 'Gallery')
-      = link_unless_on_own_page(artist_profiles_path, 'Artists')
+      = link_unless_on_own_page(users_path, 'Artists')
       -if current_user
         %li.dropdown
           %a.dropdown-toggle{"data-toggle" => "dropdown", :href => ""}

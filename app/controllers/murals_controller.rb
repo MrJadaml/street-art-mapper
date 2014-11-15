@@ -36,12 +36,12 @@ class MuralsController < ApplicationController
 
   private
 
-  def mural_params
-    params.require(:mural).permit(:image, :image_cache, :buffed)
-  end
+    def mural_params
+      params.require(:mural).permit(:image, :image_cache, :buffed)
+    end
 
-  def set_mural
-    @mural = Mural.find(params[:id])
-  end
+    def set_mural
+      @mural = Mural.find(params[:id])
+    end
 
 end

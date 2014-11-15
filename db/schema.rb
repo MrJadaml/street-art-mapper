@@ -11,17 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141115044218) do
+ActiveRecord::Schema.define(version: 20141115175501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "artist_profiles", force: true do |t|
-    t.string "first_name"
-    t.string "second_name"
-    t.string "twitter"
-    t.string "instagram"
-  end
 
   create_table "frames", force: true do |t|
     t.integer  "user_id"

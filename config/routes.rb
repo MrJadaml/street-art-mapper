@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :artist_profiles, :users, :murals
+  resources :users, :murals
 
   root    'pages#home'
   get     'signup'     => 'registrations#new'

@@ -15,3 +15,31 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.tube-sm {
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	padding: .5em;
+}
+
+.tube-lg {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 1em;
+}
+
+.jumbotron img {
+		width: 100%;
+}
+
+.jumbotron {
+		width: 100%;
+		padding: 0;
+}
+
+.photocred {
+		float: right;
+		margin-top: -30px;
+		margin-right: 15px;
+		color: #C0C0C0;
+}
