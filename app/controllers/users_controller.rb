@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :logged_in_user, only: [:create, :destroy]
 
   def index
     @users = User.where(artist: true)
@@ -20,6 +21,11 @@ class UsersController < ApplicationController
 
   def show
     set_user
+    @murals = @user.murals.paginate(page: params[:page])
+  end
+
+  def blah
+    @user = current_user
   end
 
   def edit
@@ -43,12 +49,12 @@ class UsersController < ApplicationController
 
   private
 
-  def set_user
-    @user = User.find(params[:id])
-  end
+    def set_user
+      @user = User.find(params[:id])
+    end
 
-  def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :avatar, :avatar_cache)
-  end
+    def user_params
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :avatar, :avatar_cache)
+    end
 
 end

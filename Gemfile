@@ -16,6 +16,7 @@ gem 'faker'
 gem 'pg'
 gem 'carrierwave'
 gem 'mini_magick', '~> 4.0.0.rc'
+gem 'will_paginate', '~> 3.0'
 
 group :production do
   gem 'rails_12factor'

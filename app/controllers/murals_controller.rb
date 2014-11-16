@@ -5,12 +5,17 @@ class MuralsController < ApplicationController
   end
 
   def new
-    @mural = Mural.new
+    if current_user
+      @mural = current_user.murals.build
+    else
+      redirect_to login_path
+    end
   end
 
   def create
-    @mural = Mural.new(mural_params)
+    @mural = current_user.murals.build(mural_params)
     if @mural.save
+      flash[:success] = 'Image posted'
       redirect_to murals_path
     else
       render :new
@@ -37,7 +42,7 @@ class MuralsController < ApplicationController
   private
 
     def mural_params
-      params.require(:mural).permit(:image, :image_cache, :buffed)
+      params.require(:mural).permit(:image, :image_cache, :buffed, :user_id)
     end
 
     def set_mural

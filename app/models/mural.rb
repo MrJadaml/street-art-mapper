@@ -1,6 +1,8 @@
 class Mural < ActiveRecord::Base
-  has_one :frame
-  has_one :user, through: :frame
+  belongs_to :user
+  default_scope -> { order('created_at DESC') }
+  validates :user_id, presence: true
+
 
   mount_uploader :image, MuralUploader
 end

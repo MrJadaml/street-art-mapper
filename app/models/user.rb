@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :frames
-  has_many :murals, through: :frames
+  has_many :murals, dependent: :destroy
 
   before_save { self.email = email.downcase }
   validates :first_name, presence: true

@@ -5,7 +5,7 @@
         .text-center.no-decoration= message
 
   .field.form-group.col-md-offset-1
-    = image_tag(@user.avatar.url(:thumb)) if @user.avatar?
+    = image_tag(@user.avatar_url) if @user.avatar?
     = f.label :avatar, class: "col-md-1"
     = f.file_field :avatar, class: "btn col-md-3"
     = f.hidden_field :avatar_cache
