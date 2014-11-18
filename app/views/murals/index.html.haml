@@ -1,9 +1,13 @@
 .container
   %h1.text-center Streets Gallery
-  -@murals.each do |mural|
-    .col-lg-3.text-center
-      = link_to mural do
-        = image_tag mural.image.url(:thumb)
+  .gallery-map
+    %img{:src => "http://maps.google.com/maps/api/staticmap?center=Denver,CO&zoom=8&size=1170x500&maptype=roadmap&sensor=false"}/
+    %br
+  .gallery
+    -@murals.each do |mural|
+      .col-lg-3.text-center
+        = link_to mural do
+          = image_tag mural.image.url(:thumb)
 
 .container
   .btn.btn-info

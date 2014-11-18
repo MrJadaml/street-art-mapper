@@ -1,9 +1,11 @@
 .container
   .col-md-9
+    %img{:src => "http://maps.google.com/maps/api/staticmap?center=Denver,CO&zoom=13&size=1170x500&maptype=roadmap&sensor=false"}/
+    %br
     - if @user.murals.any?
-      %ol
+      .user-album
         = render @murals
-      = will_paginate @murals
+    = will_paginate @murals
 
   .col-md-3
     %h1.tube-sm.text-center= @user.first_name

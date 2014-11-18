@@ -5,6 +5,9 @@
     = f.file_field :image
     = f.hidden_field :image_cache
     = image_tag(@mural.image) if @mural.image?
+
+    = f.label :user_id
+    = f.collection_select(:user_id, User.where(artist: true), :id, :first_name, {}, {class: 'form-control'})
     %br
     = f.label :buffed
     = f.check_box :buffed

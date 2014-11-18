@@ -3,8 +3,8 @@
 .container
   %h1 Artist Profiles
   - @users.each do |user|
-    .box.panel.panel-default.col-lg-3
-      .panel-body.text-center
+    .panel.panel-default.col-lg-3
+      .text-center
         = link_to user do
           = image_tag user.avatar.url(:thumb)
         = link_to user.first_name, user_path(user)

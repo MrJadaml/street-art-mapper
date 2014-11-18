@@ -22,5 +22,7 @@
     = f.label :email, class: "col-md-1"
     = f.email_field :email, class: "col-md-3"
 
+  = render 'social', f: f if current_page?(edit_user_path)
+
   .actions.form-group.col-md-offset-1
     = f.submit class: "btn btn-primary col-md-offset-1"
