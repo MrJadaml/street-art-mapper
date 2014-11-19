@@ -12,15 +12,18 @@
 
   .field.form-group.col-md-offset-1
     = f.label :first_name, class: "col-md-1"
-    = f.text_field :first_name, class: "col-md-3"
+    .col-md-3
+      = f.text_field :first_name, class: "form-control"
 
   .field.form-group.col-md-offset-1
     = f.label :last_name, class: "col-md-1"
-    = f.text_field :last_name, class: "col-md-3"
+    .col-md-3
+      = f.text_field :last_name, class: "form-control"
 
   .field.form-group.col-md-offset-1
     = f.label :email, class: "col-md-1"
-    = f.email_field :email, class: "col-md-3"
+    .col-md-3
+      = f.email_field :email, class: "form-control"
 
   = render 'social', f: f if current_page?(edit_user_path)
 
