@@ -1,7 +1,9 @@
+require 'pry'
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
 
   def index
+    #scope :artists, -> where(artist: true)
     @users = User.where(artist: true)
   end
 
@@ -22,6 +24,7 @@ class UsersController < ApplicationController
   def show
     set_user
     @murals = @user.murals.paginate(page: params[:page])
+    # binding.pry
   end
 
   def blah
