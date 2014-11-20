@@ -15,13 +15,11 @@ class MuralsController < ApplicationController
   def create
     @mural = current_user.murals.build(mural_params)
     if @mural.save
-
       # figure out best practice for saving frame - error validations
       # frame for user uploading mural
       Frame.create!(user_id: current_user.id, mural_id: @mural.id)
       # frame for artist
       Frame.create!(user_id: params[:mural][:user_id], mural_id: @mural.id)
-      binding.pry
       flash[:success] = 'Image posted'
       redirect_to murals_path
     else

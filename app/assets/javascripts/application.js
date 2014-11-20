@@ -14,3 +14,14 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require_tree .
+
+
+39.745477,-104.9805334,14z
+
+var mapOptions = {
+    center: new google.maps.LatLng(39.7454,-104.9805),
+    zoom: 14,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+};
+
+new google.maps.Map(document.getElementById('map'), mapOptions);
