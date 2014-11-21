@@ -1,5 +1,6 @@
 .container
   %h1.text-center Add some street art!
+  %h2.add-location Add Location
   = form_for @mural do |f|
     = f.label :image
     = f.file_field :image
@@ -14,3 +15,6 @@
     %br
     %br
     =f.submit 'Submit', class: 'btn btn-primary'
+
+  %input.lat{:type => "text"}
+  %input.long{:type => "text"}

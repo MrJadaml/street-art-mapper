@@ -16,9 +16,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-#map{
-  height: 100%;
-  margin: 0;
+#map {
+ height: 380px;
+}
+
+input.lat, input.long {
+  display: none;
 }
 
 .gallery-map {

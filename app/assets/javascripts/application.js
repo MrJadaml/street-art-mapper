@@ -16,12 +16,66 @@
 //= require_tree .
 
 
-39.745477,-104.9805334,14z
+// 39.7454,-104.9805,14
 
-var mapOptions = {
-    center: new google.maps.LatLng(39.7454,-104.9805),
-    zoom: 14,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-};
+(function(document,window,google, $) {
 
-new google.maps.Map(document.getElementById('map'), mapOptions);
+  $('.add-location').on('click', function() {
+    getCoords();
+  });
+
+  var HeartMap = {
+    specs: {
+      zoom: 20
+    },
+    getMapElement: function() {
+      HeartMap.element = document.getElementById('map')
+    },
+    populateMap: function() {
+      var map = new google.maps.Map(
+        HeartMap.element,
+        HeartMap.specs
+      )
+    }
+  }
+
+
+// If they are not on mobile, or deny your request to use their location,
+// Then we want to give them an address field to tell us where the art is located...
+// However, maybe on the backend we only want to store geocoords, so we take
+// what they give us and convert it to populate the same form fields we
+// would have otherwise with their geolocation enabled.
+
+// a.geocode({ address: '1842 Canyon Blvd, Boulder CO'}, function(results, status) {
+//  if (status === "OK") {
+//    $('get that input').value('set it to results[0].geometry.location.K & B')
+//  } else {
+//    alert('Alert add another address, that didn't work.)
+//  }
+//});
+
+  var getCoords = function() {
+    navigator.geolocation.getCurrentPosition(function(geo) {
+      // Grab input fields from view
+      var latInput = $('input.lat');
+      var longInput = $('input.long');
+
+      // Add geolocation coords from navigator
+      latInput.val(geo.coords.latitude);
+      longInput.val(geo.coords.longitude);
+
+      if (latInput.val() && longInput.val()) {
+        alert('Location Added!');
+      }
+    });
+  }
+
+  navigator.geolocation.getCurrentPosition(function(geo) {
+    HeartMap.specs.center = new google.maps.LatLng(
+      geo.coords.latitude,
+      geo.coords.longitude
+    )
+    HeartMap.getMapElement()
+    HeartMap.populateMap()
+  })
+})(document, window, google, jQuery)
