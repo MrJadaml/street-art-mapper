@@ -4,6 +4,7 @@
     = javascript_include_tag 'application'
     .container
       %ul.nav.navbar-nav
-        %li= link_to "About", about_path
-        %li= link_to "Contact", contact_path
+        %li= link_unless_on_own_page(about_path, 'About')
+        %li= link_unless_on_own_page(contact_path, 'Contact')
+        %li= link_unless_on_own_page(faq_path, 'FAQs')
       %p.navbar-right ©Denver Streetheart 2014

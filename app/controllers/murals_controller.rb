@@ -1,5 +1,4 @@
 class MuralsController < ApplicationController
-  require 'pry'
   def index
     @murals = Mural.all
   end
