@@ -1,20 +1,35 @@
 .container
   %h1.text-center Add some street art!
-  %h2.add-location Add Location
-  = form_for @mural do |f|
-    = f.label :image
-    = f.file_field :image
-    = f.hidden_field :image_cache
-    = image_tag(@mural.image) if @mural.image?
+  %br
+  .well.col-md-8.col-md-offset-2
+    %div.col-md-6
+      = form_for @mural do |f|
+        .form-group
+          = f.label :image
+          = f.file_field :image
+          = f.hidden_field :image_cache
+        .form-group.row
+          .col-md-12
+            = f.label 'Artist'
+            = f.collection_select(:user_id, User.where(artist: true), :id, :first_name, { include_blank: "Who's the artist?" }, {class: 'form-control'})
 
-    = f.label :user_id
-    = f.collection_select(:user_id, User.where(artist: true), :id, :first_name, {}, {class: 'form-control'})
-    %br
-    = f.label :buffed
-    = f.check_box :buffed
-    %br
-    %br
-    =f.submit 'Submit', class: 'btn btn-primary'
+        .form-group.row
+          .col-md-12
+            .col-md-6.row= f.label 'Mural Address'
+            .add-location.col-md-6
+              -# Swap out with target glyph
+              = link_to 'Use current location'
+              %input.lat{:type => "text"}
+              %input.long{:type => "text"}
+            = f.text_field :address, class: 'form-control'
 
-  %input.lat{:type => "text"}
-  %input.long{:type => "text"}
+        .form-group
+          = f.label :buffed
+          = f.check_box :buffed
+        .form-group
+          =f.submit 'Submit', class: 'btn btn-primary'
+    %div.col-md-6
+      -#placeholder image untill preview works
+      = image_tag current_user.avatar.url(:thumb)
+
+      = image_tag(@mural.image.url(:thumb)) if @mural.image?

@@ -16,7 +16,8 @@
 //= require_tree .
 
 
-// 39.7454,-104.9805,14
+// need an address attribute for string input and need lat/log attributes for
+// automated geolocation.
 
 (function(document,window,google, $) {
 
@@ -26,7 +27,7 @@
 
   var HeartMap = {
     specs: {
-      zoom: 20
+      zoom: 16
     },
     getMapElement: function() {
       HeartMap.element = document.getElementById('map')
@@ -50,7 +51,7 @@
 //  if (status === "OK") {
 //    $('get that input').value('set it to results[0].geometry.location.K & B')
 //  } else {
-//    alert('Alert add another address, that didn't work.)
+//    alert('That address didn't work.)
 //  }
 //});
 
@@ -79,3 +80,24 @@
     HeartMap.populateMap()
   })
 })(document, window, google, jQuery)
+
+
+
+
+// lightbox http://teamtreehouse.com/library/jquery-basics/creating-a-simple-lightbox/perform-part-3
+// var $overlay = $('<div id="overlay"></div>');
+// var $image = $('<img>');
+//
+// $overlay.append($image);
+//
+// $("body").append($overlay);
+//
+// //can't create with a show page, needs to link straight to image url
+// $("#muralGallery src").click(function(event){
+//   event.preventDefault();
+//   var imageLocation = $(this).attr("href");
+//   $image.attr("src", imageLocation);
+//
+//   $overlay.show();
+
+// });

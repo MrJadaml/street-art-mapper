@@ -2,10 +2,11 @@
   %h1.text-center Streets Gallery
   #map
   .gallery
-    -@murals.each do |mural|
-      .col-lg-3.text-center
-        = link_to mural do
-          = image_tag mural.image.url(:thumb)
+    %ul#muralGallery
+      -@murals.each do |mural|
+        %li.col-lg-3.text-center
+          = link_to mural do
+            = image_tag mural.image.url(:thumb)
 .container
   - if current_user
     .btn.btn-info
