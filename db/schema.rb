@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141122184237) do
+ActiveRecord::Schema.define(version: 20141128184042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 20141122184237) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "murals", ["user_id", "created_at"], name: "index_murals_on_user_id_and_created_at", using: :btree

@@ -2,6 +2,10 @@
   %h1.text-center Add some street art!
   %br
   .well.col-md-8.col-md-offset-2
+    - if @mural.errors.any?
+      .alert.alert-danger
+        - @mural.errors.full_messages.each do |message|
+          .text-center.no-decoration= message
     %div.col-md-6
       = form_for @mural do |f|
         .form-group
@@ -15,21 +19,22 @@
 
         .form-group.row
           .col-md-12
-            .col-md-6.row= f.label 'Mural Address'
+            = f.text_field :latitude, id: 'lat', class: 'form-control'
+            = f.text_field :longitude, id: 'long', class: 'form-control'
+
+        .form-group.row
+          .col-md-12
+            .col-md-6.row
             .add-location.col-md-6
               -# Swap out with target glyph
               = link_to 'Use current location'
               %input.lat{:type => "text"}
               %input.long{:type => "text"}
-            = f.text_field :address, class: 'form-control'
-
         .form-group
           = f.label :buffed
           = f.check_box :buffed
         .form-group
           =f.submit 'Submit', class: 'btn btn-primary'
-    %div.col-md-6
+    %div.col-md-6#new-mural-map
       -#placeholder image untill preview works
-      = image_tag current_user.avatar.url(:thumb)
-
       = image_tag(@mural.image.url(:thumb)) if @mural.image?

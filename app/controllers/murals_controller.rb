@@ -13,6 +13,8 @@ class MuralsController < ApplicationController
 
   def create
     @mural = current_user.murals.build(mural_params)
+    # address = params[:mural][:address]
+
     if @mural.save
       # figure out best practice for saving frame - error validations
       # frame for user uploading mural
@@ -46,7 +48,7 @@ class MuralsController < ApplicationController
   private
 
     def mural_params
-      params.require(:mural).permit(:image, :image_cache, :buffed, :user_id)
+      params.require(:mural).permit(:image, :image_cache, :buffed, :user_id, :address, :longitude, :latitude)
     end
 
     def set_mural

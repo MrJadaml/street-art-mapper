@@ -20,6 +20,12 @@
  height: 380px;
 }
 
+#new-mural-map
+{
+  height: 300px;
+  width: 300px;
+}
+
 // geo fields to allow post/patch
 input.lat, input.long {
   display: none;

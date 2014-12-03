@@ -1,13 +1,12 @@
 .container
   %h1.text-center Streets Gallery
   #map
-  .gallery
-    %ul#muralGallery
+  .row.gallery
+    %ul.row#muralGallery
       -@murals.each do |mural|
-        %li.col-lg-3.text-center
+        %li.row.col-lg-3.text-center
           = link_to mural do
             = image_tag mural.image.url(:thumb)
 .container
   - if current_user
-    .btn.btn-info
-      = link_to 'New Mural', new_mural_path
+    = link_to 'New Mural', new_mural_path, class: 'btn btn-info'
