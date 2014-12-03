@@ -35,6 +35,6 @@
           = f.check_box :buffed
         .form-group
           =f.submit 'Submit', class: 'btn btn-primary'
-    %div.col-md-6#new-mural-map
+    %div.col-md-6#new-map.mural-map
       -#placeholder image untill preview works
       = image_tag(@mural.image.url(:thumb)) if @mural.image?
