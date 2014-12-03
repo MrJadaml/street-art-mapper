@@ -1,6 +1,26 @@
 class MuralsController < ApplicationController
+
   def index
     @murals = Mural.all
+    respond_to do |format|
+      format.html
+      format.json do
+        json = {
+          type: "FeatureCollection",
+          features: []
+        }
+        @murals.each do |mural|
+          json[:features] << {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [mural.longitude, mural.latitude]
+            }
+          }
+        end
+        render json: json
+      end
+    end
   end
 
   def new
@@ -13,8 +33,6 @@ class MuralsController < ApplicationController
 
   def create
     @mural = current_user.murals.build(mural_params)
-    # address = params[:mural][:address]
-
     if @mural.save
       # figure out best practice for saving frame - error validations
       # frame for user uploading mural
