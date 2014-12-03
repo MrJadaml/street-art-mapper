@@ -7,7 +7,6 @@
         %li.row.col-lg-3.text-center
           = link_to mural do
             = image_tag mural.image.url(:thumb)
-            = link_to 'Delete', mural_path(mural), method: :delete, class: 'btn btn-danger'
 .container
   - if current_user
     = link_to 'New Mural', new_mural_path, class: 'btn btn-info'
