@@ -32,7 +32,7 @@ $(document).ready(function() {
     var myLatlng = new google.maps.LatLng(40.0172679,-105.2839094);
 
     var myOptions = {
-      zoom: 16,
+      zoom: 15,
       center: myLatlng,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       scrollwheel: false
@@ -41,14 +41,36 @@ $(document).ready(function() {
     var map = new google.maps.Map(
       document.getElementById('gallery-map'), myOptions
     );
-    map.data.loadGeoJson('http://localhost:3009/murals.json');
+    map.data.loadGeoJson('/murals.json');
   };
+  // ---------------------------Mural #profile-------------------------------------
+
+  var profileMap = function() {
+    var myLatlng = new google.maps.LatLng(40.0172679,-105.2839094);
+
+    var myOptions = {
+      zoom: 15,
+      center: myLatlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      scrollwheel: false
+    };
+
+    var map = new google.maps.Map(
+      document.getElementById('profile-map'), myOptions
+    );
+
+    var array = window.location.href.split("/");
+    var id = array[array.length - 1];
+
+    map.data.loadGeoJson('/users/' + id + '.json');
+  };
+
 
   // ---------------------------Mural #create--------------------------------------
   var dropMap = function() {
     var myLatlng = new google.maps.LatLng(40.0172679,-105.2839094);
     var myOptions = {
-      zoom: 16,
+      zoom: 15,
       center: myLatlng,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -70,7 +92,9 @@ $(document).ready(function() {
 
   if (document.getElementById('gallery-map')) {
     galleryMap();
-  } else {
+  } else if (document.getElementById('profile-map')){
+    profileMap();
+  }else {
     dropMap();
   }
 

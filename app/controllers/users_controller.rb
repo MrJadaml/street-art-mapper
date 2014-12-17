@@ -24,7 +24,26 @@ class UsersController < ApplicationController
   def show
     set_user
     @murals = @user.murals.paginate(page: params[:page])
-    # binding.pry
+    @pins = @user.murals
+    respond_to do |format|
+      format.html
+      format.json do
+        json = {
+          type: "FeatureCollection",
+          features: []
+        }
+        @pins.each do |pin|
+          json[:features] << {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [pin.longitude, pin.latitude]
+            }
+          }
+        end
+        render json: json
+      end
+    end
   end
 
   def blah

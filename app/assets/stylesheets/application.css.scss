@@ -20,6 +20,11 @@
  height: 380px;
 }
 
+.profile-map {
+  height: 380px;
+  width: 100%;
+}
+
 .mural-map {
   height: 300px;
   width: 300px;
@@ -77,8 +82,8 @@ ul {
 .user-album {
   list-style: none;
   padding: 0;
-  li {
-    padding: 10px 0;
+  div {
+    margin: 10px 0;
   }
 }
 
