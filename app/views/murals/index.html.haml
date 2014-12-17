@@ -1,10 +1,10 @@
 #gallery-map.gallery-map
-.container
-  .row.gallery
-    %ul.row#muralGallery
-      -@murals.each do |mural|
-        %li.col-lg-3.gallery-mural
-          = link_to mural do
-            = image_tag mural.image.url(:thumb)
-  - if current_user
-    = link_to 'New Mural', new_mural_path, class: 'btn btn-info'
+
+.gallery
+  %ul
+    -@murals.each do |mural|
+      %li.col-md-2.gallery-mural
+        = link_to mural do
+          = image_tag mural.image.url(:thumb)
+- if current_user
+  = link_to 'New Mural', new_mural_path, class: 'btn btn-info'
