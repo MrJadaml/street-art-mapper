@@ -8,3 +8,9 @@
             = image_tag mural.image.url(:thumb)
   - if current_user
     = link_to 'New Mural', new_mural_path, class: 'btn btn-info'
+
+- content_for(:js) do
+  :javascript
+    $(function(){
+      MapFunctions.galleryMap();
+    });

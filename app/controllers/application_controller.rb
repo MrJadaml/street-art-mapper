@@ -26,4 +26,13 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :current_user
+
+  class AccessDenied < StandardError
+  end
+
+  rescue_from AccessDenied, with: :serve_404
+
+  def serve_404
+    render 'public/404', status: :not_found, layout: false
+  end
 end

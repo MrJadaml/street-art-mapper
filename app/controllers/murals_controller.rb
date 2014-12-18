@@ -1,24 +1,13 @@
 class MuralsController < ApplicationController
+  # before_action :logged_in_user, only: [:create, :destroy]
 
   def index
-    @murals = Mural.all
     respond_to do |format|
-      format.html
+      format.html do
+        @murals = Mural.all
+      end
       format.json do
-        json = {
-          type: "FeatureCollection",
-          features: []
-        }
-        @murals.each do |mural|
-          json[:features] << {
-            type: 'Feature',
-            geometry: {
-              type: 'Point',
-              coordinates: [mural.longitude, mural.latitude]
-            }
-          }
-        end
-        render json: json
+        render json: MuralData.new.gallery_data
       end
     end
   end

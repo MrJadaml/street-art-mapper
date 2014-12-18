@@ -38,3 +38,9 @@
     .col-md-6#new-map.mural-map
       -#placeholder image untill preview works
       -# = image_tag(@mural.image.url(:thumb)) if @mural.image?
+
+- content_for(:js) do
+  :javascript
+    $(function(){
+      MapFunctions.dropMap();
+    });
