@@ -32,10 +32,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def blah
-    @user = current_user
-  end
-
   def edit
     set_user
   end
@@ -62,7 +58,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :password, :twitter, :instagram, :avatar, :avatar_cache)
+      params.require(:user).permit(:admin, :first_name, :last_name, :email, :password, :twitter, :instagram, :avatar, :avatar_cache)
     end
 
 end

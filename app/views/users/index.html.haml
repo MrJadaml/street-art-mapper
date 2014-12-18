@@ -12,6 +12,4 @@
           %span.glyphicon.glyphicon-pencil
         = link_to user_path(user), method: :delete do
           %span.glyphicon.glyphicon-trash
-.container
-  .btn.btn-info
-    = link_to 'New Artist', new_user_path
+  = link_to 'New Artist', new_user_path, class: 'btn btn-info'
