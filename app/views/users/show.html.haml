@@ -21,7 +21,10 @@
     %p
       = link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-primary'
       %br
-      = link_to 'Are you an artist?', blah_path
+      = link_to 'Are you an artist?', foo_path
+  - elsif @user.artist?
+    %p
+      = link_to 'Is this you?', claim_profile_path
 
 - content_for(:js) do
   :javascript
