@@ -8,13 +8,15 @@ $(document).ready(function() {
   window.MapFunctions = {
 
     galleryMap : function() {
-      var myLatlng = new google.maps.LatLng(40.0172679,-105.2839094);
+      var myLatlng = new google.maps.LatLng(39.7502845,-104.9836858);
 
       var myOptions = {
-        zoom: 15,
+        zoom: 14,
         center: myLatlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
-        scrollwheel: false
+        scrollwheel: false,
+        disableDefaultUI: true,
+        zoomControl: true
       };
 
       var map = new google.maps.Map(
@@ -24,13 +26,15 @@ $(document).ready(function() {
     },
 
     profileMap : function(userPath) {
-      var myLatlng = new google.maps.LatLng(40.0172679,-105.2839094);
+      var myLatlng = new google.maps.LatLng(39.7299566,-104.9836858);
 
       var myOptions = {
         zoom: 15,
         center: myLatlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
-        scrollwheel: false
+        scrollwheel: false,
+        disableDefaultUI: true,
+        zoomControl: true
       };
 
       var map = new google.maps.Map(
@@ -44,11 +48,13 @@ $(document).ready(function() {
     },
 
     dropMap : function() {
-      var myLatlng = new google.maps.LatLng(40.0172679,-105.2839094);
+      var myLatlng = new google.maps.LatLng(39.7299566,-104.9836858);
       var myOptions = {
-        zoom: 15,
+        zoom: 14,
         center: myLatlng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        disableDefaultUI: true,
+        zoomControl: true
       };
       var map = new google.maps.Map(
         document.getElementById('new-map'), myOptions

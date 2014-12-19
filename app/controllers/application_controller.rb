@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   # Hartl's approach to session ids
-  # include SessionsHelper
+  include SessionsHelper
 
   def index
     @user = User.find(parms[:id])

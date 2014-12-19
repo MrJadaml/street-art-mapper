@@ -1,18 +1,19 @@
-.field.form-group.col-md-offset-1
+.form-group.col-md-offset-1
   = f.label :twitter, class: "col-md-1"
   .input-group.col-md-3
     .input-group-addon @
     = f.text_field :twitter, class: "form-control"
 
-.field.form-group.col-md-offset-1
+.form-group.col-md-offset-1
   = f.label :instagram, class: "col-md-1"
   .input-group.col-md-3
     .input-group-addon @
     = f.text_field :instagram, class: "form-control"
 
-.row
-  .form-group
-    .row
-      .col-md-2.col-md-offset-3
-        = f.check_box :admin
-        = f.label :admin
+- if current_user.admin?
+  .row
+    .form-group
+      .row
+        .col-md-2.col-md-offset-3
+          = f.check_box :admin
+          = f.label :admin
