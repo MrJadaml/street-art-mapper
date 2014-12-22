@@ -1,7 +1,5 @@
-%br
-%br
 .container
-  %h1 Artist Profiles
+  %h1.tube-sm.text-center Artist Profiles
   - @users.each do |user|
     .panel.panel-default.col-lg-3
       .text-center
@@ -12,6 +10,5 @@
           %span.glyphicon.glyphicon-pencil
         = link_to user_path(user), method: :delete do
           %span.glyphicon.glyphicon-trash
-.container
-  .btn.btn-info
-    = link_to 'New Artist', new_user_path
+  - if current_user.admin?
+    = link_to 'Add Artist', new_user_path, class: 'btn btn-info'
