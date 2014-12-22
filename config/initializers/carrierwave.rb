@@ -1,4 +1,5 @@
 CarrierWave.configure do |config|
+  raise ENV['S3_KEY'].to_s
   config.fog_credentials = {
     :provider               => 'AWS',
     :aws_access_key_id      => ENV['S3_KEY'],

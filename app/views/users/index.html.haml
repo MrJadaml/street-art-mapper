@@ -12,5 +12,5 @@
           %span.glyphicon.glyphicon-pencil
         = link_to user_path(user), method: :delete do
           %span.glyphicon.glyphicon-trash
-  - if current_user.admin?
+  - unless current_user.nil? || !current_user.admin?
     = link_to 'Add Artist', new_user_path, class: 'btn btn-info'
