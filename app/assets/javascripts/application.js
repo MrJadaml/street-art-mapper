@@ -22,6 +22,24 @@ $(document).ready(function() {
       var map = new google.maps.Map(
         document.getElementById('gallery-map'), myOptions
       );
+
+      var id = map.data.setStyle({
+        id: ''
+      })
+
+      $( "#mapPin" ).on({
+        "mouseover": function() {
+          var icon = map.data.setStyle({
+            icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=1|ffffff|c41200'
+          })
+        },
+        "mouseleave": function() {
+          var icon = map.data.setStyle({
+            icon: ''
+          })
+        }
+      });
+
       map.data.loadGeoJson('/murals.json');
     },
 
@@ -73,6 +91,9 @@ $(document).ready(function() {
     }
 
   }
+
+
+
 
   // if (document.getElementById('gallery-map')) {
   //   Streetmap.set('map-gallery');
