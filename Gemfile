@@ -30,4 +30,5 @@ group :development, :test do
   gem 'launchy'
   gem 'better_errors'
   gem 'pry', '~> 0.10.1'
+  gem 'binding_of_caller'
 end
