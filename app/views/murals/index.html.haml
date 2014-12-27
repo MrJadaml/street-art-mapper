@@ -1,9 +1,165 @@
-#gallery-map.gallery-map
-.gallery
-  %ul
-    -@murals.each do |mural|
-      %li.col-md-2.gallery-mural
-        = link_to mural do
-          = image_tag mural.image.url(:thumb)
-- if current_user
-  = link_to 'New Mural', new_mural_path, class: 'btn btn-info'
+.col-md-12
+  .row
+    .col-md-7#gallery-map.gallery-map
+    .gallery
+      .scrollable
+        -@murals.each do |mural|
+          .col-md-4.gallery-mural
+            = link_to mural do
+              = image_tag mural.image.url(:user_ablum)
+-# .col-md-4.pull-right.panel.scrollable
+-#   %p things and stuff
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %p things and12e23232 stuff
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %p things and stuff
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %p things and stuff
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %p things and fdfdfdfdstuff
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %p things and stuff
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %p things and stuff
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %p things and saaaaaatuff
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %p things and asstuff
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %p things ansdfd stuff
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %p things and stuff
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %p things and stuff
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %p things and12e23232 stuff
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %p things and stuff
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %p things and stuff
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %p things and fdfdfdfdstuff
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %p things and stuff
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %p things and stuff
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %p things and saaaaaatuff
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %p things and asstuff
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %p things ansdfd stuff
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %p things and stuff
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-# .col-md-8#gallery-map.gallery-map
