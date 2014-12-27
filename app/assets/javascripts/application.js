@@ -19,29 +19,61 @@ $(document).ready(function() {
         zoomControl: true
       };
 
-      var map = new google.maps.Map(
+      map = new google.maps.Map(
         document.getElementById('gallery-map'), myOptions
       );
 
-      var id = map.data.setStyle({
-        id: ''
-      })
+      $(".mapPin").on("mouseover", activePin)
+      $(".mapPin").on("mouseout", regularPin)
 
-      $( "#mapPin" ).on({
-        "mouseover": function() {
-          var icon = map.data.setStyle({
-            icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=1|ffffff|c41200'
-          })
-        },
-        "mouseleave": function() {
-          var icon = map.data.setStyle({
-            icon: ''
-          })
-        }
+      function activePin(event) {
+        var id = event.target.parentElement.parentElement.classList[0];
+        var marker = window.markers[id];
+        marker.setIcon('http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=1|ffffff|c41200');
+        $.each(window.markers, function () {
+
+        });
+      }
+
+      function regularPin(event){
+        var id = event.target.parentElement.parentElement.classList[0];
+        var marker = window.markers[id];
+        marker.setIcon('');
+        $.each(window.markers, function () {
+        });
+      }
+
+      window.markers = {};
+
+      $.getJSON('/murals.json', function (data) {
+        data.features.forEach(function (feature) {
+          var myLatlng = new google.maps.LatLng(
+            feature.geometry.coordinates[1],
+            feature.geometry.coordinates[0]
+          );
+          var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title: 'Hello World!'
+          });
+          window.markers[feature.geometry.id] = marker;
+        });
       });
-
-      map.data.loadGeoJson('/murals.json');
     },
+
+    // $("#mapPin").on({
+    //   "mouseover": function(event) {
+    //     // debugger;
+    //     var icon = map.data.setStyle({
+    //       icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=1|ffffff|c41200'
+    //     })
+    //   },
+    //   "mouseleave": function(event) {
+    //     var icon = map.data.setStyle({
+    //       icon: ''
+    //     })
+    //   }
+    // });
 
     profileMap : function(userPath) {
       var myLatlng = new google.maps.LatLng(39.7299566,-104.9836858);
@@ -59,10 +91,45 @@ $(document).ready(function() {
         document.getElementById('profile-map'), myOptions
       );
 
-      var array = window.location.href.split("/");
-      var id = array[array.length - 1];
+      $('.mapPin').on('mouseover', activePin)
+      $('.mapPin').on('mouseout', inactivePin)
 
-      map.data.loadGeoJson(userPath);
+      function activePin(event) {
+        var id = event.target.parentElement.parentElement.classList[0];
+        var marker = window.markers[id];
+        marker.setIcon('http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=1|ffffff|c41200');
+        $.each(window.markers, function() {
+
+        });
+      }
+
+      function inactivePin(event) {
+        var id = event.target.parentElement.parentElement.classList[0];
+        var marker = window.markers[id];
+        marker.setIcon('');
+      };
+
+      window.markers = {};
+
+      $.getJSON(userPath, function(data) {
+        data.features.forEach(function(feature) {
+          var myLatlng = new google.maps.LatLng(
+            feature.geometry.coordinates[1],
+            feature.geometry.coordinates[0]
+          );
+          var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title: 'Things and Stuff'
+          });
+          window.markers[feature.geometry.id] = marker;
+        });
+      });
+
+      // var array = window.location.href.split("/");
+      // var id = array[array.length - 1];
+      //
+      // map.data.loadGeoJson(userPath);
     },
 
     dropMap : function() {
@@ -91,8 +158,6 @@ $(document).ready(function() {
     }
 
   }
-
-
 
 
   // if (document.getElementById('gallery-map')) {

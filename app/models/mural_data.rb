@@ -11,6 +11,7 @@ class MuralData
         type: 'Feature',
         geometry: {
           type: 'Point',
+          id: mural.id,
           coordinates: [mural.longitude, mural.latitude]
         }
       }
@@ -31,6 +32,7 @@ class MuralData
         type: 'Feature',
         geometry: {
           type: 'Point',
+          id: mural.id,
           coordinates: [mural.longitude, mural.latitude]
         }
       }
