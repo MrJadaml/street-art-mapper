@@ -54,26 +54,11 @@ $(document).ready(function() {
           var marker = new google.maps.Marker({
             position: myLatlng,
             map: map,
-            title: 'Hello World!'
           });
           window.markers[feature.geometry.id] = marker;
         });
       });
     },
-
-    // $("#mapPin").on({
-    //   "mouseover": function(event) {
-    //     // debugger;
-    //     var icon = map.data.setStyle({
-    //       icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=1|ffffff|c41200'
-    //     })
-    //   },
-    //   "mouseleave": function(event) {
-    //     var icon = map.data.setStyle({
-    //       icon: ''
-    //     })
-    //   }
-    // });
 
     profileMap : function(userPath) {
       var myLatlng = new google.maps.LatLng(39.7299566,-104.9836858);
@@ -125,11 +110,6 @@ $(document).ready(function() {
           window.markers[feature.geometry.id] = marker;
         });
       });
-
-      // var array = window.location.href.split("/");
-      // var id = array[array.length - 1];
-      //
-      // map.data.loadGeoJson(userPath);
     },
 
     dropMap : function() {
@@ -156,36 +136,5 @@ $(document).ready(function() {
         document.getElementById('long').value = event.latLng.lng();
       });
     }
-
   }
-
-
-  // if (document.getElementById('gallery-map')) {
-  //   Streetmap.set('map-gallery');
-  //   Streetmap.load();
-  // } else {
-  //   Streetmap.set('map-mural');
-  //   Streetmap.load();
-  // }
-
 });
-
-
-// var Streetmap = {
-//   element: null,
-//   mapOptions: {
-//     zoom: 16,
-//     center: myLatlng,
-//     mapTypeId: google.maps.MapTypeId.ROADMAP,
-//     scrollwheel: false
-//   },
-//   init: function() {
-//     var self = this;
-//     var map = new google.maps.Map(
-//       document.getElementById(self.element), self.mapOptions
-//     );
-//     map.data.loadGeoJson('http://localhost:3009/murals.json');
-//   }
-// };
-//
-// Streetmap.elementId = element || document.getElementById('map-gallery');
