@@ -2,9 +2,6 @@ class User < ActiveRecord::Base
   has_many :frames
   has_many :murals, through: :frames
 
-  # add to above has_many after it's working
-  # dependent: :destroy
-
   before_save { self.email = email.downcase }
   validates :first_name, presence: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -16,4 +13,5 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
 
+  # dependent: :destroy
 end

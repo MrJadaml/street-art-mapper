@@ -21,3 +21,8 @@
           .gallery-mural
             = render @murals
         = will_paginate @murals
+- content_for(:js) do
+  :javascript
+    $(function(){
+      MapFunctions.profileMap('#{user_path(@user, format: :json)}');
+    });

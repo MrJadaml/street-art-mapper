@@ -2,6 +2,7 @@
   %footer
     %script{:src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyASm3CwaK9qtcZEWYa-iQwHaGi3gcosAJc&sensor=true", :type => "text/javascript"}
     = javascript_include_tag 'application'
+    = content_for(:js)
     .container
       %ul.nav.navbar-nav
         %li= link_unless_on_own_page(about_path, 'About')

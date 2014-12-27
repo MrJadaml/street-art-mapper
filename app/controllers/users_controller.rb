@@ -1,4 +1,3 @@
-require 'pry'
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
 
@@ -14,8 +13,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      session[:id] = @user.id
-      redirect_to @user
+      redirect_to users_path
     else
       render :new
     end
@@ -23,31 +21,22 @@ class UsersController < ApplicationController
 
   def show
     set_user
-    @murals = @user.murals.paginate(page: params[:page])
-    @pins = @user.murals
     respond_to do |format|
-      format.html
+      format.html do
+        @murals = @user.murals.paginate(page: params[:page])
+      end
       format.json do
-        json = {
-          type: "FeatureCollection",
-          features: []
-        }
-        @pins.each do |pin|
-          json[:features] << {
-            type: 'Feature',
-            geometry: {
-              type: 'Point',
-              coordinates: [pin.longitude, pin.latitude]
-            }
-          }
-        end
-        render json: json
+        render json: MuralData.new.profile_data(@user.id)
       end
     end
   end
 
-  def blah
-    @user = current_user
+  def foo
+    #are you an artist page
+  end
+
+  def claim_profile
+    @user = User.new
   end
 
   def edit
@@ -76,7 +65,17 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :password, :twitter, :instagram, :avatar, :avatar_cache)
+      params.require(:user).permit(
+        :first_name,
+        :last_name,
+        :email,
+        :password,
+        :twitter,
+        :instagram,
+        :avatar,
+        :avatar_cache,
+        :artist,
+      )
     end
 
 end
