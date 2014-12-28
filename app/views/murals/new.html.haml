@@ -6,7 +6,7 @@
       .alert.alert-danger
         - @mural.errors.full_messages.each do |message|
           .text-center.no-decoration= message
-    %div.col-md-6
+    .col-md-4
       = form_for @mural do |f|
         .form-group
           = f.label :image
@@ -19,25 +19,15 @@
 
         .form-group.row
           .col-md-12
-            = f.text_field :latitude, id: 'lat', class: 'form-control'
-            = f.text_field :longitude, id: 'long', class: 'form-control'
+            = f.hidden_field :latitude, id: 'lat', class: 'form-control'
+            = f.hidden_field :longitude, id: 'long', class: 'form-control'
 
-        .form-group.row
-          .col-md-12
-            .col-md-6.row
-            .add-location.col-md-6
-              -# Swap out with target glyph
-              = link_to 'Use current location'
-              %input.lat{:type => "text"}
-              %input.long{:type => "text"}
         .form-group
           = f.label :buffed
           = f.check_box :buffed
         .form-group
           =f.submit 'Submit', class: 'btn btn-primary'
-    .col-md-6#new-map.mural-map
-      -#placeholder image untill preview works
-      -# = image_tag(@mural.image.url(:thumb)) if @mural.image?
+    .col-md-8#new-map.mural-map
 
 - content_for(:js) do
   :javascript
