@@ -17,9 +17,9 @@ ul {
   margin-bottom: 0;
 }
 
-#map {
- height: 380px;
-}
+// #map { pending delete
+//  height: 380px;
+// }
 
 .navbar {
   margin-bottom: 0px;
@@ -36,10 +36,10 @@ ul {
   width: 300px;
 }
 
-// geo fields to allow post/patch
-input.lat, input.long {
-  display: none;
-}
+// geo fields to allow post/patch pending delete
+// input.lat, input.long {
+//   display: none;
+// }
 
 .gallery-map {
 	width: 60%;
@@ -48,10 +48,9 @@ input.lat, input.long {
 }
 
 .gallery-mural {
-  margin-top: 10px;
+  margin-top: 8px;
   padding: 0;
 }
-
 
 .tube-sm {
 	border-top: 1px solid black;
@@ -65,13 +64,16 @@ input.lat, input.long {
   padding: 1em;
 }
 
-.jumbotron img {
-		width: 100%;
-}
+// .jumbotron img { pending delete
+// 		width: 100%;
+// }
 
 .jumbotron {
 		width: 100%;
 		padding: 0;
+    // img {
+    //   width: 100%;
+    // }
 }
 
 .photocred {
@@ -101,7 +103,6 @@ input.lat, input.long {
 
 .scrollable {
   height: 750px;
-  overflow: auto;
+  padding-left: 8px;
+  overflow-y: scroll;
 }
-
-// ---------------------no scroll----------------------
