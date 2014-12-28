@@ -3,37 +3,52 @@
     .alert.alert-danger
       - @user.errors.full_messages.each do |message|
         .text-center.no-decoration= message
+  .col-md-6
+    .form-group.col-md-offset-1
+      = f.label :first_name, class: 'col-md-3'
+      .col-md-6
+        = f.text_field :first_name, class: 'form-control'
 
-  .form-group.col-md-offset-1
-    = image_tag(@user.avatar_url) if @user.avatar?
-    = f.label :avatar, class: "col-md-1"
-    = f.file_field :avatar, class: "btn col-md-3"
-    = f.hidden_field :avatar_cache
+    .form-group.col-md-offset-1
+      = f.label :last_name, class: 'col-md-3'
+      .col-md-6
+        = f.text_field :last_name, class: 'form-control'
 
-  .form-group.col-md-offset-1
-    = f.label :first_name, class: "col-md-1"
-    .col-md-3
-      = f.text_field :first_name, class: "form-control"
+    .form-group.col-md-offset-1
+      = f.label :email, class: 'col-md-3'
+      .col-md-6
+        = f.email_field :email, class: 'form-control'
 
-  .form-group.col-md-offset-1
-    = f.label :last_name, class: "col-md-1"
-    .col-md-3
-      = f.text_field :last_name, class: "form-control"
+    .form-group.col-md-offset-1
+      =f.label :twitter, class: 'col-md-3'
+      .col-md-6
+        =f.text_field :twitter, class: 'form-control'
 
-  .form-group.col-md-offset-1
-    = f.label :email, class: "col-md-1"
-    .col-md-3
-      = f.email_field :email, class: "form-control"
+    .form-group.col-md-offset-1
+      =f.label :instagram, class: 'col-md-3'
+      .col-md-6
+        =f.text_field :instagram, class: 'form-control'
 
-  .form-group.col-md-offset-1
-    =f.label :password, class: "col-md-1"
-    .col-md-3
-      =f.password_field :password, class: 'form-control'
 
-  .form-group.col-md-offset-1
-    =f.label :password_confirmation, class: "col-md-1"
-    .col-md-3
-      =f.password_field :password_confirmation, class: 'form-control'
+    .form-group.col-md-offset-1
+      =f.label :password, class: 'col-md-3'
+      .col-md-6
+        =f.password_field :password, class: 'form-control'
+
+    .form-group.col-md-offset-1
+      =f.label :password_confirmation, class: 'col-md-3'
+      .col-md-6
+        =f.password_field :password_confirmation, class: 'form-control'
+
+  .col-md-6
+    .form-group
+      .row
+        = f.label :avatar, class: 'col-md-2'
+        = f.file_field :avatar
+        = f.hidden_field :avatar_cache
+      .row
+        = image_tag(@user.avatar_url(:thumb)) if @user.avatar?
 
   .actions
-    = f.submit class: "btn btn-primary col-md-offset-1"
+    = f.submit class: 'btn btn-primary'
+    = link_to 'Delete Account', @user, method: :delete, class: 'btn btn-danger'

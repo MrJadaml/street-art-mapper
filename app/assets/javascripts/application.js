@@ -307,10 +307,11 @@ $(document).ready(function() {
             feature.geometry.coordinates[1],
             feature.geometry.coordinates[0]
           );
+          var image = 'https://s3.amazonaws.com/streetheart/inactivepin.png';
           var marker = new google.maps.Marker({
             position: myLatlng,
             map: map,
-            title: 'Things and Stuff'
+            icon: image
           });
           window.markers[feature.geometry.id] = marker;
         });
@@ -331,11 +332,12 @@ $(document).ready(function() {
       var map = new google.maps.Map(
         document.getElementById('new-map'), myOptions
       );
-
+      var image = 'https://s3.amazonaws.com/streetheart/inactivepin.png';
       var marker = new google.maps.Marker({
         position: myLatlng,
         map: map,
         draggable: true,
+        icon: image
       });
 
       google.maps.event.addListener(marker, 'dragend', function (event) {
