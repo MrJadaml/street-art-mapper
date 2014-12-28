@@ -241,7 +241,7 @@ $(document).ready(function() {
   window.MapFunctions = {
 
     galleryMap : function() {
-      var myLatlng = new google.maps.LatLng(39.7502845,-104.9836858);
+      var myLatlng = new google.maps.LatLng(39.7376845,-104.9836858);
 
       var myOptions = {
         zoom: 14,

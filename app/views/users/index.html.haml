@@ -1,14 +1,19 @@
-.container
-  %h1.tube-sm.text-center Artist Profiles
+%h1.tube-sm.text-center Artist Profiles
+.profile-container
   - @users.each do |user|
-    .panel.panel-default.col-lg-3
-      .text-center
-        = link_to user do
+    .col-lg-2.profile-box
+      = link_to user do
+        .avatar
           = image_tag user.avatar.url(:thumb)
-        = link_to user.first_name, user_path(user)
-        = link_to edit_user_path(user) do
-          %span.glyphicon.glyphicon-pencil
-        = link_to user_path(user), method: :delete do
-          %span.glyphicon.glyphicon-trash
-  - unless current_user.nil? || !current_user.admin?
-    = link_to 'Add Artist', new_user_path, class: 'btn btn-info'
+      .name-text
+        %span
+          = user.first_name
+      -# = link_to edit_user_path(user) do
+      -#   %span.glyphicon.glyphicon-pencil
+      -# = link_to user_path(user), method: :delete do
+      -#   %span.glyphicon.glyphicon-trash
+-# - unless current_user.nil? || !current_user.admin?
+%br
+.col-md-12
+  %br
+  = link_to 'Add Artist', new_user_path, class: 'btn btn-info'

@@ -106,3 +106,32 @@ ul {
   padding-left: 8px;
   overflow-y: scroll;
 }
+
+.profile-container {
+  margin-left: 4em;
+}
+
+.profile-box {
+  margin-right: 35px;
+  margin-top: 15px;
+  // margin: 10px, 10px, 10px, 10px;
+}
+
+.avatar {
+  position: relative;
+}
+
+.name-text {
+  position: absolute;
+  top: 190px;
+  left: 16px;
+  width: 100%;
+}
+
+.name-text span {
+  color: white;
+  font: 24px/36px Helvetica, Sans-Serif;
+  background: rgb(0, 0, 0); /* fallback color */
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+}
