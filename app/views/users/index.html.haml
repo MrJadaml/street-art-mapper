@@ -6,14 +6,8 @@
         .avatar
           = image_tag user.avatar.url(:thumb)
       .name-text
-        %span
-          = user.first_name
-      -# = link_to edit_user_path(user) do
-      -#   %span.glyphicon.glyphicon-pencil
-      -# = link_to user_path(user), method: :delete do
-      -#   %span.glyphicon.glyphicon-trash
--# - unless current_user.nil? || !current_user.admin?
 %br
 .col-md-12
   %br
-  = link_to 'Add Artist', new_user_path, class: 'btn btn-info'
+  -unless current_user.nil? || !current_user.admin?
+    = link_to 'Add Artist', new_user_path, class: 'btn btn-info'

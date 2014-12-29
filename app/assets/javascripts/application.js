@@ -238,10 +238,11 @@ $(document).ready(function() {
     });
   }
 
+  var myLatlng = new google.maps.LatLng(39.7376845,-104.9836858);
+
   window.MapFunctions = {
 
     galleryMap : function() {
-      var myLatlng = new google.maps.LatLng(39.7376845,-104.9836858);
 
       var myOptions = {
         zoom: 14,
@@ -280,7 +281,6 @@ $(document).ready(function() {
     },
 
     profileMap : function(userPath) {
-      var myLatlng = new google.maps.LatLng(39.7299566,-104.9836858);
 
       var myOptions = {
         zoom: 15,
@@ -319,8 +319,6 @@ $(document).ready(function() {
     },
 
     dropMap : function() {
-      var myLatlng = new google.maps.LatLng(39.7299566,-104.9836858);
-
       var myOptions = {
         zoom: 14,
         center: myLatlng,

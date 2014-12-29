@@ -5,8 +5,12 @@
       %h1.tube-sm.text-center= @user.first_name.capitalize
       = link_to image_tag('https://s3.amazonaws.com/streetheart/twitter_icon.jpg'), 'http://www.twitter.com/' + @user.twitter, :target => '_blank' if @user.twitter?
       = link_to image_tag('https://s3.amazonaws.com/streetheart/instagram_icon.jpg'), 'http://www.instagram.com/' + @user.instagram, :target => '_blank' if @user.instagram?
-      %p= link_to 'Are you an artist?', foo_path
-      %p= link_to 'Edit Profile', edit_user_path(@user)
+      - if current_user.nil?
+      - elsif @user.id == current_user.id
+        %p= link_to 'Are you an artist?', foo_path
+        %p= link_to 'Edit Profile', edit_user_path(@user)
+      -elsif current_user.admin?
+        %p= link_to 'Edit Profile', edit_user_path(@user)
     .col-md-6
       = image_tag @user.avatar.url(:thumb)
   .col-md-12
