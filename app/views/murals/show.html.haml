@@ -1,4 +1,22 @@
-.container
-  .text-center
-    = image_tag @mural.image
-  = link_to 'Edit', edit_mural_path, class: 'btn btn-primary'
+.col-md-12
+  .row
+    .col-md-7.text-center
+      = image_tag @mural.image
+    %div
+      .scrollable
+        .col-md-6.tube-sm
+          %h1= link_to @user.first_name, user_path(@user)
+        #show-map.show-map
+        %br
+        - if @mural.buffed?
+          = "This piece has this been buffed"
+        %br
+        - if current_user.nil?
+        - elsif @mural.user_id == current_user.id || current_user.admin?
+          = link_to 'Edit', edit_mural_path, class: 'btn btn-primary'
+
+- content_for(:js) do
+  :javascript
+    $(function() {
+      MapFunctions.showMap('#{mural_path(@mural, format: :json)}');
+    });

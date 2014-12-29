@@ -37,6 +37,15 @@ class MuralsController < ApplicationController
 
   def show
     set_mural
+    @user = User.find(@mural.user_id)
+    respond_to do |format|
+      format.html do
+        @mural
+      end
+      format.json do
+        render json: MuralData.new.show_data(params[:id])
+      end
+    end
   end
 
   def edit

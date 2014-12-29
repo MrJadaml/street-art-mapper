@@ -37,7 +37,25 @@ class MuralData
         }
       }
     end
+    json
+  end
 
+  def show_data(mural_id)
+    json = {}
+
+    mural = Mural.find(mural_id)
+    json = {
+      type: "FeatureCollection",
+      features: []
+    }
+    json[:features] << {
+      type: 'Feature',
+      geometry: {
+        type: 'Point',
+        id: mural.id,
+        coordinates: [mural.longitude, mural.latitude]
+      }
+    }
     json
   end
 
