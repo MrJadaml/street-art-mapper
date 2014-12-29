@@ -6,6 +6,8 @@
         .avatar
           = image_tag user.avatar.url(:thumb)
       .name-text
+        %span
+          = user.first_name
 %br
 .col-md-12
   %br
