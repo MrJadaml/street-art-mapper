@@ -18,6 +18,7 @@ gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick', '~> 4.0.0.rc'
 gem 'will_paginate', '~> 3.0'
+gem 'newrelic_rpm'
 
 group :production do
   gem 'rails_12factor'
