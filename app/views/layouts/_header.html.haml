@@ -9,7 +9,10 @@
       -if current_user
         %li.dropdown
           %a.dropdown-toggle{"data-toggle" => "dropdown", :href => ""}
-            = current_user.first_name.capitalize
+            - if current_user.first_name?
+              = current_user.first_name.capitalize
+            -else
+              = 'Some Guy'
             %b.caret
           %ul.dropdown-menu
             %li= link_to "Profile", current_user

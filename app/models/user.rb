@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
+  has_many :authentications
   has_many :frames
   has_many :murals, through: :frames
 
-  before_save { self.email = email.downcase }
+  before_save { self.email = email.downcase if email}
   validates :first_name, presence: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true,

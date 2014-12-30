@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   get     'about'                      => 'pages#about'
   get     'contact'                    => 'pages#contact'
   get     'faq'                        => 'pages#faq'
-  get     'login'                      => 'sessions#new'
-  get     '/auth/:provider/callback'   => 'sessions#create'
-  post    'login'                      => 'sessions#create'
   get     'logout'                     => 'sessions#destroy'
+  get     'login'                      => 'sessions#new'
+  post    'login'                      => 'sessions#create'
+  get     '/auth/:provider/callback'   => 'authentications#create'
 end
