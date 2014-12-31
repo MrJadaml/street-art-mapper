@@ -19,7 +19,8 @@ class AuthenticationsController < ApplicationController
       user.authentications.build(provider: omniauth['provider'], uid: omniauth['uid'])
       user.save(validate: false)
       flash[:notice] = 'You are now signed in'
-      redirect_to users_path
+      session[:id] = user.id
+      redirect_to user_path(user.id)
     end
   end
 
