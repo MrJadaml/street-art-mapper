@@ -21,6 +21,7 @@ gem 'will_paginate', '~> 3.0'
 gem 'newrelic_rpm'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'omniauth-instagram', '~> 1.0.1'
 
 group :production do
   gem 'rails_12factor'
