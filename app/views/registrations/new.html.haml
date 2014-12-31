@@ -1,5 +1,15 @@
 .container
   .well.col-md-5.col-md-offset-3
+    %a.auth_provider{:href => "/auth/twitter"}
+      = image_tag 'https://s3.amazonaws.com/streetheart/twitter.png', :alt => "Twitter Login"
+    %a.auth_provider{:href => "/auth/instagram"}
+      = image_tag 'https://s3.amazonaws.com/streetheart/instagram.png', :alt => "Instagram Login"
+
+
+
+
+
+  .well.col-md-5.col-md-offset-3
     %h1.text-center Sign Up
     = form_for @user, url: signup_path do |f|
       - if @user.errors.any?

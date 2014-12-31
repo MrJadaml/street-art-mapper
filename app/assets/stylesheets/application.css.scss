@@ -135,3 +135,30 @@ ul {
   background: rgba(0, 0, 0, 0.5);
   padding: 10px;
 }
+
+.connect-box {
+  position: absolute;
+  bottom: 140px;
+  left: 16px;
+  width: 100%;
+}
+
+.connect-box span {
+  color: white;
+  font: 24px/36px Helvetica, Sans-Serif;
+  background: rgb(0, 0, 0); /* fallback color */
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+}
+
+.btn a {
+  color: white;
+}
+
+.btn a:hover {
+  text-decoration: none;
+}
+
+.jumbotron .btn img {
+  width: 25px;
+}
