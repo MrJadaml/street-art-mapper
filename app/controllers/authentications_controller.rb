@@ -13,7 +13,7 @@ class AuthenticationsController < ApplicationController
     elsif current_user
       current_user.authentications.create!(provider: omniauth['provider'], uid: omniauth['uid'])
       flash[:notice] = "Successfully added #{omniauth['provider']} authentication"
-      redirect_to user_path(authentication.user_id)
+      redirect_to user_path(current_user.id)
     else
       user = User.new
       user.authentications.build(provider: omniauth['provider'], uid: omniauth['uid'])
@@ -30,5 +30,3 @@ class AuthenticationsController < ApplicationController
     redirect_to users_path
   end
 end
-
-# comment update
