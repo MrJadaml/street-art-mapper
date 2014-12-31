@@ -30,3 +30,5 @@ class AuthenticationsController < ApplicationController
     redirect_to users_path
   end
 end
+
+# comment update
