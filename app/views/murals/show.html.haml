@@ -1,9 +1,9 @@
 .col-md-12
   .row
-    .col-md-7.text-center
+    .col-md-7.text-center.img-background
       = image_tag @mural.image
     %div
-      .scrollable
+      .scrollable.deatils-background
         .col-md-6.tube-sm
           %h1= link_to @user.first_name, user_path(@user)
         #show-map.show-map
