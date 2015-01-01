@@ -32,7 +32,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
-  gem 'better_errors'
   gem 'pry', '~> 0.10.1'
+  gem 'better_errors'
   gem 'binding_of_caller'
 end

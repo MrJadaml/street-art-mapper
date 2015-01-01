@@ -12,7 +12,8 @@ class MuralData
         geometry: {
           type: 'Point',
           id: mural.id,
-          coordinates: [mural.longitude, mural.latitude]
+          coordinates: [mural.longitude, mural.latitude],
+          image: mural.image.url(:thumb)
         }
       }
     end
