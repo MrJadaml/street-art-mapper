@@ -15,7 +15,7 @@ class AuthenticationsController < ApplicationController
       flash[:notice] = "Successfully added #{omniauth['provider']} authentication"
       redirect_to user_path(current_user.id)
     else
-      user = User.new
+      user = User.new(first_name: omniauth['info']['name'])
       user.authentications.build(provider: omniauth['provider'], uid: omniauth['uid'])
       user.save(validate: false)
       flash[:notice] = 'You are now signed in'
