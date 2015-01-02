@@ -275,8 +275,8 @@ $(document).ready(function() {
             map: map,
             icon: image
           });
-          console.log(feature.geometry.image)
           window.markers[feature.geometry.id] = marker;
+
           var markerImage = '<IMG BORDER="0" ALIGN="Left" SRC=' + feature.geometry.image + '>'
           var infowindow = new google.maps.InfoWindow({
             content: markerImage
@@ -287,7 +287,6 @@ $(document).ready(function() {
           });
         });
       });
-
     },
 
     profileMap : function(userPath) {
@@ -324,6 +323,15 @@ $(document).ready(function() {
             icon: image
           });
           window.markers[feature.geometry.id] = marker;
+
+          var markerImage = '<IMG BORDER="0" ALIGN="Left" SRC=' + feature.geometry.image + '>'
+          var infowindow = new google.maps.InfoWindow({
+            content: markerImage
+          })
+
+          google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map,marker);
+          });
         });
       });
     },
