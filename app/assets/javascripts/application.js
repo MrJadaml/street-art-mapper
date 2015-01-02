@@ -258,13 +258,14 @@ $(document).ready(function() {
         document.getElementById('gallery-map'), myOptions
       );
 
-      $(".mapPin").on("mouseover", activePin)
-      $(".mapPin").on("mouseout", inactivePin)
+      $('.mapPin').on('mouseover', activePin)
+      $('.mapPin').on('mouseout', inactivePin)
 
       window.markers = {};
 
       $.getJSON('/murals.json', function (data) {
         data.features.forEach(function (feature) {
+          var muralId = feature.geometry.id
           var myLatlng = new google.maps.LatLng(
             feature.geometry.coordinates[1],
             feature.geometry.coordinates[0]
@@ -273,14 +274,25 @@ $(document).ready(function() {
           var marker = new google.maps.Marker({
             position: myLatlng,
             map: map,
-            icon: image
+            icon: image,
+            muralId: muralId,
           });
-          window.markers[feature.geometry.id] = marker;
+          window.markers[muralId] = marker;
 
           var markerImage = '<IMG BORDER="0" ALIGN="Left" SRC=' + feature.geometry.image + '>'
           var infowindow = new google.maps.InfoWindow({
             content: markerImage
           })
+
+          google.maps.event.addListener(marker, 'mouseover', function() {
+            var thumbHighlight = '.' + (marker['muralId'].toString()) + '.mapPin'
+            $(thumbHighlight).addClass('highlight')
+          });
+
+          google.maps.event.addListener(marker, 'mouseout', function() {
+            var thumbHighlight = '.' + (marker['muralId'].toString()) + '.mapPin'
+            $(thumbHighlight).removeClass('highlight')
+          });
 
           google.maps.event.addListener(marker, 'click', function() {
             infowindow.open(map,marker);
