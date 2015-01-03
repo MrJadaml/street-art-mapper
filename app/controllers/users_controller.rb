@@ -35,10 +35,6 @@ class UsersController < ApplicationController
     #are you an artist page
   end
 
-  def claim_profile
-    @user = User.new
-  end
-
   def edit
     set_user
   end

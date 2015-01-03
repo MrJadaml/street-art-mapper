@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   resources :murals, :users
 
   get     'foo'                        => 'users#foo'
-  get     'claim_profile'              => 'users#claim_profile'
   get     'signup'                     => 'registrations#new'
   post    'signup'                     => 'registrations#create'
   get     'about'                      => 'pages#about'
