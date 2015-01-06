@@ -16,7 +16,7 @@ class MuralsController < ApplicationController
     if current_user
       @mural = current_user.murals.build
     else
-      redirect_to login_path
+      redirect_to login_path, notice: 'You must be logged in to add murals to the map.'
     end
   end
 

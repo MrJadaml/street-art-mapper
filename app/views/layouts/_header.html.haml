@@ -15,6 +15,3 @@
             %li= link_to "Profile", current_user
             %li.divider
             %li= link_to 'Log out', logout_path
-      -else
-        = link_unless_on_own_page(signup_path, 'Sign up')
-        = link_unless_on_own_page(login_path, 'Log in')
