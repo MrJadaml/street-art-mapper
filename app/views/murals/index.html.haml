@@ -5,9 +5,8 @@
       .scrollable
         -@murals.each do |mural|
           .col-md-4.gallery-mural
-            .mapPin{:class => mural.id}
-              = link_to mural do
-                = image_tag mural.image.url(:user_ablum)
+            = link_to mural do
+              = image_tag mural.image.url(:user_ablum), class: "mapPin #{mural.id}"
 - content_for(:js) do
   :javascript
     $(function(){
