@@ -324,6 +324,7 @@ $(document).ready(function() {
 
       $.getJSON(userPath, function(data) {
         data.features.forEach(function(feature) {
+          var muralId = feature.geometry.id
           var myLatlng = new google.maps.LatLng(
             feature.geometry.coordinates[1],
             feature.geometry.coordinates[0]
@@ -332,7 +333,8 @@ $(document).ready(function() {
           var marker = new google.maps.Marker({
             position: myLatlng,
             map: map,
-            icon: image
+            icon: image,
+            muralId: muralId,
           });
           window.markers[feature.geometry.id] = marker;
 
@@ -340,6 +342,16 @@ $(document).ready(function() {
           var infowindow = new google.maps.InfoWindow({
             content: markerImage
           })
+
+          google.maps.event.addListener(marker, 'mouseover', function() {
+            var thumbHighlight = '.' + (marker['muralId'].toString()) + '.mapPin'
+            $(thumbHighlight).addClass('highlight')
+          });
+
+          google.maps.event.addListener(marker, 'mouseout', function() {
+            var thumbHighlight = '.' + (marker['muralId'].toString()) + '.mapPin'
+            $(thumbHighlight).removeClass('highlight')
+          });
 
           google.maps.event.addListener(marker, 'click', function() {
             infowindow.open(map,marker);
