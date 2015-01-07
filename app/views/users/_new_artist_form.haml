@@ -20,16 +20,6 @@
     .col-md-3
       = f.email_field :email, class: "form-control"
 
-  .form-group.col-md-offset-1
-    =f.label :password, class: "col-md-1"
-    .col-md-3
-      =f.password_field :password, class: 'form-control'
-
-  .form-group.col-md-offset-1
-    =f.label :password_confirmation, class: "col-md-1"
-    .col-md-3
-      =f.password_field :password_confirmation, class: 'form-control'
-
   .form-group
     .col-md-2.col-md-offset-1
       = f.check_box :artist, {checked: true}
