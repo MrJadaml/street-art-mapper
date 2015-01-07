@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150107194342) do
+ActiveRecord::Schema.define(version: 20150107222223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,9 +56,6 @@ ActiveRecord::Schema.define(version: 20150107194342) do
     t.boolean  "artist",          default: false, null: false
     t.string   "website"
     t.boolean  "artist_approval", default: false
-    t.integer  "claim_id"
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
 end
