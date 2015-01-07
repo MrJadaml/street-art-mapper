@@ -8,14 +8,13 @@
   .well.col-md-6.col-md-offset-3
     %h2.text-center Log in
     .text-center
-      .btn.btn-info
+      = link_to "/auth/twitter", class: "btn btn-info" do
         = image_tag('https://s3.amazonaws.com/streetheart/tweet-wht.png')
-        %a.auth_provider{:href => "/auth/twitter"}
-          = "Connect with Twitter"
-      .btn.btn-warning
+        = "Connect with Twitter"
+
+      = link_to "/auth/instagram", class: "btn btn-warning" do
         = image_tag('https://s3.amazonaws.com/streetheart/insta-wht.png')
-        %a.auth_provider{:href => "/auth/instagram"}
-          = "Connect with Instagram"
+        = "Connect with Instagram"
     .text-center
       %br
       %p

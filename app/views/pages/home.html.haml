@@ -3,14 +3,13 @@
   = image_tag('denver-street-art-hero.jpg')
   .connect-box
     %span
-      .btn.btn-info
+      = link_to "/auth/twitter", class: "btn btn-info" do
         = image_tag('https://s3.amazonaws.com/streetheart/tweet-wht.png')
-        %a.auth_provider{:href => "/auth/twitter"}
-          = "Connect with Twitter"
-      .btn.btn-warning
+        = "Connect with Twitter"
+
+      = link_to "/auth/instagram", class: "btn btn-warning" do
         = image_tag('https://s3.amazonaws.com/streetheart/insta-wht.png')
-        %a.auth_provider{:href => "/auth/instagram"}
-          = "Connect with Instagram"
+        = "Connect with Instagram"
 
 %p.photocred Street art by Daniel Chavez  Keno Gonzales | Eddie Huang, Michael Kraus  Jacobo Gonzalez
 .container
