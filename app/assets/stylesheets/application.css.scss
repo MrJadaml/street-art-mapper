@@ -9,16 +9,33 @@ body {
   margin: 0px;
 }
 
+a:hover, a:visited, a:link, a:active {
+  text-decoration: none;
+}
+
 ul {
   list-style-type: none;
 }
 
-.navbar {
-  margin-bottom: 0;
+section {
+  margin-bottom: 25px;
+  clear: both;
 }
 
 .navbar {
-  margin-bottom: 0px;
+  margin-bottom: 0;
+  a {
+    color: #777;
+  }
+  .btn {
+    color: white;
+  }
+}
+
+a.anchor{display: block; position: relative; top: -250px; visibility: hidden;}
+
+a.map {
+  top: -250px;
 }
 
 .profile-map {
@@ -63,9 +80,6 @@ ul {
 .jumbotron {
 		width: 100%;
 		padding: 0;
-    // img {
-    //   width: 100%;
-    // }
 }
 
 .photocred {
@@ -141,14 +155,6 @@ ul {
   background: rgb(0, 0, 0); /* fallback color */
   background: rgba(0, 0, 0, 0.5);
   padding: 20px;
-}
-
-.btn a {
-  color: white;
-}
-
-.btn a:hover {
-  text-decoration: none;
 }
 
 .jumbotron .btn img {
