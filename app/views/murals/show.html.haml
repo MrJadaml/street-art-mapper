@@ -8,7 +8,7 @@
           %h1= link_to @user.first_name, user_path(@user)
         .row
           .col-md-12
-            #show-map.show-map
+            .show-map
             %br
             = link_to image_tag('https://s3.amazonaws.com/streetheart/twitter_icon.jpg'), 'http://www.twitter.com/' + @user.twitter, :target => '_blank' if @user.twitter?
             = link_to image_tag('https://s3.amazonaws.com/streetheart/instagram_icon.jpg'), 'http://www.instagram.com/' + @user.instagram, :target => '_blank' if @user.instagram?

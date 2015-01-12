@@ -224,17 +224,14 @@ $(document).ready(function() {
     var id = event.target.parentElement.parentElement.classList[0];
     var marker = window.markers[id];
     marker.setIcon('https://s3.amazonaws.com/streetheart/activepin.png');
-    $.each(window.markers, function () {
-
-    });
+    $.each(window.markers, function () {});
   }
 
   function inactivePin(event){
     var id = event.target.parentElement.parentElement.classList[0];
     var marker = window.markers[id];
     marker.setIcon('https://s3.amazonaws.com/streetheart/inactivepin.png');
-    $.each(window.markers, function () {
-    });
+    $.each(window.markers, function () {});
   }
 
   var myLatlng = new google.maps.LatLng(39.7376845,-104.9836858);
@@ -254,7 +251,7 @@ $(document).ready(function() {
       };
 
       map = new google.maps.Map(
-        document.getElementById('gallery-map'), myOptions
+        document.querySelector('.gallery-map'), myOptions
       );
 
       $('.mapPin').on('mouseover', activePin)
@@ -313,7 +310,7 @@ $(document).ready(function() {
       };
 
       var map = new google.maps.Map(
-        document.getElementById('profile-map'), myOptions
+        document.querySelector('.profile-map'), myOptions
       );
 
       $('.mapPin').on('mouseover', activePin)
@@ -381,7 +378,7 @@ $(document).ready(function() {
           };
 
           var map = new google.maps.Map(
-            document.getElementById('show-map'), myOptions
+            document.querySelector('.show-map'), myOptions
           );
 
           var image = 'https://s3.amazonaws.com/streetheart/inactivepin.png';
@@ -405,7 +402,7 @@ $(document).ready(function() {
         styles: mapStyle
       };
       var map = new google.maps.Map(
-        document.getElementById('new-map'), myOptions
+        document.querySelector('.new-map'), myOptions
       );
       var image = 'https://s3.amazonaws.com/streetheart/inactivepin.png';
       var marker = new google.maps.Marker({
