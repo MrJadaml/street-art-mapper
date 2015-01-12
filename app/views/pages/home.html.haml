@@ -2,7 +2,7 @@
   .jumbotron
     -# %img{:alt => "Denver Street Art", :src => "https://s3.amazonaws.com/streetheart/denver+street+art+hero.jpg"}
     = image_tag('denver-street-art-hero.jpg')
-    .connect-box
+    .social-box
       %span
         = link_to "/auth/twitter", class: "btn btn-info" do
           = image_tag('https://s3.amazonaws.com/streetheart/tweet-wht.png')
@@ -12,7 +12,7 @@
           = image_tag('https://s3.amazonaws.com/streetheart/insta-wht.png')
           = "Connect with Instagram"
 
-  %p.photocred Street art by Daniel Chavez  Keno Gonzales | Eddie Huang, Michael Kraus  Jacobo Gonzalez
+  .photocred Street art by Daniel Chavez  Keno Gonzales | Eddie Huang, Michael Kraus  Jacobo Gonzalez
   .container
     .container
       .row
@@ -28,13 +28,14 @@
           %h2 Want a mural?
           %p Get in touch with us if you’re interested in having an artist paint a mural on your property. Street art will draw attention to your business, and it's a great way to beautify your community. We’re working with artists and alongside the city to make the process of matching artists to your businesses easier every day.
 %a{name: 'map'}
-%section
-  .col-md-12
-    .row
-      .col-md-7#gallery-map.gallery-map
+.container-fluid
+  .row
+    .col-md-7.col-sm-12
+      #gallery-map.gallery-map
+    .col-md-5.col-sm-12
       .gallery
-        .scrollable
-          -@murals.each do |mural|
+        .row
+          - @murals.each do |mural|
             .col-md-4.gallery-mural
               = link_to mural do
                 = image_tag mural.image.url(:user_ablum), class: "mapPin #{mural.id}"

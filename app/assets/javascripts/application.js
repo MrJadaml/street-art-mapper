@@ -4,7 +4,6 @@
 //= require_tree .
 
 $(document).ready(function() {
-
   var mapStyle = [
     {
       "featureType": "administrative",
@@ -263,7 +262,7 @@ $(document).ready(function() {
 
       window.markers = {};
 
-      $.getJSON('/murals.json', function (data) {
+      $.getJSON('/', function (data) {
         data.features.forEach(function (feature) {
           var muralId = feature.geometry.id
           var myLatlng = new google.maps.LatLng(

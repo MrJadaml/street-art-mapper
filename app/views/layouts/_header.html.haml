@@ -1,17 +1,21 @@
 %nav.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
-  .navbar-header
-    %a.navbar-brand{:href => root_path} Streetheartβeta
-  .collapse.navbar-collapse.navbar-ex1-collapse
-    %ul.nav.navbar-nav.navbar-right
-      %a{href: "#map"} Map
-      %a{href: '#artists'} Artists
-      = link_to 'New Mural', new_mural_path, class: 'btn btn-info navbar-btn'
-      -if current_user
-        %li.dropdown
-          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => ""}
-            = current_user.first_name.capitalize
-            %b.caret
-          %ul.dropdown-menu
-            %li= link_to "Profile", current_user
-            %li.divider
-            %li= link_to 'Log out', logout_path
+  .container-fluid
+    .navbar-header
+      %a.navbar-brand{:href => root_path} Streetheartβeta
+    .collapse.navbar-collapse.navbar-ex1-collapse
+      %ul.nav.navbar-nav.navbar-right
+        -if current_user
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => ""}
+              = current_user.first_name.capitalize
+              %b.caret
+            %ul.dropdown-menu
+              %li= link_to "Profile", current_user
+              %li.divider
+              %li= link_to 'Log out', logout_path
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          %a{href: "#map"} Map
+        %li
+          %a{href: '#artists'} Artists
+      = link_to 'New Mural', new_mural_path, class: 'btn btn-info navbar-btn pull-right'

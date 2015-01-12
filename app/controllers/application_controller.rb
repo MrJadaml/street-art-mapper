@@ -5,9 +5,9 @@ class ApplicationController < ActionController::Base
   # Hartl's approach to session ids
   include SessionsHelper
 
-  def index
-    @user = User.find(parms[:id])
-  end
+  # def index
+  #   @user = User.find(parms[:id])
+  # end
 
   def current_user
     User.find_by(id: session[:id])

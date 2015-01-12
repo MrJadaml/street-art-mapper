@@ -5,7 +5,10 @@
     = content_for(:js)
     .container
       %ul.nav.navbar-nav
-        %li= link_unless_on_own_page(about_path, 'About')
-        %li= link_unless_on_own_page(contact_path, 'Contact')
-        %li= link_unless_on_own_page(faq_path, 'FAQs')
+        %li
+          = link_unless_on_own_page(about_path, 'About')
+        %li
+          = link_unless_on_own_page(contact_path, 'Contact')
+        %li
+          = link_unless_on_own_page(faq_path, 'FAQs')
       %p.navbar-right ©Denver Streetheart 2014

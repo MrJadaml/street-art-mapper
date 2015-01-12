@@ -5,10 +5,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-body {
-  margin: 0px;
-}
-
 a:hover, a:visited, a:link, a:active {
   text-decoration: none;
 }
@@ -32,7 +28,12 @@ section {
   }
 }
 
-a.anchor{display: block; position: relative; top: -250px; visibility: hidden;}
+a.anchor{
+  display: block;
+  position: relative;
+  top: -250px;
+  visibility: hidden;
+}
 
 a.map {
   top: -250px;
@@ -44,7 +45,7 @@ a.map {
   background-color: #CCC;
 }
 
-.mural-map {
+.new-map {
   height: 300px;
   width: 450px;
 }
@@ -54,8 +55,17 @@ a.map {
   width: 300px;
 }
 
+.gallery {
+  height: 750px;
+  padding-left: 8px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  .col-md-5 {
+    padding-left: none;
+  }
+}
+
 .gallery-map {
-	width: 60%;
 	height: 750px;
 	background-color: #CCC;
 }
@@ -78,15 +88,32 @@ a.map {
 }
 
 .jumbotron {
-		width: 100%;
-		padding: 0;
+	width: 100%;
+	padding: 0;
+}
+
+/* cause of horizontal shift */
+.social-box {
+  position: relative;
+  margin-left: 16px;
+  bottom: 80px;
+  span {
+    color: white;
+    font: 24px/36px Helvetica, Sans-Serif;
+    background: rgb(0, 0, 0); /* fallback color */
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+  }
+  img {
+    width: 25px;
+  }
 }
 
 .photocred {
-		float: right;
-		margin-top: -30px;
-		margin-right: 15px;
-		color: #C0C0C0;
+	float: right;
+	margin-top: -30px;
+	margin-right: 15px;
+	color: #C0C0C0;
 }
 
 .user-album {
@@ -97,30 +124,12 @@ a.map {
   }
 }
 
-#overlay {
-  background: rgba(0,0,0,0.7);
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: none;
-}
-
-.scrollable {
-  height: 750px;
-  padding-left: 8px;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-
 .profile-container {
   margin-left: 4em;
 }
 
 .profile-box {
   margin-right: 35px;
-  margin-top: 15px;
 }
 
 .avatar {
@@ -128,37 +137,16 @@ a.map {
 }
 
 .name-text {
-  position: absolute;
-  top: 190px;
-  left: 16px;
+  position: relative;
+  bottom: 50px;
   width: 100%;
-}
-
-.name-text span {
-  color: white;
-  font: 24px/36px Helvetica, Sans-Serif;
-  background: rgb(0, 0, 0); /* fallback color */
-  background: rgba(0, 0, 0, 0.5);
-  padding: 10px;
-}
-
-.connect-box {
-  position: absolute;
-  bottom: 185px;
-  left: 16px;
-  width: 100%;
-}
-
-.connect-box span {
-  color: white;
-  font: 24px/36px Helvetica, Sans-Serif;
-  background: rgb(0, 0, 0); /* fallback color */
-  background: rgba(0, 0, 0, 0.5);
-  padding: 20px;
-}
-
-.jumbotron .btn img {
-  width: 25px;
+  span {
+    color: white;
+    font: 24px/36px Helvetica, Sans-Serif;
+    background: rgb(0, 0, 0); /* fallback color */
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+  }
 }
 
 .highlight {

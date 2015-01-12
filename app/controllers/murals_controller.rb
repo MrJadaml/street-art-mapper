@@ -18,7 +18,7 @@ class MuralsController < ApplicationController
       # frame for artist
       Frame.create!(user_id: params[:mural][:user_id], mural_id: @mural.id)
       flash[:success] = 'Image posted'
-      redirect_to murals_path
+      redirect_to '/'
     else
       render :new
     end
@@ -43,7 +43,7 @@ class MuralsController < ApplicationController
 
   def destroy
     if set_mural.destroy
-      redirect_to murals_path
+      redirect_to '/'
     else
       render :edit
     end
