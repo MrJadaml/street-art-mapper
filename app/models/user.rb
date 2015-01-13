@@ -10,8 +10,6 @@ class User < ActiveRecord::Base
   #             uniqueness: { case_sensitive: false }
   # end
   validates :first_name, presence: true
-  has_secure_password
-  validates :password, length: { minimum: 6 }, allow_blank: true
 
   mount_uploader :avatar, AvatarUploader
 

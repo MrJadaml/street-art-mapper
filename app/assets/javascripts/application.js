@@ -221,17 +221,15 @@ $(document).ready(function() {
   ];
 
   function activePin(event) {
-    var id = event.target.parentElement.parentElement.classList[0];
-    var marker = window.markers[id];
+    var marker = window.markers[event.target.classList[1]];
     marker.setIcon('https://s3.amazonaws.com/streetheart/activepin.png');
-    $.each(window.markers, function () {});
+    $.each(window.markers, function() {});
   }
 
   function inactivePin(event){
-    var id = event.target.parentElement.parentElement.classList[0];
-    var marker = window.markers[id];
+    var marker = window.markers[event.target.classList[1]];
     marker.setIcon('https://s3.amazonaws.com/streetheart/inactivepin.png');
-    $.each(window.markers, function () {});
+    $.each(window.markers, function() {});
   }
 
   var myLatlng = new google.maps.LatLng(39.7376845,-104.9836858);
@@ -280,19 +278,20 @@ $(document).ready(function() {
             content: markerImage
           })
 
-          google.maps.event.addListener(marker, 'mouseover', function() {
-            var thumbHighlight = '.' + (marker['muralId'].toString()) + '.mapPin'
-            $(thumbHighlight).addClass('highlight')
-          });
-
-          google.maps.event.addListener(marker, 'mouseout', function() {
-            var thumbHighlight = '.' + (marker['muralId'].toString()) + '.mapPin'
-            $(thumbHighlight).removeClass('highlight')
-          });
-
-          google.maps.event.addListener(marker, 'click', function() {
+          var thumbHighlight = '.' + (marker['muralId'].toString()) + '.mapPin'
+          var addHighlight = function() {
+            $(thumbHighlight).addClass('highlight');
+          };
+          var removeHighlight = function() {
+            $(thumbHighlight).removeClass('highlight');
+          };
+          var markerWindow = function() {
             infowindow.open(map,marker);
-          });
+          };
+
+          google.maps.event.addListener(marker, 'mouseover', addHighlight);
+          google.maps.event.addListener(marker, 'mouseout', removeHighlight);
+          google.maps.event.addListener(marker, 'click', markerWindow);
         });
       });
     },
@@ -335,17 +334,17 @@ $(document).ready(function() {
           window.markers[feature.geometry.id] = marker;
 
           var markerImage = '<IMG BORDER="0" ALIGN="Left" SRC=' + feature.geometry.image + '>'
+          var thumbHighlight = '.' + (marker['muralId'].toString()) + '.mapPin'
           var infowindow = new google.maps.InfoWindow({
             content: markerImage
           })
 
+
           google.maps.event.addListener(marker, 'mouseover', function() {
-            var thumbHighlight = '.' + (marker['muralId'].toString()) + '.mapPin'
             $(thumbHighlight).addClass('highlight')
           });
 
           google.maps.event.addListener(marker, 'mouseout', function() {
-            var thumbHighlight = '.' + (marker['muralId'].toString()) + '.mapPin'
             $(thumbHighlight).removeClass('highlight')
           });
 

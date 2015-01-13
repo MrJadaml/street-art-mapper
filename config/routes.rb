@@ -5,13 +5,10 @@ Rails.application.routes.draw do
   resources :murals, :users
 
   get     'foo'                        => 'users#foo'
-  get     'signup'                     => 'registrations#new'
-  post    'signup'                     => 'registrations#create'
   get     'about'                      => 'pages#about'
   get     'contact'                    => 'pages#contact'
   get     'faq'                        => 'pages#faq'
   get     'logout'                     => 'sessions#destroy'
-  get     'login'                      => 'sessions#new'
-  post    'login'                      => 'sessions#create'
+  get     'signup'                     => 'sessions#new'
   get     '/auth/:provider/callback'   => 'authentications#create'
 end

@@ -58,7 +58,6 @@
     -unless current_user.nil? || !current_user.admin?
       = link_to 'Add Artist', new_user_path, class: 'btn btn-info'
 
-
 - content_for(:js) do
   :javascript
     $(function(){
