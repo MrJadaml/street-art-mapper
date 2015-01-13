@@ -10,7 +10,6 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'haml', '~> 4.0.5'
 gem 'bootstrap-sass', '~> 3.2.0'
-gem 'sass', '~> 3.4.9'
 gem 'sass-rails', '~> 5.0.1'
 gem 'autoprefixer-rails'
 gem 'faker'
