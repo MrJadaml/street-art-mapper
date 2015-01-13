@@ -1,9 +1,9 @@
-.col-md-12
+.container-fluid
   .row
     .col-md-9.text-center
       = image_tag @mural.image
-    .scrollable
-      .col-md-12
+    .col-md-3
+      .scrollable
         .col-md-6.tube-sm
           %h1= link_to @user.first_name, user_path(@user)
         .row
