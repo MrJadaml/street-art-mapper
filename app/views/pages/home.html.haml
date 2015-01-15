@@ -38,7 +38,7 @@
             - @murals.each do |mural|
               .col-md-4.gallery-mural
                 = link_to mural do
-                  = image_tag mural.image.url(:user_ablum), class: "mapPin #{mural.id}"
+                  = image_tag mural.image.url(:user_ablum), class: "galleryImg #{mural.id}"
 %a{name: 'artists'}
 %section
   %h1.tube-sm.text-center Artist Profiles
@@ -60,6 +60,5 @@
 - content_for(:js) do
   :javascript
     $(function(){
-      MapFunctions.galleryMap();
-      MapFunctions.setPins();
+      MapFunctions.homeMap();
     });

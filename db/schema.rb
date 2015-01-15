@@ -11,25 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150113191141) do
+ActiveRecord::Schema.define(version: 20150115002145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "authentications", force: true do |t|
+  create_table "authentications", force: :cascade do |t|
     t.integer "user_id"
     t.string  "provider"
     t.string  "uid"
   end
 
-  create_table "frames", force: true do |t|
+  create_table "frames", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "mural_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "murals", force: true do |t|
+  create_table "murals", force: :cascade do |t|
     t.string   "image"
     t.boolean  "buffed"
     t.integer  "user_id"
@@ -38,11 +38,12 @@ ActiveRecord::Schema.define(version: 20150113191141) do
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
+    t.integer  "group_id"
   end
 
   add_index "murals", ["user_id", "created_at"], name: "index_murals_on_user_id_and_created_at", using: :btree
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"

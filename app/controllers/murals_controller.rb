@@ -2,6 +2,7 @@ class MuralsController < ApplicationController
   # before_action :logged_in_user, only: [:create, :destroy]
 
   def new
+    # @mural_group = Mural.where(LatLng is within )
     if current_user
       @mural = current_user.murals.build
     else

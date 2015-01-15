@@ -5,4 +5,8 @@ class Mural < ActiveRecord::Base
   validates :user_id, :image, :latitude, :longitude, presence: true
 
   mount_uploader :image, MuralUploader
+
+  def mural_group
+    binding.pry
+  end
 end
