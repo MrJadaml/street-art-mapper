@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   get     'logout'                     => 'sessions#destroy'
   get     'signup'                     => 'sessions#new'
   get     '/auth/:provider/callback'   => 'authentications#create'
+  get     'data'                       => 'data#gallery'
 end

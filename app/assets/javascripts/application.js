@@ -231,7 +231,6 @@ $(document).ready(function() {
     marker.setIcon('https://s3.amazonaws.com/streetheart/inactivepin.png');
     $.each(window.markers, function() {});
   }
-
   var myLatlng = new google.maps.LatLng(39.7376845,-104.9836858);
 
   window.MapFunctions = {
@@ -256,8 +255,7 @@ $(document).ready(function() {
       $('.mapPin').on('mouseout', inactivePin)
 
       window.markers = {};
-
-      $.getJSON('/', function (data) {
+      $.getJSON('/data', function (data) {
         data.features.forEach(function (feature) {
           var muralId = feature.geometry.id
           var myLatlng = new google.maps.LatLng(

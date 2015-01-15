@@ -5,21 +5,37 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-a:hover, a:visited, a:link, a:active {
-  text-decoration: none;
-}
-
 ul {
   list-style-type: none;
 }
-
-li.dropdown {
-  padding-right: 20px;
-}
+// 
+// li.dropdown {
+//   padding-right: 20px;
+// }
 
 section {
   margin-bottom: 25px;
   clear: both;
+}
+
+a:hover, a:visited, a:link, a:active {
+  text-decoration: none;
+}
+
+a.anchor{
+  display: block;
+  position: relative;
+  top: -250px;
+  visibility: hidden;
+}
+
+a.map {
+  top: -250px;
+}
+
+p.alert.alert-danger.text-center {
+  margin-top: 54px;
+  position: absolute;
 }
 
 .navbar {
@@ -32,15 +48,8 @@ section {
   }
 }
 
-a.anchor{
-  display: block;
-  position: relative;
-  top: -250px;
-  visibility: hidden;
-}
-
-a.map {
-  top: -250px;
+.navbar-btn {
+  margin-left: 15px;
 }
 
 .profile {
@@ -100,11 +109,10 @@ a.map {
 	padding: 0;
 }
 
-/* cause of horizontal shift */
 .social-box {
   position: relative;
   margin-left: 16px;
-  bottom: 80px;
+  bottom: 106px;
   span {
     color: white;
     font: 24px/36px Helvetica, Sans-Serif;

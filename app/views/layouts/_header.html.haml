@@ -23,3 +23,5 @@
               %li= link_to "Profile", current_user
               %li.divider
               %li= link_to 'Log out', logout_path
+- if flash[:notice]
+  %p.alert.alert-danger.text-center.col-sm-12= flash[:notice]

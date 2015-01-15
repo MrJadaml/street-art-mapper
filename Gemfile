@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 4.2.0'
-gem 'bcrypt'
+gem 'bcrypt', '~> 3.1.7'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
@@ -33,7 +33,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
-  gem 'pry', '~> 0.10.1'
+  gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
 end

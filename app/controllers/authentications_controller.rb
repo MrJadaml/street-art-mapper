@@ -8,7 +8,6 @@ class AuthenticationsController < ApplicationController
     authentication = Authentication.find_by(provider: omniauth['provider'], uid: omniauth['uid'])
     if authentication
       session[:id] = authentication.user_id
-      flash[:notice] = 'You are now signed in'
       redirect_to user_path(authentication.user_id)
     elsif current_user
       current_user.authentications.create!(provider: omniauth['provider'], uid: omniauth['uid'])
@@ -19,7 +18,6 @@ class AuthenticationsController < ApplicationController
       user = User.new(first_name: omniauth['info']['name'], omniauth['provider'] => omniauth['info']['nickname'], avatar: omniauth['info']['image'])
       user.authentications.build(provider: omniauth['provider'], uid: omniauth['uid'])
       user.save(validate: false)
-      flash[:notice] = 'You are now signed in'
       session[:id] = user.id
       redirect_to user_path(user.id)
     end

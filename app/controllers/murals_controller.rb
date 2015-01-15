@@ -5,7 +5,7 @@ class MuralsController < ApplicationController
     if current_user
       @mural = current_user.murals.build
     else
-      redirect_to login_path, notice: 'You must be logged in to add murals to the map.'
+      redirect_to :root, notice: 'You must be logged in to add murals to the map.'
     end
   end
 
@@ -18,7 +18,7 @@ class MuralsController < ApplicationController
       # frame for artist
       Frame.create!(user_id: params[:mural][:user_id], mural_id: @mural.id)
       flash[:success] = 'Image posted'
-      redirect_to '/'
+      redirect_to :root
     else
       render :new
     end
@@ -43,7 +43,7 @@ class MuralsController < ApplicationController
 
   def destroy
     if set_mural.destroy
-      redirect_to '/'
+      redirect_to :root
     else
       render :edit
     end
