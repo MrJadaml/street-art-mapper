@@ -1,0 +1,25 @@
+- if @mural.errors.any?
+  .alert.alert-danger
+    - @mural.errors.full_messages.each do |message|
+      .text-center.no-decoration= message
+.col-md-12
+  = form_for @mural do |f|
+    .form-group
+      = f.label :image
+      = f.file_field :image
+      = f.hidden_field :image_cache
+    .form-group.row
+      .col-md-12
+        = f.label "Artist"
+        = f.collection_select(:user_id, User.where(artist: true), :id, :first_name, { include_blank: "Pick an artist" }, {class: 'form-control'})
+
+    .form-group.row
+      .col-md-12
+        = f.hidden_field :latitude, id: 'lat', class: 'form-control'
+        = f.hidden_field :longitude, id: 'long', class: 'form-control'
+
+    .form-group
+      = f.label :buffed
+      = f.check_box :buffed
+    .form-group
+      =f.submit 'Submit', class: 'btn btn-primary'

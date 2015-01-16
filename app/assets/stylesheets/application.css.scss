@@ -8,10 +8,6 @@
 ul {
   list-style-type: none;
 }
-// 
-// li.dropdown {
-//   padding-right: 20px;
-// }
 
 section {
   margin-bottom: 25px;
@@ -52,8 +48,8 @@ p.alert.alert-danger.text-center {
   margin-left: 15px;
 }
 
-.profile {
-  margin-top: 70px;
+.navbar-buffer {
+  margin-top: 60px;
 }
 
 .profile-map {
@@ -63,8 +59,14 @@ p.alert.alert-danger.text-center {
 }
 
 .new-map {
-  height: 300px;
-  width: 450px;
+  height: 700px;
+  background-color: #CCC;
+}
+
+.mural-group {
+  border-top: 1px solid grey;
+  text-align: center;
+  font-size: 2em;
 }
 
 .show-map {
