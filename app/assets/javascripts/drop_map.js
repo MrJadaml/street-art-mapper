@@ -55,32 +55,13 @@ var dropMap = function() {
   };
 
   google.maps.event.addListener(marker, 'dragend', function (event) {
+    $('.stream').empty();
     $.getJSON( "/groups", radius(), function(data) {
       data.forEach(function (x) {
         var div = document.createElement('div');
-        $('.stream').empty();
-        $('.stream').append("<div class='col-md-4 gallery-mural'>");
-        $('.gallery-mural').append("<img src='" + x.image.user_ablum.url + "'>");
+        $('.stream').append("<div class='col-md-3 gallery-mural" + x.id + "'>");
+        $('.gallery-mural' + x.id).append("<img src='" + x.image.user_ablum.url + "'>");
       });
     });
   });
-
-
-  // New get request via AJAX to what route?
-  // new Ajax.Request('/', {
-  //   onSuccess: function() {
-  //
-  //     // Look into sending query params w/ getJSON()
-  //     // send bouding data
-  //     //       in rails -> query of murals
-  //     //       give back -> array
-  //   }
-  // });
-
-  // New get request via AJAX to what route?
-  // Look into sending query params w/ getJSON()
-  // In 'data' controller on the server, check for params.
-  // Given params, do x, else proceed as usual
-  // Call new method on model that take max lat long (the ones you get from params)
-  // respond w/ json per usual
 };
