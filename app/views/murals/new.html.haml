@@ -1,7 +1,7 @@
 .container
   %h1.text-center Add some street art!
   %br
-  .well.col-md-8.col-md-offset-2
+  .well.col-md-8
     - if @mural.errors.any?
       .alert.alert-danger
         - @mural.errors.full_messages.each do |message|
@@ -28,9 +28,8 @@
         .form-group
           =f.submit 'Submit', class: 'btn btn-primary'
     .col-md-8.new-map
-  -# %div
+  .well.col-md-4.stream
   -#   - @mural_group.each do |mural|
-  -#     - binding.pry
   -#     mural.thumb
   -#   -# show each mural with a LatLng nearby (use group_id)
 

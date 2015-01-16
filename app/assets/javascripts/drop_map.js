@@ -56,7 +56,12 @@ var dropMap = function() {
 
   google.maps.event.addListener(marker, 'dragend', function (event) {
     $.getJSON( "/groups", radius(), function(data) {
-      console.log(data)
+      data.forEach(function (x) {
+        var div = document.createElement('div');
+        $('.stream').empty();
+        $('.stream').append("<div class='col-md-4 gallery-mural'>");
+        $('.gallery-mural').append("<img src='" + x.image.user_ablum.url + "'>");
+      });
     });
   });
 
