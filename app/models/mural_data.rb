@@ -69,7 +69,5 @@ class MuralData
     maxlng = params['maxlng'].to_f
 
     @murals = Mural.where(latitude: minlat..maxlat).where(longitude: minlng..maxlng)
-    binding.pry
   end
-
 end

@@ -35,11 +35,11 @@ var dropMap = function() {
   }
 
   function radius() {
-    var lat = document.getElementById('lat').value;
-    var lng = document.getElementById('long').value;
+    var lat = parseFloat(document.getElementById('lat').value);
+    var lng = parseFloat(document.getElementById('long').value);
 
     // we'll want everything within, say, 150m distance
-    var distance = .015;
+    var distance = .15;
 
     // earth's radius in km = ~6371
     var earth = 6371;
@@ -56,7 +56,7 @@ var dropMap = function() {
 
   google.maps.event.addListener(marker, 'dragend', function (event) {
     $.getJSON( "/groups", radius(), function(data) {
-      console.log(data[0].id)
+      console.log(data)
     });
   });
 
