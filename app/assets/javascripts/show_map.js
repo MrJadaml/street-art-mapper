@@ -4,6 +4,7 @@ var showMap = function(showPath) {
 
   $.getJSON(showPath, function(data) {
     data.features.forEach(function(feature) {
+      
       var myLatlng = new google.maps.LatLng(
         feature.geometry.coordinates[1],
         feature.geometry.coordinates[0]
@@ -22,12 +23,12 @@ var showMap = function(showPath) {
         document.querySelector('.show-map'), myOptions
       );
 
-      var image = 'https://s3.amazonaws.com/streetheart/inactivepin.png';
       var marker = new google.maps.Marker({
         position: myLatlng,
         map: map,
         icon: image
       });
+
       window.markers[feature.geometry.id] = marker;
     });
   });

@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   get     'signup'                     => 'sessions#new'
   get     '/auth/:provider/callback'   => 'authentications#create'
   get     'data'                       => 'data#gallery'
+  get     'groups'                     => 'data#groups'
 end

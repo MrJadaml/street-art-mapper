@@ -10,6 +10,8 @@ function inactivePin(event){
   marker.setIcon('https://s3.amazonaws.com/streetheart/inactivepin.png');
 }
 
+var image = 'https://s3.amazonaws.com/streetheart/inactivepin.png';
+
 var mapStyle = [
   {
     "featureType": "administrative",

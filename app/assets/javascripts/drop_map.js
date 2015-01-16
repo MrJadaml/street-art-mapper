@@ -7,10 +7,11 @@ var dropMap = function() {
     zoomControl: true,
     styles: mapStyle
   };
+
   var map = new google.maps.Map(
     document.querySelector('.new-map'), myOptions
   );
-  var image = 'https://s3.amazonaws.com/streetheart/inactivepin.png';
+
   var marker = new google.maps.Marker({
     position: myLatlng,
     map: map,
@@ -22,7 +23,7 @@ var dropMap = function() {
     document.getElementById('lat').value = event.latLng.lat();
     document.getElementById('long').value = event.latLng.lng();
   });
-
+  // The maths are off
   function rad2deg(angle) {
     // Fomula from http://phpjs.org/functions/rad2deg/
     return angle / Math.PI * 180;
@@ -33,9 +34,9 @@ var dropMap = function() {
     return angle / 180 * Math.PI;
   }
 
-  function radius(latlng) {
-    var lat = latlng.D;
-    var lng = latlng.k;
+  function radius() {
+    var lat = document.getElementById('lat').value;
+    var lng = document.getElementById('long').value;
 
     // we'll want everything within, say, 150m distance
     var distance = .015;
@@ -43,16 +44,34 @@ var dropMap = function() {
     // earth's radius in km = ~6371
     var earth = 6371;
 
-    // latitude boundaries
-    var maxlat = lat + rad2deg(distance / earth);
-    var minlat = lat - rad2deg(distance / earth);
-
-    // longitude boundaries (longitude gets smaller when latitude increases)
-    var maxlng = lng + rad2deg(distance / earth / Math.cos(deg2rad(lat)));
-    var minlng = lng - rad2deg(distance / earth / Math.cos(deg2rad(lat)));
+    // Boundaries (longitude gets smaller when latitude increases)
+    var bounds = {
+      maxlat : lat + rad2deg(distance / earth),
+      minlat : lat - rad2deg(distance / earth),
+      maxlng : lng + rad2deg(distance / earth / Math.cos(deg2rad(lat))),
+      minlng : lng - rad2deg(distance / earth / Math.cos(deg2rad(lat)))
+    }
+    return bounds
   };
 
-  // Registering the event listener
+  google.maps.event.addListener(marker, 'dragend', function (event) {
+    $.getJSON( "/groups", radius(), function(data) {
+      console.log(data[0].id)
+    });
+  });
+
+
+  // New get request via AJAX to what route?
+  // new Ajax.Request('/', {
+  //   onSuccess: function() {
+  //
+  //     // Look into sending query params w/ getJSON()
+  //     // send bouding data
+  //     //       in rails -> query of murals
+  //     //       give back -> array
+  //   }
+  // });
+
   // New get request via AJAX to what route?
   // Look into sending query params w/ getJSON()
   // In 'data' controller on the server, check for params.

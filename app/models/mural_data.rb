@@ -61,4 +61,15 @@ class MuralData
     json
   end
 
+  def group_data(params)
+    minlat = params['minlat'].to_f
+    maxlat = params['maxlat'].to_f
+
+    minlng = params['minlng'].to_f
+    maxlng = params['maxlng'].to_f
+
+    @murals = Mural.where(latitude: minlat..maxlat).where(longitude: minlng..maxlng)
+    binding.pry
+  end
+
 end

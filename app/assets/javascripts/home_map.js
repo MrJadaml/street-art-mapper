@@ -1,6 +1,6 @@
 var homeMap = function() {
   var myLatlng = new google.maps.LatLng(39.7376845,-104.9836858);
-  
+
   var myOptions = {
     zoom: 14,
     center: myLatlng,
@@ -21,12 +21,14 @@ var homeMap = function() {
   window.markers = {};
   $.getJSON('/data', function (data) {
     data.features.forEach(function (feature) {
+
       var muralId = feature.geometry.id
+
       var myLatlng = new google.maps.LatLng(
         feature.geometry.coordinates[1],
         feature.geometry.coordinates[0]
       );
-      var image = 'https://s3.amazonaws.com/streetheart/inactivepin.png';
+
       var marker = new google.maps.Marker({
         position: myLatlng,
         map: map,
@@ -48,7 +50,7 @@ var homeMap = function() {
         $(thumbHighlight).removeClass('highlight');
       };
       var markerWindow = function() {
-        infowindow.open(map,marker);
+        infowindow.open(map, marker);
       };
 
       google.maps.event.addListener(marker, 'mouseover', addHighlight);
