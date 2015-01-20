@@ -2,7 +2,6 @@ class MuralsController < ApplicationController
   # before_action :logged_in_user, only: [:create, :destroy]
 
   def new
-    # @mural_group = Mural.where(LatLng is within )
     if current_user
       @mural = current_user.murals.build
     else
@@ -13,12 +12,10 @@ class MuralsController < ApplicationController
   def create
     @mural = current_user.murals.build(mural_params)
     if @mural.save
-      # figure out best practice for saving frame - error validations
       # frame for user uploading mural
       Frame.create!(user_id: current_user.id, mural_id: @mural.id)
       # frame for artist
       Frame.create!(user_id: params[:mural][:user_id], mural_id: @mural.id)
-      flash[:success] = 'Image posted'
       redirect_to :root
     else
       render :new

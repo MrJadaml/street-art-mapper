@@ -1,4 +1,13 @@
 class MuralData
+  def mural_form(params)
+    mural_group = Group.find(params['group_id'])
+    json = {
+      lat: mural_group.latitude,
+      lng: mural_group.longitude,
+      artists: mural_group.artists,
+      buffed: mural_group.buffed
+    }
+  end
 
   def gallery_data
     murals = Mural.all

@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   get     '/auth/:provider/callback'   => 'authentications#create'
   get     'data'                       => 'data#gallery'
   get     'groups'                     => 'data#groups'
+  get     'upload'                     => 'data#mural_form'
 end

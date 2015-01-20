@@ -8,6 +8,10 @@ class DataController < ApplicationController
     render json: MuralData.new.group_data(params)
   end
 
+  def mural_form
+    render json: MuralData.new.gallery_data(params)
+  end
+
   private
 
     def group_params
