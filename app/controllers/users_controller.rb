@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
 
+  def index
+    @users = User.where(artist: true)
+  end
+
   def new
     @user = User.new
   end
