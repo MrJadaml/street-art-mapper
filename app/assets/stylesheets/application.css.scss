@@ -22,15 +22,9 @@ a:hover, a:visited, a:link, a:active {
   text-decoration: none;
 }
 
-a.anchor{
-  display: block;
-  position: relative;
-  top: -250px;
-  visibility: hidden;
-}
-
-a.map {
-  top: -250px;
+a.artists, a.map {
+  position: absolute;
+  margin: -60px;
 }
 
 p.alert.alert-danger.text-center {
@@ -56,8 +50,8 @@ p.alert.alert-danger.text-center {
   margin-top: 60px;
 }
 
+
 .profile-map {
-  margin-top: 70px;
   height: 750px;
   background-color: #CCC;
 }

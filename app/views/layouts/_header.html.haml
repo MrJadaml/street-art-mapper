@@ -11,9 +11,9 @@
       = link_to 'New Mural', new_mural_path, class: 'btn btn-info navbar-btn pull-right'
       %ul.nav.navbar-nav.navbar-right
         %li
-          %a{href: "#map"} Map
+          = link_to 'Map', root_path(anchor: "map")
         %li
-          %a{href: '#artists'} Artists
+          = link_to 'Artists', root_path(anchor: 'artists')
         -if current_user
           %li.dropdown
             %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}

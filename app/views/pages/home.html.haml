@@ -27,6 +27,7 @@
           %h2 Want a mural?
           %p Get in touch with us if you’re interested in having an artist paint a mural on your property. Street art will draw attention to your business, and it's a great way to beautify your community. We’re working with artists and alongside the city to make the process of matching artists to your businesses easier every day.
 %a{name: 'map'}
+%a.map
 %section
   .container-fluid
     .row
@@ -40,6 +41,7 @@
                 = link_to mural do
                   = image_tag mural.image.url(:user_ablum), class: "galleryImg #{mural.id}"
 %a{name: 'artists'}
+%a.artists
 %section
   %h1.tube-sm.text-center Artist Profiles
   .profile-container
