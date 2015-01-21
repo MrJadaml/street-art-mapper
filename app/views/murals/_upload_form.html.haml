@@ -15,9 +15,9 @@
         = f.hidden_field :latitude, id: 'lat', class: 'form-control'
         = f.hidden_field :longitude, id: 'long', class: 'form-control'
 
-    .form-group.hide-me
-      = f.label :buffed
-      = f.check_box :buffed
+    -# .form-group.hide-me
+    -#   = f.label :buffed
+    -#   = f.check_box :buffed
 
     %div.col-md-12.well
       .form-group
@@ -28,4 +28,4 @@
 
       .form-group
         .col-md-5
-          =f.submit 'Upload Mural', class: 'btn btn-primary'
+          =f.submit 'Upload Mural', class: 'btn btn-primary upload-btn'

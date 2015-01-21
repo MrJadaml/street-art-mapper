@@ -19,9 +19,22 @@ var dropMap = function() {
     icon: image
   });
 
+  var infoWindow = new google.maps.InfoWindow({
+    content: "Drag me!"
+  });
+
+  infoWindow.open(map, marker);
+  google.maps.event.addListener(marker, 'dragstart', function() {
+    infoWindow.close();
+  });
+
   google.maps.event.addListener(marker, 'dragend', function (event) {
     document.getElementById('lat').value = event.latLng.lat();
     document.getElementById('long').value = event.latLng.lng();
+  });
+
+  $('.upload-btn').on('click', function() {
+    $(this).hide();
   });
 
   function rad2deg(angle) {
@@ -79,6 +92,7 @@ var dropMap = function() {
         $( '.gallery-mural' ).children('img').removeClass('highlight')
         $(this).attr( "data-latHolder", document.getElementById('lat').value );
         $(this).attr( "data-lngHolder", document.getElementById('long').value );
+        $( '#mural_user_id' ).val("");
         $('#lat').val($( '.img-placeholder' ).data('latholder'));
         $('#long').val($( '.img-placeholder' ).data('lngholder'));
       });
