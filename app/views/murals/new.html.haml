@@ -4,8 +4,10 @@
   .row
     .col-md-7.new-map
     .col-md-5
-      = render 'upload_form'
-      .gallery
+      .upload-form= render 'upload_form'
+      .mural-list.text-center
+        %h4 Mural already listed? Add it to the group...
+        .near-by
 
 - content_for(:js) do
   :javascript

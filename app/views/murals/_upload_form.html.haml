@@ -4,11 +4,8 @@
       .text-center.no-decoration= message
 .col-md-12
   = form_for @mural do |f|
-    .form-group
-      = f.label :image
-      = f.file_field :image
-      = f.hidden_field :image_cache
-    .form-group.row
+
+    .form-group.row.hide-me
       .col-md-12
         = f.label "Artist"
         = f.collection_select(:user_id, User.where(artist: true), :id, :first_name, { include_blank: "Pick an artist" }, {class: 'form-control'})
@@ -18,8 +15,17 @@
         = f.hidden_field :latitude, id: 'lat', class: 'form-control'
         = f.hidden_field :longitude, id: 'long', class: 'form-control'
 
-    .form-group
+    .form-group.hide-me
       = f.label :buffed
       = f.check_box :buffed
-    .form-group
-      =f.submit 'Submit', class: 'btn btn-primary'
+
+    %div.col-md-12.well
+      .form-group
+        .col-md-6.col-md-offset-1
+          = f.label :image
+          = f.file_field :image
+          = f.hidden_field :image_cache
+
+      .form-group
+        .col-md-5
+          =f.submit 'Upload Mural', class: 'btn btn-primary'
