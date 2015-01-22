@@ -19,6 +19,9 @@ var dropMap = function() {
     icon: image
   });
 
+  marker.setAnimation(google.maps.Animation.BOUNCE);
+  setTimeout(function(){ marker.setAnimation(null); }, 3750);
+
   var infoWindow = new google.maps.InfoWindow({
     content: "Drag me!"
   });
