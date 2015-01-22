@@ -15,7 +15,7 @@ class AuthenticationsController < ApplicationController
       flash[:notice] = "Successfully added #{omniauth['provider']} authentication"
       redirect_to user_path(current_user.id)
     else
-      user = User.new(first_name: omniauth['info']['name'], omniauth['provider'] => omniauth['info']['nickname'], avatar: omniauth['info']['image'])
+      user = User.new(first_name: omniauth['info']['name'], omniauth['provider'] => omniauth['info']['nickname'], remote_avatar_url: (omniauth['info']['image'].to_s.gsub(/_normal/, '')))
       user.authentications.build(provider: omniauth['provider'], uid: omniauth['uid'])
       user.save(validate: false)
       session[:id] = user.id
