@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to users_path
+      redirect_to root_path
     else
       render :new
     end
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
   def destroy
     set_user
     User.find(params[:id]).destroy
-    redirect_to users_path, notice: "User was deleted successfully"
+    redirect_to root_path, notice: "User was deleted successfully"
   end
 
   private
