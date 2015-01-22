@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :authentications
+  has_many :authentications, dependent: :destroy
   has_many :frames
   has_many :murals, through: :frames
   #
