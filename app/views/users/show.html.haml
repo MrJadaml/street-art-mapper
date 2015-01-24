@@ -27,10 +27,9 @@
         .col-md-12
           .row
             .gallery
-              - if @user.murals.any?
+              - if @user.images.any?
                 .gallery-mural
-                  = render @murals
-              = will_paginate @murals
+                  = render @images
 - content_for(:js) do
   :javascript
     $(function(){

@@ -1,12 +1,8 @@
 class Mural < ActiveRecord::Base
-  has_many :frames
-  has_many :users, through: :frames
-  default_scope -> { order('created_at DESC') }
-  validates :image, :latitude, :longitude, presence: true
+  has_many :ownerships
+  has_many :images
+  has_many :users, through: :ownership
+  # default_scope -> { order('created_at DESC') }
+  # validates :image, :latitude, :longitude, presence: true
 
-  mount_uploader :image, MuralUploader
-
-  def mural_group
-    binding.pry
-  end
 end

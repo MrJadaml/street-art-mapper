@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
   has_many :authentications, dependent: :destroy
-  has_many :frames
-  has_many :murals, through: :frames
+  has_many :images
+  has_many :ownerships
+  has_many :murals, through: :ownerships
+  # has_many :frames
   #
   # if self.email?
   #   before_save { self.email = email.downcase}

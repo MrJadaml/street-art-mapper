@@ -1,7 +1,7 @@
-- if @mural.errors.any?
-  .alert.alert-danger
-    - @mural.errors.full_messages.each do |message|
-      .text-center.no-decoration= message
+-# - if @mural.errors.any?
+-#   .alert.alert-danger
+-#     - @mural.errors.full_messages.each do |message|
+-#       .text-center.no-decoration= message
 .col-md-12
   = form_for @mural do |f|
 
@@ -14,10 +14,6 @@
       .col-md-12
         = f.hidden_field :latitude, id: 'lat', class: 'form-control'
         = f.hidden_field :longitude, id: 'long', class: 'form-control'
-
-    -# .form-group.hide-me
-    -#   = f.label :buffed
-    -#   = f.check_box :buffed
 
     %div.col-md-12.well
       .form-group

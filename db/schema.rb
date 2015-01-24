@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150115002145) do
+ActiveRecord::Schema.define(version: 20150124175316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,19 +29,26 @@ ActiveRecord::Schema.define(version: 20150115002145) do
     t.datetime "updated_at"
   end
 
-  create_table "murals", force: :cascade do |t|
-    t.string   "image"
-    t.boolean  "buffed"
+  create_table "images", force: :cascade do |t|
+    t.string   "file"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "address"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.integer  "group_id"
   end
 
-  add_index "murals", ["user_id", "created_at"], name: "index_murals_on_user_id_and_created_at", using: :btree
+  create_table "murals", force: :cascade do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
+  end
+
+  create_table "ownerships", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "mural_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
