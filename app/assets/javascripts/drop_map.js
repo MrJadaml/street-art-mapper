@@ -40,6 +40,8 @@ var dropMap = function() {
     $(this).hide();
   });
 
+  $('.hidden').hide()
+
   function rad2deg(angle) {
     // Fomula from http://phpjs.org/functions/rad2deg/
     return angle / Math.PI * 180;

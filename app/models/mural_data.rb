@@ -10,19 +10,19 @@ class MuralData
   end
 
   def gallery_data
-    murals = Mural.all
+    images = Image.all
     json = {
       type: "FeatureCollection",
       features: []
     }
-    murals.each do |mural|
+    images.each do |image|
       json[:features] << {
         type: 'Feature',
         geometry: {
           type: 'Point',
-          id: mural.id,
+          id: image.id,
           coordinates: [mural.longitude, mural.latitude],
-          image: mural.image.url(:thumb)
+          image: image.image.url(:thumb)
         }
       }
     end

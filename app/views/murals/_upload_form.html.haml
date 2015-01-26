@@ -7,8 +7,9 @@
 
     .form-group.row.hide-me
       .col-md-12
-        = f.label "Artist"
-        = f.collection_select(:user_id, User.where(artist: true), :id, :first_name, { include_blank: "Pick an artist" }, {class: 'form-control'})
+        = f.fields_for :ownerships do |owner|
+          = owner.label "Artist"
+          = owner.collection_select(:user_id, User.where(artist: true), :id, :first_name, { include_blank: "Pick an artist" }, {class: 'form-control'})
 
     .form-group.row
       .col-md-12
@@ -18,9 +19,10 @@
     %div.col-md-12.well
       .form-group
         .col-md-6.col-md-offset-1
-          = f.label :image, 'Add Image'
-          = f.file_field :image
-          = f.hidden_field :image_cache
+          = f.fields_for :images do |image|
+            = image.label :file, 'Add Image'
+            = image.file_field :file
+            = image.file_field :file_cache, class: 'hidden'
 
       .form-group
         .col-md-5

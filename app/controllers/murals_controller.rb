@@ -4,18 +4,16 @@ class MuralsController < ApplicationController
   def new
     if current_user
       @mural = current_user.murals.build
+      @mural.ownerships.build
+      @mural.images.build
     else
       redirect_to :root, notice: 'You must be logged in to add murals to the map.'
     end
   end
 
   def create
-    @mural = current_user.murals.build(mural_params)
-    if @mural.save
-      # frame for user uploading mural
-      Frame.create!(user_id: current_user.id, mural_id: @mural.id)
-      # frame for artist
-      Frame.create!(user_id: params[:mural][:user_id], mural_id: @mural.id)
+    @image = current_user.murals.build(mural_params)
+    if @image.save
       redirect_to :root
     else
       render :new
@@ -51,7 +49,12 @@ class MuralsController < ApplicationController
   private
 
     def mural_params
-      params.require(:mural).permit(:image, :image_cache, :buffed, :user_id, :address, :longitude, :latitude)
+      params.require(:mural).permit(
+        :longitude,
+        :latitude,
+        images_attributes: [:file, :file_cache ],
+        ownerships_attributes: [:user_id]
+      )
     end
 
     def set_mural

@@ -3,7 +3,7 @@ class PagesController < ApplicationController
   def home
     respond_to do |format|
       format.html do
-        @murals = Mural.all
+        @images = Image.all
       end
       format.json do
         render json: MuralData.new.gallery_data
