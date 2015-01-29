@@ -12,8 +12,10 @@ class MuralsController < ApplicationController
   end
 
   def create
-    @image = current_user.murals.build(mural_params)
-    if @image.save
+    @mural = current_user.murals.new(mural_params)
+    # Image.create(source: params['mural']['images_attributes']['0']['source'], user_id: current_user.id, mural_id: @mural.id)
+    # Ownership.create(user_id: params['mural']['ownerships_attributes']['0']['user_id'], mural_id: @mural.id)
+    if @mural.save
       redirect_to :root
     else
       render :new
@@ -52,8 +54,14 @@ class MuralsController < ApplicationController
       params.require(:mural).permit(
         :longitude,
         :latitude,
-        images_attributes: [:file, :file_cache ],
+        images_attributes: [:user_id, :source, :source_cache ],
         ownerships_attributes: [:user_id]
+      )
+    end
+
+    def image_params
+      params.require(:mural).permit(
+        images_attributes: [:user_id, :source, :source_cache ],
       )
     end
 

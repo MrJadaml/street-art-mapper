@@ -20,9 +20,10 @@
       .form-group
         .col-md-6.col-md-offset-1
           = f.fields_for :images do |image|
-            = image.label :file, 'Add Image'
-            = image.file_field :file
-            = image.file_field :file_cache, class: 'hidden'
+            = image.label :source, 'Add Image'
+            = image.hidden_field :user_id, value: current_user.id
+            = image.file_field :source
+            = image.file_field :source_cache, class: 'hidden'
 
       .form-group
         .col-md-5

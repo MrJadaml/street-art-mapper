@@ -29,7 +29,9 @@
             .gallery
               - if @user.images.any?
                 .gallery-mural
-                  = render @images
+                  - @images.each do |image|
+                    = link_to image do
+                    = image_tag image.source.url(:user_ablum), class: "mapPin #{image.id}"
 - content_for(:js) do
   :javascript
     $(function(){
