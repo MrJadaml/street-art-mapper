@@ -21,17 +21,17 @@
 
           .col-md-6
             - if @user.avatar?
-              = image_tag(@user.avatar_url(:thumb))
+              = image_tag @user.avatar_url(:thumb)
             - else
               = image_tag 'https://s3.amazonaws.com/streetheart/default_atom.png'
         .col-md-12
           .row
             .gallery
               - if @user.images.any?
-                .gallery-mural
-                  - @images.each do |image|
+                - @images.each do |image|
+                  .col-md-4.gallery-mural
                     = link_to image do
-                    = image_tag image.source.url(:user_ablum), class: "mapPin #{image.id}"
+                      = image_tag image.source.url(:user_ablum), class: "galleryImg #{image.id}"
 - content_for(:js) do
   :javascript
     $(function(){

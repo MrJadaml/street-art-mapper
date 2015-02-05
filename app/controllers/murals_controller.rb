@@ -13,8 +13,6 @@ class MuralsController < ApplicationController
 
   def create
     @mural = current_user.murals.new(mural_params)
-    # Image.create(source: params['mural']['images_attributes']['0']['source'], user_id: current_user.id, mural_id: @mural.id)
-    # Ownership.create(user_id: params['mural']['ownerships_attributes']['0']['user_id'], mural_id: @mural.id)
     if @mural.save
       redirect_to :root
     else
