@@ -32,19 +32,19 @@ class MuralData
   def profile_data(user_id)
     json = {}
 
-    murals = User.find(user_id).murals
+    images = User.find(user_id).images
     json = {
       type: "FeatureCollection",
       features: []
     }
-    murals.each do |mural|
+    images.each do |image|
       json[:features] << {
         type: 'Feature',
         geometry: {
           type: 'Point',
-          id: mural.id,
-          coordinates: [mural.longitude, mural.latitude],
-          image: mural.image.url(:thumb)
+          id: image.mural_id,
+          coordinates: [image.mural.longitude, image.mural.latitude],
+          image: image.source.url(:thumb)
         }
       }
     end
