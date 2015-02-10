@@ -30,6 +30,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def artist
+    set_user
+    respond_to do |format|
+      format.html do
+        @murals = @user.murals
+      end
+      format.json do
+        render json: MuralData.new.artist_data(@user.id)
+      end
+    end
+  end
+
   def foo
     #are you an artist page
   end

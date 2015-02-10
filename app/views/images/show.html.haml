@@ -1,27 +1,24 @@
 .container-fluid.navbar-buffer
   .row
     .col-md-9.text-center
-      = image_tag @images[0].source
+      = image_tag @image.source
     .col-md-3
       .scrollable
         .col-md-6.tube-sm
-          %h1= link_to @artist.first_name, artist_path(@artist)
+          %h1= link_to @artist.first_name, user_path(@artist)
         .row
           .col-md-12
             .show-map
             %br
             = link_to image_tag('https://s3.amazonaws.com/streetheart/twitter_icon.jpg'), 'http://www.twitter.com/' + @artist.twitter, :target => '_blank' if @artist.twitter?
             = link_to image_tag('https://s3.amazonaws.com/streetheart/instagram_icon.jpg'), 'http://www.instagram.com/' + @artist.instagram, :target => '_blank' if @artist.instagram?
-            -# %br
-            -# - if @mural.buffed?
-            -#   = "This piece has this been buffed"
             %br
             - if current_user.nil?
-            - elsif @artist.id == current_user.id || current_user.admin?
+            - elsif @image.user_id == current_user.id || current_user.admin?
               = link_to 'Edit', edit_mural_path, class: 'btn btn-primary'
 
 - content_for(:js) do
   :javascript
     $(function() {
-      MapFunctions.profileMap('#{artist_path(@user, format: :json)}');
+      MapFunctions.showMap('#{preview_path(@image, format: :json)}');
     });

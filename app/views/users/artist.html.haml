@@ -27,19 +27,13 @@
         .col-md-12
           .row
             .gallery
-              - if @user.artist?
+              -if @user.murals.any?
                 -@murals.each do |mural|
                   .col-md-4.gallery-mural
-                    -binding.pry
                     = link_to mural_path(mural.id) do
-                      = image_tag mural.image.source.url(:user_ablum), class: "galleryImg #{image.mural.id}"
-              - elsif @user.images.any?
-                - @images.each do |image|
-                  .col-md-4.gallery-mural
-                    = link_to preview_path(image.id) do
-                      = image_tag image.source.url(:user_ablum), class: "galleryImg #{image.mural.id}"
+                      = image_tag mural.images[0].source.url(:user_ablum), class: "galleryImg #{mural.id}"
 - content_for(:js) do
   :javascript
     $(function(){
-      MapFunctions.profileMap('#{user_path(@user, format: :json)}');
+      MapFunctions.profileMap('#{artist_path(@user, format: :json)}');
     });

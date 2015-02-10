@@ -38,7 +38,7 @@
           .row
             - @images.each do |image|
               .col-md-4.gallery-mural
-                = link_to image do
+                = link_to preview_path(image.id) do
                   = image_tag image.source.url(:user_ablum), class: "galleryImg #{image.id}"
 %a{name: 'artists'}
 %a.artists
@@ -47,7 +47,7 @@
   .profile-container
     - @users.each do |user|
       .col-lg-2.profile-box
-        = link_to user do
+        = link_to artist_path(user.id) do
           .avatar
             = image_tag user.avatar.url(:thumb)
         .name-text

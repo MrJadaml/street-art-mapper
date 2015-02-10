@@ -21,8 +21,9 @@ class MuralsController < ApplicationController
   end
 
   def show
-    set_mural
-    @user = User.find(@mural.user_id)
+    @mural = Mural.find(params[:id])
+    @images = @mural.images
+    @artist = User.find(@mural.ownerships[0].user_id)
     respond_to do |format|
       format.html do
         @mural
@@ -34,11 +35,12 @@ class MuralsController < ApplicationController
   end
 
   def edit
-    set_mural
+    @image = Image.find(params[:id])
   end
 
   def destroy
-    if set_mural.destroy
+    @image = Image.find(params[:id])
+    if @image.destroy
       redirect_to :root
     else
       render :edit
@@ -61,10 +63,6 @@ class MuralsController < ApplicationController
       params.require(:mural).permit(
         images_attributes: [:user_id, :source, :source_cache ],
       )
-    end
-
-    def set_mural
-      @mural = Mural.find(params[:id])
     end
 
 end

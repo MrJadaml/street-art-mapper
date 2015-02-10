@@ -1,5 +1,5 @@
 .container.navbar-buffer
   %h1.text-center Edit Mural
   .text-center
-    = image_tag @mural.image
+    = image_tag @image.source
   = link_to 'Delete', mural_path, class: 'btn btn-danger', method: :delete

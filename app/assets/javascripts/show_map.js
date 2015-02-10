@@ -1,10 +1,12 @@
 var showMap = function(showPath) {
 
   window.markers = {};
-
+  console.log('hello')
   $.getJSON(showPath, function(data) {
     data.features.forEach(function(feature) {
-      
+
+      // var muralId = feature.geometry.id
+
       var myLatlng = new google.maps.LatLng(
         feature.geometry.coordinates[1],
         feature.geometry.coordinates[0]

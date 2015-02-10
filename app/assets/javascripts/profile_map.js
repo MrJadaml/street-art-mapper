@@ -21,7 +21,7 @@
 
   $.getJSON(userPath, function(data) {
     data.features.forEach(function(feature) {
-
+      
       var muralId = feature.geometry.id
 
       var myLatlng = new google.maps.LatLng(

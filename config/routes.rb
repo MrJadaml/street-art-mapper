@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   resources :murals, :users
 
+  get     'images/:id'                 => 'images#show', :as => 'preview'
   get     'foo'                        => 'users#foo'
+  get     'artist/:id'                 => 'users#artist', :as => 'artist'
   get     'about'                      => 'pages#about'
   get     'contact'                    => 'pages#contact'
   get     'faq'                        => 'pages#faq'

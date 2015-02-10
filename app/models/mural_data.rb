@@ -51,6 +51,28 @@ class MuralData
     json
   end
 
+  def artist_data(user_id)
+    json = {}
+    
+    murals = User.find(user_id).murals
+    json = {
+      type: "FeatureCollection",
+      features: []
+    }
+    murals.each do |mural|
+      json[:features] << {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          id: mural.id,
+          coordinates: [mural.longitude, mural.latitude],
+          image: mural.images[0].source.url(:thumb)
+        }
+      }
+    end
+    json
+  end
+
   def show_data(mural_id)
     json = {}
 
