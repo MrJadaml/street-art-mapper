@@ -1,7 +1,10 @@
 .container-fluid.navbar-buffer
   .row
     .col-md-9.text-center
-      = image_tag @images[0].source
+      - @images.each do |image|
+        .col-md-4.gallery-mural
+          = link_to image_path(image.id) do
+            = image_tag image.source.url(:user_ablum)
     .col-md-3
       .scrollable
         .col-md-6.tube-sm
@@ -23,5 +26,5 @@
 - content_for(:js) do
   :javascript
     $(function() {
-      MapFunctions.profileMap('#{artist_path(@user, format: :json)}');
+      MapFunctions.showMap('#{mural_path(@artist, format: :json)}');
     });
