@@ -53,7 +53,7 @@ class MuralData
 
   def artist_data(user_id)
     json = {}
-    
+
     murals = User.find(user_id).murals
     json = {
       type: "FeatureCollection",
@@ -99,6 +99,19 @@ class MuralData
     minlng = params['minlng'].to_f
     maxlng = params['maxlng'].to_f
 
-    @murals = Mural.where(latitude: minlat..maxlat).where(longitude: minlng..maxlng)
+    near_by_murals = Mural.where(latitude: minlat..maxlat).where(longitude: minlng..maxlng)
+
+    murals = []
+    near_by_murals.each do |mural|
+      x = {}
+      x[:latitude] = mural.latitude
+      x[:longitude] = mural.longitude
+      # doesnt account for multiple ownerships
+      x[:artist_id] = mural.ownerships[0].user_id
+      x[:mural_id] = mural.id
+      x[:image] = mural.images[0].source.user_ablum.url
+      murals << x
+    end
+    murals
   end
 end

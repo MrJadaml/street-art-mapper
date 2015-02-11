@@ -13,8 +13,8 @@
 
     .form-group.row
       .col-md-12
-        = f.hidden_field :latitude, id: 'lat', class: 'form-control'
-        = f.hidden_field :longitude, id: 'long', class: 'form-control'
+        = f.hidden_field :latitude, id: 'lat'
+        = f.hidden_field :longitude, id: 'long'
 
     %div.col-md-12.well
       .form-group
@@ -22,6 +22,7 @@
           = f.fields_for :images do |image|
             = image.label :source, 'Add Image'
             = image.hidden_field :user_id, value: current_user.id
+            = image.hidden_field :mural_id
             = image.file_field :source
             = image.file_field :source_cache, class: 'hidden'
 

@@ -56,7 +56,7 @@ var dropMap = function() {
     var lat = parseFloat(document.getElementById('lat').value);
     var lng = parseFloat(document.getElementById('long').value);
 
-    // we'll want everything within, say, 150m distance
+    // Returns murals within 150m radius
     var distance = .15;
 
     // earth's radius in km = ~6371
@@ -76,14 +76,15 @@ var dropMap = function() {
     $('.near-by').empty();
     $('.near-by').append('<div class="mural-group"></div>');
     $.getJSON( '/groups', radius(), function(data) {
-      data.forEach(function (x) {
-        var dataId = "data-mural-id='" + x.id + "'",
-            dataLat = "data-lat='" + x.latitude + "'",
-            dataLng = "data-lng='" + x.longitude + "'",
-            dataArtist = "data-artist-id='" + x.user_id + "'",
-            dataBuff = "data-buff='" + x.buffed + "'",
-            classGMID =  " class='col-md-4 gallery-mural " + x.id,
-            imgSrc = "<img src='" + x.image.user_ablum.url + "'>",
+      data.forEach(function (mural) {
+        var dataId = "data-mural-id='" + mural.mural_id + "'",
+            dataLat = "data-lat='" + mural.latitude + "'",
+            dataLng = "data-lng='" + mural.longitude + "'",
+            dataArtist = "data-artist-id='" + mural.artist_id + "'",
+            dataBuff = "data-buff='" + mural.buffed + "'",
+            classGMID =  " class='col-md-4 gallery-mural " + mural.mural_id,
+            imgSrc = "<img src='" + mural.image + "'>",
+
             muralImg = "<div " + dataId + dataLat + dataLng + dataArtist + dataBuff + classGMID + "'>" + imgSrc + "</div>";
         $('.near-by').append(muralImg);
       });
@@ -104,12 +105,17 @@ var dropMap = function() {
 
       // Autofill form data on click event from ajax rendered images.
       $( '.gallery-mural' ).on( 'click', function() {
-        var muralId = $( this ).data( 'mural-id' ),
-            artist = $( this ).data('artist-id');
         $(this).fadeTo( 'slow', 1 ).siblings().fadeTo( 'slow' , 0.5);
         $( '.hide-me' ).hide();
-        $( '.new_mural' ).append( '<input type="hidden" value="1" name="mural[group_id]" id="group_id">' ).val( muralId );
-        $( '#mural_user_id' ).val( artist );
+
+        var muralId = $( this ).data( 'mural-id' ),
+            artistId = $( this ).data('artist-id');
+
+        // $( '.new_mural' ).append( '<input type="hidden" value="1" name="mural[group_id]" id="group_id">' ).val( muralId );
+        debugger
+
+        $( '#mural_ownerships_attributes_0_user_id' ).val( artistId );
+        $( '#mural_images_attributes_0_mural_id' ).val( muralId );
         $( '#lat' ).val( $(this).data( 'lat' ));
         $( '#long' ).val( $(this).data( 'lng' ));
         $( '.gallery-mural' ).children('img').removeClass('highlight')
