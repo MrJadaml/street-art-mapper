@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   root    'pages#home'
 
-  resources :murals, :users
+  resources :murals, :users, :images
 
-  get     'images/:id'                 => 'images#show', :as => 'preview'
+  # get     'images/:id'                 => 'images#show', :as => 'preview'
   get     'foo'                        => 'users#foo'
   get     'artist/:id'                 => 'users#artist', :as => 'artist'
   get     'about'                      => 'pages#about'

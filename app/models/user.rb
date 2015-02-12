@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
   has_many :images
   has_many :ownerships
   has_many :murals, through: :ownerships
-  # has_many :frames
-  #
+
+  accepts_nested_attributes_for :ownerships
   # if self.email?
   #   before_save { self.email = email.downcase}
   #   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

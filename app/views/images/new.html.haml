@@ -1,0 +1,16 @@
+.container-fluid
+  .navbar-buffer
+  %h1.text-center Add some street art!
+  .row
+    .col-md-7.new-map
+    .col-md-5
+      .upload-form= render 'murals/upload_form'
+      .mural-list.text-center
+        %h4 Mural already listed? Add it to the collection...
+        .near-by
+
+- content_for(:js) do
+  :javascript
+    $(function(){
+      MapFunctions.dropMap();
+    });
