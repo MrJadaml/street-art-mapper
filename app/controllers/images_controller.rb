@@ -3,20 +3,22 @@ class ImagesController < ApplicationController
   def new
     if current_user
       @image = current_user.images.build
-      @image.user.ownerships.build
-      # @image.user.murals.build
+      owner = Ownership.new
+      mural = Mural.new
     else
       redirect_to :root, notice: 'You must be logged in to add murals to the map.'
     end
   end
 
   def create
-    @image = current_user.images.new(mural_params)
-    binding.pry
-    @image.user.ownerships.new(mural_params)
-
+    @image = current_user.images.new(image_params)
     if @image.save
-      binding.pry
+      owner = Ownership.new(user_id: params['image']['ownerships']['user_id'], mural_id: params['image']['ownerships']['mural_id'])
+      owner.save
+      if params['image']['mural_id'].empty?
+        mural = Mural.new(latitude: params['image']['murals']['latitude'], longitude: params['image']['murals']['longitude'])
+        mural.save
+      end
       redirect_to :root
     else
       render :new
@@ -30,12 +32,12 @@ class ImagesController < ApplicationController
 
   private
 
-    def mural_params
+    def image_params
       params.require(:image).permit(
         :user_id,
+        :mural_id,
         :source,
-        :source_cache,
-        ownerships_attributes: [:user_id]
+        :source_cache
       )
     end
 end
