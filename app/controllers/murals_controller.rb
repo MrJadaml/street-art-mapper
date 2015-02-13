@@ -3,6 +3,9 @@ class MuralsController < ApplicationController
 
   def new
     if current_user
+      @image = current_user.images.build
+      @image.ownerships.build
+
       @mural = current_user.murals.build
       @mural.ownerships.build
       @mural.images.build

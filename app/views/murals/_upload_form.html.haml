@@ -1,30 +1,31 @@
--# - if @mural.errors.any?
--#   .alert.alert-danger
--#     - @mural.errors.full_messages.each do |message|
--#       .text-center.no-decoration= message
 .col-md-12
-  = form_for @mural do |f|
+  = form_for @image do |f|
 
-    .form-group.row.hide-me
-      .col-md-12
+    -# .hide-me
+    .form-group.row
+      .col-md-12.ownership_form
         = f.fields_for :ownerships do |owner|
+          mural-id
+          = owner.number_field :mural_id, id: 'mural-id'
+          %br
           = owner.label "Artist"
           = owner.collection_select(:user_id, User.where(artist: true), :id, :first_name, { include_blank: "Pick an artist" }, {class: 'form-control'})
 
     .form-group.row
-      .col-md-12
-        = f.hidden_field :latitude, id: 'lat'
-        = f.hidden_field :longitude, id: 'long'
+      .col-md-12.murals_form
+        = f.fields_for :murals do |mural|
+          = mural.hidden_field :latitude, id: 'lat'
+          = mural.hidden_field :longitude, id: 'long'
 
     %div.col-md-12.well
       .form-group
-        .col-md-6.col-md-offset-1
-          = f.fields_for :images do |image|
-            = image.label :source, 'Add Image'
-            = image.hidden_field :user_id, value: current_user.id
-            = image.hidden_field :mural_id
-            = image.file_field :source
-            = image.file_field :source_cache, class: 'hidden'
+        .col-md-6.col-md-offset-1.images_form
+          = f.label :source, 'Add Image'
+          mural-id
+          = f.number_field :mural_id, id: 'image-mural-id'
+          = f.hidden_field :user_id, value: current_user.id
+          = f.file_field :source
+          = f.file_field :source_cache, class: 'hidden'
 
       .form-group
         .col-md-5
