@@ -81,55 +81,82 @@ var dropMap = function() {
             dataLat = "data-lat='" + mural.latitude + "'",
             dataLng = "data-lng='" + mural.longitude + "'",
             dataArtist = "data-artist-id='" + mural.artist_id + "'",
-            dataBuff = "data-buff='" + mural.buffed + "'",
             classGMID =  " class='col-md-4 gallery-mural " + mural.mural_id,
             imgSrc = "<img src='" + mural.image + "'>",
 
-            muralImg = "<div " + dataId + dataLat + dataLng + dataArtist + dataBuff + classGMID + "'>" + imgSrc + "</div>";
+            muralImg = "<div " + dataId + dataLat + dataLng + dataArtist + classGMID + "'>" + imgSrc + "</div>";
         $('.near-by').append(muralImg);
       });
 
-      var addNew = '<div class="img-placeholder"><div class="dash-border"><div class="plus">+</div><div class="text">Add New</div></div></div>';
-      $( '.near-by' ).append( addNew );
+      // "Add Image" gallery icon
+      var addNewIcon = '<div class="add-new-icon"><div class="dash-border"><div class="plus">+</div><div class="text">Add New</div></div></div>';
+      $( '.near-by' ).append( addNewIcon );
 
-      $('.img-placeholder' ).on( 'click', function() {
+      // When "Add Image" clicked, fade images and populate Artist list drop down.
+      $('.add-new-icon' ).on( 'click', function() {
         $( this ).siblings().fadeTo( 'fast' , 0.2);
         $( '.hide-me' ).show();
         $( '.gallery-mural' ).children('img').removeClass('highlight')
+
+        // Get Lat & Lng from marker
         $(this).attr( "data-latHolder", document.getElementById('lat').value );
         $(this).attr( "data-lngHolder", document.getElementById('long').value );
+
+        // This is doing nothing right now
         $( '#mural_user_id' ).val("");
-        $('#lat').val($( '.img-placeholder' ).data('latholder'));
-        $('#long').val($( '.img-placeholder' ).data('lngholder'));
+
+        // Pushes Lat & Lng from ajax images to form_for
+        $('#lat').val($( '.add-new-icon' ).data('latholder'));
+        $('#long').val($( '.add-new-icon' ).data('lngholder'));
       });
 
-      // Autofill form data on click event from ajax rendered images.
+      // Autofill form_for data on click of ajax images.
       $( '.gallery-mural' ).on( 'click', function() {
+        var muralId = $( this ).data( 'mural-id' ),
+            artistId = $( this ).data('artist-id'),
+            $artistSelect = $( '#image_ownerships_user_id' ),
+            $imageMuralIdField = $( '#image-mural-id' ),
+            $muralLat = $(this).data( 'lat' ),
+            $muralLng = $(this).data( 'lng' ),
+            $latField = $( '#lat' ),
+            $lngField = $( '#long' );
+
+        $artistSelect.val( artistId );
+        $imageMuralIdField.val( muralId );
+        $latField.val( $muralLat );
+        $lngField.val( $muralLng);
+
         $(this).fadeTo( 'slow', 1 ).siblings().fadeTo( 'slow' , 0.5);
         $( '.hide-me' ).hide();
-
-        var muralId = $( this ).data( 'mural-id' ),
-            artistId = $( this ).data('artist-id');
-
-        // $( '.new_mural' ).append( '<input type="hidden" value="1" name="mural[group_id]" id="group_id">' ).val( muralId );
-        debugger
-
-        $( '#mural_ownerships_attributes_0_user_id' ).val( artistId );
-        $( '#mural_images_attributes_0_mural_id' ).val( muralId );
-        $( '#lat' ).val( $(this).data( 'lat' ));
-        $( '#long' ).val( $(this).data( 'lng' ));
-        $( '.gallery-mural' ).children('img').removeClass('highlight')
-        $(this).children('img').addClass('highlight')
-        $( '#mural_buffed' ).val( $(this).data( 'buff' ));
+        $( '.gallery-mural' ).children('img').removeClass('highlight');
+        $(this).children('img').addClass('highlight');
       });
 
+      // Ownership form-group click - reset data action
       $( '.hide-me' ).on( 'click', function() {
-        // $( '.gallery-mural' ).fadeTo( 'slow', 1 );
-        $( '#mural_user_id' ).val( "" );
-        $('#lat').val($( '.img-placeholder' ).data('latholder'));
-        $('#long').val($( '.img-placeholder' ).data('lngholder'));
-        $( '#mural_buffed' ).val( "false" );
+        var $markerLat = $( '.add-new-icon' ).data('latholder'),
+            $markerLng = $( '.add-new-icon' ).data('lngholder'),
+            // $ownerMuralIdField = $( '#owner-mural-id' ),
+            $imageMuralIdField = $( '#image-mural-id' ),
+            $latField = $( '#lat' ),
+            $lngField = $( '#long' );
+
+     // $( '.gallery-mural' ).fadeTo( 'slow', 1 );
+        // $ownerMuralIdField.val("");
+        $imageMuralIdField.val("");
+        $latField.val( $markerLat );
+        $latField.val( $markerLng );
       });
     });
   });
 };
+
+// What actually needs to be set:
+
+// Image :mural_id $( '#image-mural-id' )
+//
+// Ownership :mural_id -> $( '#owner-mural-id' )
+// Ownership :user_id -> $( '#image_ownerships_user_id' ) //AKA artist_id
+//
+// Mural :latitude -> $( '#lat' )
+// Mural :latitude -> $( '#long' )

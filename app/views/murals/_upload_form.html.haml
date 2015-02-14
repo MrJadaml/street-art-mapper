@@ -1,13 +1,11 @@
+
 .col-md-12
   = form_for @image do |f|
 
-    -# .hide-me
-    .form-group.row
+    .form-group.row.hide-me
       .col-md-12.ownership_form
         = f.fields_for :ownerships do |owner|
-          mural-id
-          = owner.number_field :mural_id, id: 'mural-id'
-          %br
+          = owner.hidden_field :mural_id, id: 'owner-mural-id'
           = owner.label "Artist"
           = owner.collection_select(:user_id, User.where(artist: true), :id, :first_name, { include_blank: "Pick an artist" }, {class: 'form-control'})
 
@@ -20,10 +18,9 @@
     %div.col-md-12.well
       .form-group
         .col-md-6.col-md-offset-1.images_form
-          = f.label :source, 'Add Image'
-          mural-id
-          = f.number_field :mural_id, id: 'image-mural-id'
+          = f.hidden_field :mural_id, id: 'image-mural-id'
           = f.hidden_field :user_id, value: current_user.id
+          = f.label :source, 'Add Image'
           = f.file_field :source
           = f.file_field :source_cache, class: 'hidden'
 

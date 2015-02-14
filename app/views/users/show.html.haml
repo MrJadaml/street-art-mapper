@@ -30,9 +30,9 @@
               - if @user.artist?
                 -@murals.each do |mural|
                   .col-md-4.gallery-mural
-                    -binding.pry
                     = link_to mural_path(mural.id) do
                       = image_tag mural.image.source.url(:user_ablum), class: "galleryImg #{image.mural.id}"
+
               - elsif @user.images.any?
                 - @images.each do |image|
                   .col-md-4.gallery-mural

@@ -11,17 +11,32 @@ class ImagesController < ApplicationController
   end
 
   def create
-    @image = current_user.images.new(image_params)
-    if @image.save
-      owner = Ownership.new(user_id: params['image']['ownerships']['user_id'], mural_id: params['image']['ownerships']['mural_id'])
-      owner.save
-      if params['image']['mural_id'].empty?
-        mural = Mural.new(latitude: params['image']['murals']['latitude'], longitude: params['image']['murals']['longitude'])
-        mural.save
+    binding.pry
+    if params['image']['mural_id'].empty?
+      # create Mural
+      mural = Mural.new(latitude: params['image']['murals']['latitude'], longitude: params['image']['murals']['longitude'])
+      mural.save
+      # create Image
+      @image = current_user.images.new(mural_id: mural.id, source: params['image']['source'])
+      if @image.save
+        # create Ownership
+        owner = Ownership.new(user_id: params['image']['ownerships']['user_id'], mural_id: mural.id)
+        owner.save
+        redirect_to :root
+      else
+        render :new
       end
-      redirect_to :root
     else
-      render :new
+      # create Image
+      @image = current_user.images.new(mural_id: params['image']['mural_id'], source: params['image']['source'])
+      if @image.save
+        # create Ownership
+        owner = Ownership.new(user_id: params['image']['ownerships']['user_id'], mural_id: params['image']['mural_id'])
+        owner.save
+        redirect_to :root
+      else
+        render :new
+      end
     end
   end
 
@@ -30,14 +45,4 @@ class ImagesController < ApplicationController
     @artist = User.find(@image.mural.ownerships[0]['user_id'])
   end
 
-  private
-
-    def image_params
-      params.require(:image).permit(
-        :user_id,
-        :mural_id,
-        :source,
-        :source_cache
-      )
-    end
 end

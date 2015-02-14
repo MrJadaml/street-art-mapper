@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     set_user
     respond_to do |format|
       format.html do
-        @images = @user.images
+        @murals = @user.murals
       end
       format.json do
         render json: MuralData.new.profile_data(@user.id)
