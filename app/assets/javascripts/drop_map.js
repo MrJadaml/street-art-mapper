@@ -134,8 +134,8 @@ var dropMap = function() {
 
       // Ownership form-group click - reset data action
       $( '.add-new-icon' ).on( 'click', function() {
-        var $markerLat = $( '.add-new-icon' ).data('latholder'),
-            $markerLng = $( '.add-new-icon' ).data('lngholder'),
+        var $markerLat = marker.position['k'],
+            $markerLng = marker.position['D'],
             // $ownerMuralIdField = $( '#owner-mural-id' ),
             $imageMuralIdField = $( '#image-mural-id' ),
             $latField = $( '#lat' ),
@@ -143,6 +143,7 @@ var dropMap = function() {
 
      // $( '.gallery-mural' ).fadeTo( 'slow', 1 );
         // $ownerMuralIdField.val("");
+        debugger
         $imageMuralIdField.val("");
         $latField.val( $markerLat );
         $lngField.val( $markerLng );
