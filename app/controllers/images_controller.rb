@@ -11,7 +11,6 @@ class ImagesController < ApplicationController
   end
 
   def create
-    binding.pry
     if params['image']['mural_id'].empty?
       # create Mural
       mural = Mural.new(latitude: params['image']['murals']['latitude'], longitude: params['image']['murals']['longitude'])

@@ -133,7 +133,7 @@ var dropMap = function() {
       });
 
       // Ownership form-group click - reset data action
-      $( '.hide-me' ).on( 'click', function() {
+      $( '.add-new-icon' ).on( 'click', function() {
         var $markerLat = $( '.add-new-icon' ).data('latholder'),
             $markerLng = $( '.add-new-icon' ).data('lngholder'),
             // $ownerMuralIdField = $( '#owner-mural-id' ),
@@ -145,7 +145,7 @@ var dropMap = function() {
         // $ownerMuralIdField.val("");
         $imageMuralIdField.val("");
         $latField.val( $markerLat );
-        $latField.val( $markerLng );
+        $lngField.val( $markerLng );
       });
     });
   });
@@ -156,7 +156,7 @@ var dropMap = function() {
 // Image :mural_id $( '#image-mural-id' )
 //
 // Ownership :mural_id -> $( '#owner-mural-id' )
-// Ownership :user_id -> $( '#image_ownerships_user_id' ) //AKA artist_id
+// Ownership :user_id -> $( '#image_ownerships_user_id' ) AKA artist_id
 //
 // Mural :latitude -> $( '#lat' )
 // Mural :latitude -> $( '#long' )

@@ -39,7 +39,7 @@
             - @images.each do |image|
               .col-md-4.gallery-mural
                 = link_to image_path(image.id) do
-                  = image_tag image.source.url(:user_ablum), class: "galleryImg #{image.id}"
+                  = image_tag image.source.url(:user_ablum), class: "galleryImg #{image.mural.id}"
 %a{name: 'artists'}
 %a.artists
 %section
