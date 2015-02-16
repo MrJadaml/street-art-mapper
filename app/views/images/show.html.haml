@@ -20,5 +20,5 @@
 - content_for(:js) do
   :javascript
     $(function() {
-      MapFunctions.showMap('#{preview_path(@image, format: :json)}');
+      MapFunctions.showMap('#{image_path(@image, format: :json)}');
     });

@@ -4,7 +4,7 @@
       - @images.each do |image|
         .col-md-4.gallery-mural
           = link_to image_path(image.id) do
-            = image_tag image.source.url(:user_ablum)
+            = image_tag image.source.url(:thumb)
     .col-md-3
       .scrollable
         .col-md-6.tube-sm
@@ -15,9 +15,7 @@
             %br
             = link_to image_tag('https://s3.amazonaws.com/streetheart/twitter_icon.jpg'), 'http://www.twitter.com/' + @artist.twitter, :target => '_blank' if @artist.twitter?
             = link_to image_tag('https://s3.amazonaws.com/streetheart/instagram_icon.jpg'), 'http://www.instagram.com/' + @artist.instagram, :target => '_blank' if @artist.instagram?
-            -# %br
-            -# - if @mural.buffed?
-            -#   = "This piece has this been buffed"
+
             %br
             - if current_user.nil?
             - elsif @artist.id == current_user.id || current_user.admin?

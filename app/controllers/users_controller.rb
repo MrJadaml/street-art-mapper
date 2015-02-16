@@ -23,9 +23,14 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html do
         @murals = @user.murals
+        @images = @user.images
       end
       format.json do
-        render json: MuralData.new.profile_data(@user.id)
+        if @user.artist?
+          render json: MuralData.new.artist_data(@user.id)
+        else
+          render json: MuralData.new.profile_data(@user.id)
+        end
       end
     end
   end
@@ -34,7 +39,7 @@ class UsersController < ApplicationController
     set_user
     respond_to do |format|
       format.html do
-        @murals = @user.murals
+        @murals = Mural.joins(:ownerships).where({"ownerships.user_id" => @user.id}).uniq
       end
       format.json do
         render json: MuralData.new.artist_data(@user.id)
