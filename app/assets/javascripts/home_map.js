@@ -44,7 +44,6 @@ var homeMap = function() {
 
       var thumbHighlight = '.' + (marker['muralId'].toString()) + '.galleryImg'
       var addHighlight = function() {
-        // $(thumbHighlight).addClass('highlight');
         $(thumbHighlight).parents('.gallery-mural').siblings().fadeTo( 'fast' , 0.2);
       };
       var removeHighlight = function() {

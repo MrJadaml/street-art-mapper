@@ -21,7 +21,7 @@
 
   $.getJSON(userPath, function(data) {
     data.features.forEach(function(feature) {
-      
+
       var muralId = feature.geometry.id
 
       var myLatlng = new google.maps.LatLng(
@@ -37,19 +37,20 @@
       });
 
       window.markers[feature.geometry.id] = marker;
-
       var markerImage = '<IMG BORDER="0" ALIGN="Left" SRC=' + feature.geometry.image + '>'
       var thumbHighlight = '.' + (marker['muralId'].toString()) + '.galleryImg'
       var infowindow = new google.maps.InfoWindow({
         content: markerImage
       })
 
+
       google.maps.event.addListener(marker, 'mouseover', function() {
-        $(thumbHighlight).addClass('highlight')
+        var muralId = marker['muralId'].toString()
+        $(thumbHighlight).parents( '.gallery-mural' ).siblings().not( '.' + muralId ).fadeTo( 'fast' , 0.2);
       });
 
       google.maps.event.addListener(marker, 'mouseout', function() {
-        $(thumbHighlight).removeClass('highlight')
+        $(thumbHighlight).parents('.gallery').children().fadeTo( 'slow', 1 );
       });
 
       google.maps.event.addListener(marker, 'click', function() {
