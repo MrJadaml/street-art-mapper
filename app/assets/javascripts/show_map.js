@@ -1,7 +1,6 @@
 var showMap = function(showPath) {
 
   window.markers = {};
-  console.log('hello')
   $.getJSON(showPath, function(data) {
     data.features.forEach(function(feature) {
 

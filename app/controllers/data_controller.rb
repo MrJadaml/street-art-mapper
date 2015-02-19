@@ -12,10 +12,9 @@ class DataController < ApplicationController
     render json: MuralData.new.gallery_data(params)
   end
 
-  private
+private
 
-    def group_params
-      params.require(:mural).permit(:maxlat, :maxlng, :minlat, :min)
-    end
-
+  def group_params
+    params.require(:mural).permit(:maxlat, :maxlng, :minlat, :min)
+  end
 end
