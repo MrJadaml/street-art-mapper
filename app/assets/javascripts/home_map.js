@@ -44,10 +44,11 @@ var homeMap = function() {
 
       var thumbHighlight = '.' + (marker['muralId'].toString()) + '.galleryImg'
       var addHighlight = function() {
-        $(thumbHighlight).addClass('highlight');
+        // $(thumbHighlight).addClass('highlight');
+        $(thumbHighlight).parents('.gallery-mural').siblings().fadeTo( 'fast' , 0.2);
       };
       var removeHighlight = function() {
-        $(thumbHighlight).removeClass('highlight');
+        $(thumbHighlight).parents().eq(2).children().fadeTo( 'slow', 1 )
       };
       var markerWindow = function() {
         infowindow.open(map, marker);
