@@ -128,13 +128,13 @@ p.alert.alert-danger.text-center {
     font: 24px/36px Helvetica, Sans-Serif;
     background: rgb(0, 0, 0); /* fallback color */
     background: rgba(0, 0, 0, 0.5);
-    padding: 20px;
+    padding: 20px 10px;
   }
   img {
     width: 25px;
   }
   a {
-    margin-right: 5px;
+    margin: 2px;
   }
 }
 
@@ -159,6 +159,15 @@ p.alert.alert-danger.text-center {
 
 .profile-box {
   margin-right: 35px;
+}
+
+.profile-body .btn {
+  margin: 10px 0;
+}
+
+.profile-avatar {
+  float: right;
+  margin-right: 7px;
 }
 
 .avatar {
