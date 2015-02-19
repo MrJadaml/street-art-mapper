@@ -46,11 +46,11 @@
 
       google.maps.event.addListener(marker, 'mouseover', function() {
         var muralId = marker['muralId'].toString()
-        $(thumbHighlight).parents( '.gallery-mural' ).siblings().not( '.' + muralId ).fadeTo( 'fast' , 0.2);
+        $(thumbHighlight).parents( '.gallery-mural' ).siblings().not( '.' + muralId ).clearQueue().fadeTo( 'fast' , 0.2);
       });
 
       google.maps.event.addListener(marker, 'mouseout', function() {
-        $(thumbHighlight).parents('.gallery').children().fadeTo( 'slow', 1 );
+        $(thumbHighlight).parents('.gallery').children().delay(200).fadeTo( 'fast', 1 );
       });
 
       google.maps.event.addListener(marker, 'click', function() {

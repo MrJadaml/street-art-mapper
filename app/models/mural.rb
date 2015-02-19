@@ -28,13 +28,14 @@ class Mural < ActiveRecord::Base
   end
 
   def to_hash
-    mural_as_hash = {}
-    mural_as_hash[:latitude] = latitude
-    mural_as_hash[:longitude] = longitude
+    mural = {}
+    mural[:latitude] = latitude
+    mural[:longitude] = longitude
     # doesnt account for multiple ownerships
-    mural_as_hash[:artist_id] = ownerships[0].user_id
-    mural_as_hash[:mural_id] = id
-    mural_as_hash[:image] = images[0].source.user_ablum.url
+    mural[:artist_id] = ownerships[0].user_id
+    mural[:mural_id] = id
+    mural[:image] = images[0].source.user_ablum.url
+    mural
   end
 
 private

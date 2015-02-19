@@ -77,6 +77,7 @@ var dropMap = function() {
     $('.near-by').append('<div class="mural-group"></div>');
     $.getJSON( '/groups', radius(), function(data) {
       data.forEach(function (mural) {
+        debugger
         var dataId = "data-mural-id='" + mural.mural_id + "'",
             dataLat = "data-lat='" + mural.latitude + "'",
             dataLng = "data-lng='" + mural.longitude + "'",
