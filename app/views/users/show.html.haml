@@ -18,6 +18,8 @@
                 %p= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-info'
                 -# .btn.btn-default
                 -#   %span.glyphicon.glyphicon-cog
+              -if current_user.admin?
+                = link_to 'Flagged', flagged_content_path, class: 'btn btn-warning'
 
           .col-md-6
             - if @user.avatar?

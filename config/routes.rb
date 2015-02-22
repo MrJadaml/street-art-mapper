@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   get     'groups'                     => 'data#groups'
   get     'upload'                     => 'data#mural_form'
   patch   'flagged/:id'                => 'images#flagged', :as => 'flagged'
+  patch   'unflag/:id'                 => 'images#unflag', :as => 'unflag'
+  get     'flagged_content'            => 'pages#flagged'
 end

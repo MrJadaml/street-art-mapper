@@ -15,4 +15,9 @@ class PagesController < ApplicationController
 
   def faq
   end
+
+  def flagged
+    @images = Image.where(flagged: true)
+  end
+
 end

@@ -50,4 +50,19 @@ class ImagesController < ApplicationController
     redirect_to root_path
   end
 
+  def unflag
+    image = Image.find(params[:id])
+    image.update(flagged: false)
+    redirect_to flagged_content_path
+  end
+
+  def destroy
+    image = Image.find(params[:id])
+    if image.destroy
+      redirect_to :root
+    else
+      render :edit
+    end
+  end
+
 end
