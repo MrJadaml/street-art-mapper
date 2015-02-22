@@ -47,7 +47,7 @@ var homeMap = function() {
         $(thumbHighlight).parents('.gallery-mural').siblings().clearQueue().fadeTo( 'fast' , 0.2);
       };
       var removeHighlight = function() {
-        $(thumbHighlight).parents().eq(2).children().fadeTo( 'fast', 1 )
+        $(thumbHighlight).parents().eq(2).children().delay(200).fadeTo( 'fast', 1 )
       };
       var markerWindow = function() {
         infowindow.open(map, marker);

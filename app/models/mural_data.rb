@@ -11,7 +11,7 @@ class MuralData
 
   def gallery_data
     { type: "FeatureCollection",
-      features: Mural.all.map { |mural| mural.as_gallery_data } }
+      features: murals_with_unflagged_images.map { |mural| mural.as_gallery_data } }
   end
 
   def profile_data(user_id)
@@ -75,4 +75,17 @@ class MuralData
     near_by_murals = Mural.where(latitude: minlat..maxlat).where(longitude: minlng..maxlng)
     near_by_murals.map { |mural| mural.to_hash }
   end
+
+private
+
+  def murals_with_unflagged_images
+    murals_with_unflagged_images = []
+    Mural.all.map do |mural|
+      if mural.images.where(flagged: false).length > 0
+        murals_with_unflagged_images << mural
+      end
+    end
+    murals_with_unflagged_images
+  end
+
 end

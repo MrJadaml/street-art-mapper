@@ -3,7 +3,7 @@ var showMap = function(showPath) {
   window.markers = {};
   $.getJSON(showPath, function(data) {
     data.features.forEach(function(feature) {
-
+    
       // var muralId = feature.geometry.id
 
       var myLatlng = new google.maps.LatLng(

@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   resources :murals, :users, :images
 
-  # get     'images/:id'                 => 'images#show', :as => 'preview'
   get     'foo'                        => 'users#foo'
   get     'artist/:id'                 => 'users#artist', :as => 'artist'
   get     'about'                      => 'pages#about'
@@ -16,4 +15,5 @@ Rails.application.routes.draw do
   get     'data'                       => 'data#gallery'
   get     'groups'                     => 'data#groups'
   get     'upload'                     => 'data#mural_form'
+  patch   'flagged/:id'                => 'images#flagged', :as => 'flagged'
 end

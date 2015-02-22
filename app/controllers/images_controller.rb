@@ -44,4 +44,10 @@ class ImagesController < ApplicationController
     @artist = User.find(@image.mural.ownerships[0]['user_id'])
   end
 
+  def flagged
+    image = Image.find(params[:id])
+    image.update(flagged: true)
+    redirect_to root_path
+  end
+
 end

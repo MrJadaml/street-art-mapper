@@ -52,7 +52,7 @@ p.alert.alert-danger.text-center {
 
 
 .profile-map {
-  height: 750px;
+  height: 1000px;
   background-color: #CCC;
 }
 
@@ -161,7 +161,7 @@ p.alert.alert-danger.text-center {
   margin-right: 35px;
 }
 
-.profile-body .btn {
+.scrollable .btn {
   margin: 10px 0;
 }
 
@@ -218,4 +218,17 @@ p.alert.alert-danger.text-center {
 
 .hide-me {
   display: none;
+}
+
+.flagged {
+  position: relative;
+  bottom: 32px;
+  left: 132px;
+  width: 100%;
+  a {
+    color: rgba(231, 226, 220, 0.2);
+  };
+  a:hover {
+    color: rgba(189, 28, 16, 0.6);
+  }
 }

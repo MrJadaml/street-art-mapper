@@ -5,6 +5,10 @@
         .col-md-4.gallery-mural
           = link_to image_path(image.id) do
             = image_tag image.source.url(:thumb)
+            .flagged
+              %span
+                = link_to flagged_path(image.id), data: {confirm: "Are you sure you want to report this image for abusive content?"}, method: :patch, action: :flagged do
+                  %i.fa.fa-ban.fa-2x
     .col-md-3
       .scrollable
         .col-md-6.tube-sm
@@ -24,5 +28,5 @@
 - content_for(:js) do
   :javascript
     $(function() {
-      MapFunctions.showMap('#{mural_path(@artist, format: :json)}');
+      MapFunctions.showMap('#{mural_path(@mural, format: :json)}');
     });

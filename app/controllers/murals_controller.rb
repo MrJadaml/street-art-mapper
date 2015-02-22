@@ -25,7 +25,7 @@ class MuralsController < ApplicationController
 
   def show
     @mural = Mural.find(params[:id])
-    @images = @mural.images
+    @images = @mural.images.where.not(flagged: true)
     @artist = User.find(@mural.ownerships[0].user_id)
     respond_to do |format|
       format.html do
