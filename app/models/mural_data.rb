@@ -17,12 +17,11 @@ class MuralData
   def profile_data(user_id)
     json = {}
 
-    images = User.find(user_id).images
     json = {
       type: "FeatureCollection",
       features: []
     }
-    images.each do |image|
+    profile_unflagged_images.each do |image|
       json[:features] << {
         type: 'Feature',
         geometry: {
@@ -38,7 +37,7 @@ class MuralData
 
   def artist_data(user_id)
     { type: "FeatureCollection",
-      features: User.find(user_id).murals.map { |mural| mural.as_artist_data } }
+      features: artist_unflagged_images(user_id).map { |mural| mural.as_artist_data } }
   end
 
   # def show_data(mural_id)
@@ -79,13 +78,28 @@ class MuralData
 private
 
   def murals_with_unflagged_images
-    murals_with_unflagged_images = []
+    unflagged_murals = []
     Mural.all.map do |mural|
-      if mural.images.where(flagged: false).length > 0
-        murals_with_unflagged_images << mural
-      end
+      unflagged_murals << mural if mural.images.where(flagged: false).length > 0
     end
-    murals_with_unflagged_images
+    unflagged_murals
+  end
+
+  def profile_unflagged_images(user_id)
+    unflagged_images = []
+    User.find(user_id).images.map do |image|
+      unflagged_images << image if image.flagged?
+    end
+    unflagged_images
+  end
+
+  def artist_unflagged_images(user_id)
+    unflagged_murals = []
+    murals = Mural.joins(:ownerships).where({"ownerships.user_id" => user_id}).uniq
+    murals.map do |mural|
+      unflagged_murals << mural if mural.images.where(flagged: false).length > 0
+    end
+    unflagged_murals
   end
 
 end

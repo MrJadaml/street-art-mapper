@@ -29,9 +29,10 @@
             .gallery
               -if @user.murals.any?
                 -@murals.each do |mural|
-                  .col-md-4.gallery-mural
-                    = link_to mural_path(mural.id) do
-                      = image_tag mural.images[0].source.url(:user_ablum), class: "galleryImg #{mural.id}"
+                  -unless mural.images.where(flagged: false).length == 0 
+                    .col-md-4.gallery-mural
+                      = link_to mural_path(mural.id) do
+                        = image_tag mural.images.where(flagged: false)[0].source.url(:user_ablum), class: "galleryImg #{mural.id}"
 - content_for(:js) do
   :javascript
     $(function(){
