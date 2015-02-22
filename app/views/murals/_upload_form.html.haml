@@ -7,7 +7,7 @@
         = f.fields_for :ownerships do |owner|
           = owner.hidden_field :mural_id, id: 'owner-mural-id'
           = owner.label "Artist"
-          = owner.collection_select(:user_id, User.where(artist: true), :id, :first_name, { include_blank: "Pick an artist" }, {class: 'form-control'})
+          = owner.collection_select(:user_id, User.where(artist: true), :id, :full_name, { include_blank: "Pick an artist" }, {class: 'form-control'})
 
     .form-group.row
       .col-md-12.murals_form
