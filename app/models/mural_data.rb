@@ -21,7 +21,7 @@ class MuralData
       type: "FeatureCollection",
       features: []
     }
-    profile_unflagged_images.each do |image|
+    profile_unflagged_images(user_id).each do |image|
       json[:features] << {
         type: 'Feature',
         geometry: {
@@ -88,7 +88,7 @@ private
   def profile_unflagged_images(user_id)
     unflagged_images = []
     User.find(user_id).images.map do |image|
-      unflagged_images << image if image.flagged?
+      unflagged_images << image unless image.flagged?
     end
     unflagged_images
   end

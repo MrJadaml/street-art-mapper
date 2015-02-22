@@ -27,12 +27,12 @@
         .col-md-12
           .row
             .gallery
-              -if @user.murals.any?
-                -@murals.each do |mural|
-                  -unless mural.images.where(flagged: false).length == 0 
+              - if @user.murals.any?
+                - @murals.each do |mural|
+                  - unless mural_has_unflagged_images(mural)
                     .col-md-4.gallery-mural
                       = link_to mural_path(mural.id) do
-                        = image_tag mural.images.where(flagged: false)[0].source.url(:user_ablum), class: "galleryImg #{mural.id}"
+                        = image_tag unflagged_images(mural), class: "galleryImg #{mural.id}"
 - content_for(:js) do
   :javascript
     $(function(){

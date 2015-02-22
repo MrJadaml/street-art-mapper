@@ -70,6 +70,18 @@ class UsersController < ApplicationController
     redirect_to root_path, notice: "User was deleted successfully"
   end
 
+
+  def unflagged_images(mural)
+    mural.images.where(flagged: false)[0].source.url(:user_ablum)
+  end
+
+  def mural_has_unflagged_images(mural)
+    mural.images.where(flagged: false).length == 0
+  end
+
+  helper_method :unflagged_images
+  helper_method :mural_has_unflagged_images
+
   private
 
     def set_user
