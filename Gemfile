@@ -29,9 +29,11 @@ end
 group :development, :test do
   gem 'dotenv-rails'
   gem 'rspec-rails'
+  gem 'jasmine', '~> 2.2.0'
   gem 'capybara'
   gem 'launchy'
   gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'quiet_assets'
 end
