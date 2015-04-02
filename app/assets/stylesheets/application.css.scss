@@ -72,34 +72,29 @@ p.alert.alert-danger.text-center {
   width: 300px;
 }
 
-.gallery {
-  height: 750px;
-  padding-left: 8px;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  .col-md-5 {
-    padding-left: none;
-  }
-}
-
 .near-by {
   height: 675px;
   padding-left: 8px;
   overflow-y: scroll;
   overflow-x: hidden;
-  .col-md-5 {
-    padding-left: none;
-  }
+}
+
+.gallery {
+  height: 320px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .gallery-map {
-	height: 750px;
-	background-color: #CCC;
+	height: 320px;
 }
 
 .gallery-mural {
-  margin-top: 8px;
-  padding: 0;
+  img {
+    margin: 1% 0 0 1%;
+    width: 32%;
+    float: left;
+  }
 }
 
 .tube-sm {
@@ -153,12 +148,14 @@ p.alert.alert-danger.text-center {
   }
 }
 
-.profile-container {
-  margin-left: 4em;
-}
+.artist-profiles {}
 
 .profile-box {
-  margin-right: 35px;
+  img {
+    width: 49%;
+    margin: 1% 0 0 1%;
+    float: left;
+  }
 }
 
 .scrollable .btn {

@@ -1,63 +1,50 @@
 %section
   .jumbotron
     = image_tag('https://s3.amazonaws.com/streetheart/denver+street+art+hero.jpg')
-  .social-box
-    %span
-      = link_to "/auth/twitter", class: "btn btn-info" do
-        = image_tag('https://s3.amazonaws.com/streetheart/tweet-wht.png')
-        = "Connect with Twitter"
-
-      = link_to "/auth/instagram", class: "btn btn-warning" do
-        = image_tag('https://s3.amazonaws.com/streetheart/insta-wht.png')
-        = "Connect with Instagram"
+  -# .social-box
+  -#   %span
+  -#     = link_to "/auth/twitter", class: "btn btn-info" do
+  -#       = image_tag('https://s3.amazonaws.com/streetheart/tweet-wht.png')
+  -#       = "Connect with Twitter"
+  -#
+  -#     = link_to "/auth/instagram", class: "btn btn-warning" do
+  -#       = image_tag('https://s3.amazonaws.com/streetheart/insta-wht.png')
+  -#       = "Connect with Instagram"
 
   .photocred Street art by Daniel Chavez  Keno Gonzales | Eddie Huang, Michael Kraus  Jacobo Gonzalez
   .container
-    .container
-      .row
-        .col-md-4
-          %h2 Latest News
-          %p Applications for Denver Public Art's Urban Art Fund close on March 31st. Be sure to head over to their site and get your application in ASAP. Grants range from $500-$5,000 for street art projects!
-          %p
-            %a.btn.btn-default{:href => "http://artsandvenuesdenver.com/public-art/urban-arts-fund/", :role => "button", :target => "_blank"} View details »
-        .col-md-4
-          %h2 Need a wall?
-          %p We’re partnering with business and property owners around town to help artists find locations to paint. Artists, you probably don’t want to spend your time hunting down walls and cozying up to business owners. We want to make that process easier, so you can get out and create more art around Denver!
-        .col-md-4
-          %h2 Want a mural?
-          %p Get in touch with us if you’re interested in having an artist paint a mural on your property. Street art will draw attention to your business, and it's a great way to beautify your community. We’re working with artists and alongside the city to make the process of matching artists to your businesses easier every day.
+    %h2 Latest News
+    %p Applications for Denver Public Art's Urban Art Fund close on March 31st. Be sure to head over to their site and get your application in ASAP. Grants range from $500-$5,000 for street art projects!
+    %p
+      %a.btn.btn-default{:href => "http://artsandvenuesdenver.com/public-art/urban-arts-fund/", :role => "button", :target => "_blank"} View details »
+    %h2 Need a wall?
+    %p We’re partnering with business and property owners around town to help artists find locations to paint. Artists, you probably don’t want to spend your time hunting down walls and cozying up to business owners. We want to make that process easier, so you can get out and create more art around Denver!
+    %h2 Want a mural?
+    %p Get in touch with us if you’re interested in having an artist paint a mural on your property. Street art will draw attention to your business, and it's a great way to beautify your community. We’re working with artists and alongside the city to make the process of matching artists to your businesses easier every day.
 %a{name: 'map'}
 %a.map
 %section
-  .container-fluid
-    .row
-      .col-md-7.col-sm-12
-        .gallery-map
-      .col-md-5.col-sm-12
-        .gallery
-          .row
-            - @murals.each do |mural|
-              - unless mural.images[0].flagged?
-                .col-md-4.gallery-mural
-                  = link_to mural_path(mural.id) do
-                    = image_tag mural.images[0].source.url(:user_ablum), class: "galleryImg #{mural.id}"
+  .gallery-map
+  .gallery
+    - @murals.each do |mural|
+      - unless mural.images[0].flagged?
+        .gallery-mural
+          = link_to mural_path(mural.id) do
+            = image_tag mural.images[0].source.url(:user_ablum), class: "galleryImg #{mural.id}"
 %a{name: 'artists'}
 %a.artists
 %section
   %h1.tube-sm.text-center Artist Profiles
-  .profile-container
+  .artist-profiles
     - @users.each do |user|
-      .col-lg-2.profile-box
+      .profile-box
         = link_to artist_path(user.id) do
           .avatar
             = image_tag user.avatar.url(:thumb)
-        .name-text
-          %span
-            = user.first_name
-            = user.last_name
-  %br
-  .col-md-12
-    %br
+        -# .name-text
+        -#   %span
+        -#     = user.first_name
+        -#     = user.last_name
     -unless current_user.nil? || !current_user.admin?
       = link_to 'Add Artist', new_user_path, class: 'btn btn-info'
 
