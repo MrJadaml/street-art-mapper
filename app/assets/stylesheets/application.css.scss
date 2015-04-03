@@ -80,13 +80,25 @@ p.alert.alert-danger.text-center {
 }
 
 .gallery {
-  height: 320px;
+  height: 318px;
   overflow-y: scroll;
   overflow-x: hidden;
+  @media (min-width: 780px) {
+    width: 250px;
+    float: left;
+  }
 }
 
 .gallery-map {
 	height: 320px;
+  margin: 0px;
+  @media (min-width: 415px) {
+    height: 416px;
+  }
+  @media (min-width: 780px) {
+    height: 500px;
+    width: 500px;
+  }
 }
 
 .gallery-mural {
@@ -94,6 +106,18 @@ p.alert.alert-danger.text-center {
     margin: 1% 0 0 1%;
     width: 32%;
     float: left;
+  }
+  @media (min-width: 415px) {
+    img {
+      margin: 1% 0 0 1%;
+      width: 23.8%;
+    }
+  }
+  @media (min-width: 780px) {
+    img {
+      margin: 1% 0 0 1%;
+      width: 32%;
+    }
   }
 }
 
@@ -148,7 +172,11 @@ p.alert.alert-danger.text-center {
   }
 }
 
-.artist-profiles {}
+.artist-profiles {
+  height: 322px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
 
 .profile-box {
   img {
@@ -156,7 +184,16 @@ p.alert.alert-danger.text-center {
     margin: 1% 0 0 1%;
     float: left;
   }
+  @media (min-width: 416px) {
+    img {
+      margin: 1% 0 0 1%;
+      width: 32%;
+      float: left;
+    }
+  }
 }
+
+// break at 780 for gallery in aside
 
 .scrollable .btn {
   margin: 10px 0;
@@ -236,4 +273,16 @@ p.alert.alert-danger.text-center {
 
 .flag-buttons .btn {
   margin: 10px;
+}
+
+footer {
+  float: left;
+}
+
+footer .nav {
+
+}
+
+footer .nav li {
+  float: left;
 }

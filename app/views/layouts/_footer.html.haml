@@ -3,12 +3,8 @@
     %script{:src => "https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyCM2cZI7nhe7pImTKAMaZAuyjs2jfZx4pI&sensor=true", :type => "text/javascript"}
     = javascript_include_tag 'application'
     = content_for(:js)
-    .container
-      %ul.nav.navbar-nav
-        %li
-          = link_unless_on_own_page(about_path, 'About')
-        %li
-          = link_unless_on_own_page(contact_path, 'Contact')
-        %li
-          = link_unless_on_own_page(faq_path, 'FAQs')
-      %p.navbar-right ©Denver Streetheart 2014
+    .nav.navbar-nav
+      = link_unless_on_own_page(about_path, 'About')
+      = link_unless_on_own_page(contact_path, 'Contact')
+      = link_unless_on_own_page(faq_path, 'FAQs')
+    %p.navbar-right ©Denver Streetheart 2014
