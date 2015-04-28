@@ -84,20 +84,22 @@ p.alert.alert-danger.text-center {
   overflow-y: scroll;
   overflow-x: hidden;
   @media (min-width: 780px) {
-    width: 250px;
-    float: left;
+    width: 35%;
+    display: inline-block;
   }
 }
 
 .gallery-map {
 	height: 320px;
-  margin: 0px;
+  display: inline-block;
+
   @media (min-width: 415px) {
     height: 416px;
   }
+
   @media (min-width: 780px) {
     height: 500px;
-    width: 500px;
+    width: 64.5%;
   }
 }
 
