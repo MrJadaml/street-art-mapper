@@ -190,30 +190,27 @@ p.alert.alert-danger.text-center {
 }
 
 .profile-box {
+  width: 49%;
+  display: inline-block;
   img {
-    width: 49%;
+    position: relative;
+    width: 100%;
     margin: 1% 0 0 1%;
-    float: left;
+    display: inline-block;
   }
 
   @media (min-width: 416px) {
-    img {
       margin: 1% 0 0 1%;
       width: 32%;
       float: left;
-    }
   }
 
   @media (min-width: 600px) {
-    img {
       width: 23.8%;
-    }
   }
 
   @media (min-width: 800px) {
-    img {
       width: 18.9%;
-    }
   }
 }
 
@@ -235,7 +232,9 @@ p.alert.alert-danger.text-center {
 .name-text {
   position: relative;
   bottom: 50px;
-  width: 100%;
+  // left: 1%;
+  // width: 100%;
+  margin-bottom: -32px;
   span {
     color: white;
     font: 20px/32px Helvetica, Sans-Serif;
