@@ -14,8 +14,8 @@
           = link_to 'Map', root_path(anchor: "map")
         %li
           = link_to 'Artists', root_path(anchor: 'artists')
-        -if current_user
-          %li.dropdown
+        %li.dropdown
+          -if current_user
             %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
               = current_user.first_name.capitalize
               %b.caret
@@ -23,5 +23,16 @@
               %li= link_to "Profile", current_user
               %li.divider
               %li= link_to 'Log out', logout_path
+          -else
+            %a.dropdown-toggle{"aria-expandeed" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              Login | Signup
+              %b.caret
+            %ul.dropdown-menu{:role => "menu"}
+              %li.auth-btns
+                = link_to "/auth/twitter", class: "btn btn-info" do
+                  = image_tag('https://s3.amazonaws.com/streetheart/tweet-wht.png')
+              %li.auth-btns
+                = link_to "/auth/instagram", class: "btn btn-warning" do
+                  = image_tag('https://s3.amazonaws.com/streetheart/insta-wht.png')
 - if flash[:notice]
   %p.alert.alert-danger.text-center.col-sm-12= flash[:notice]

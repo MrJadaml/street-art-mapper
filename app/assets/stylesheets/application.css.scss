@@ -50,6 +50,33 @@ p.alert.alert-danger.text-center {
   margin-top: 60px;
 }
 
+.auth-btns {
+  padding: 5px;
+}
+
+.news-item {
+  width: 100%;
+  display: inline-block;
+  padding-left: 10px;
+
+  @media (min-width: 415px) {
+    width: 49%;
+  }
+
+  @media (min-width: 780px) {
+    width: 32.8%;
+  }
+}
+
+.news {
+  padding: 10px;
+
+  @media (min-width: 415px) and (max-width: 780px) {
+    *:first-child {
+      width: 100%;
+    }
+  }
+}
 
 .profile-map {
   height: 1000px;
@@ -232,15 +259,16 @@ p.alert.alert-danger.text-center {
 .name-text {
   position: relative;
   bottom: 50px;
-  // left: 1%;
-  // width: 100%;
+  left: 1%;
   margin-bottom: -32px;
+  overflow: hidden;
   span {
     color: white;
     font: 20px/32px Helvetica, Sans-Serif;
     background: rgb(0, 0, 0); /* fallback color */
     background: rgba(0, 0, 0, 0.5);
     padding: 10px;
+    white-space: nowrap;
   }
 }
 
