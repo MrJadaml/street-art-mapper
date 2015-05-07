@@ -110,6 +110,7 @@ p.alert.alert-danger.text-center {
   height: 318px;
   overflow-y: scroll;
   overflow-x: hidden;
+
   @media (min-width: 780px) {
     height: 500px;
     width: 35%;
@@ -174,25 +175,6 @@ p.alert.alert-danger.text-center {
 .jumbotron {
 	width: 100%;
 	padding: 0;
-}
-
-.social-box {
-  position: relative;
-  margin-left: 16px;
-  bottom: 106px;
-  span {
-    color: white;
-    font: 24px/36px Helvetica, Sans-Serif;
-    background: rgb(0, 0, 0); /* fallback color */
-    background: rgba(0, 0, 0, 0.5);
-    padding: 20px 10px;
-  }
-  img {
-    width: 25px;
-  }
-  a {
-    margin: 2px;
-  }
 }
 
 .photocred {
