@@ -30,7 +30,7 @@
               - if @user.murals.any?
                 - @murals.each do |mural|
                   - unless mural_has_unflagged_images(mural)
-                    .col-md-4.gallery-mural
+                    .gallery-mural
                       = link_to mural_path(mural.id) do
                         = image_tag unflagged_images(mural), class: "galleryImg #{mural.id}"
 - content_for(:js) do

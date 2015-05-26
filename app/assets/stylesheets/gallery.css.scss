@@ -1,0 +1,53 @@
+.gallery {
+  height: 318px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  @media (min-width: 780px) {
+    height: 500px;
+    width: 35%;
+    display: inline-block;
+  }
+}
+
+.gallery-map, .profile-map {
+	height: 320px;
+
+  @media (min-width: 415px) {
+    height: 416px;
+  }
+
+  @media (min-width: 780px) {
+    height: 500px;
+    width: 64.5%;
+    display: inline-block;
+  }
+}
+
+.gallery-mural {
+  img {
+    margin: 1% 0 0 1%;
+    width: 32%;
+    float: left;
+  }
+
+  @media (min-width: 415px) {
+    img {
+      margin: 1% 0 0 1%;
+      width: 23.8%;
+    }
+  }
+
+  @media (min-width: 600px) {
+    img {
+      width: 18.9%;
+    }
+  }
+
+  @media (min-width: 780px) {
+    img {
+      margin: 1% 0 0 1%;
+      width: 32%;
+    }
+  }
+}

@@ -78,9 +78,66 @@ p.alert.alert-danger.text-center {
   }
 }
 
+.profile-body {
+  width: 100%;
+}
+
+.profile-left {
+  width: 52%;
+  display: inline-block;
+  vertical-align: top;
+  h1 {
+    margin-top: 0;
+  }
+}
+
+.profile-right {
+  width: 47%;
+  display: inline-block;
+}
+
 .profile-map {
-  height: 1000px;
+  height: 500px;
   background-color: #CCC;
+}
+
+.profile-avatar {
+  img {
+    vertical-align: bottom;
+  }
+}
+
+.profile-box {
+  width: 49%;
+  display: inline-block;
+  img {
+    position: relative;
+    width: 100%;
+    margin: 1% 0 0 1%;
+    display: inline-block;
+  }
+
+  @media (min-width: 416px) {
+      margin: 1% 0 0 1%;
+      width: 32%;
+      float: left;
+  }
+
+  @media (min-width: 600px) {
+      width: 23.8%;
+  }
+
+  @media (min-width: 800px) {
+      width: 18.9%;
+  }
+}
+
+.avatar {
+  position: relative;
+}
+
+.social-links {
+  margin-bottom: 10px;
 }
 
 .new-map {
@@ -104,60 +161,6 @@ p.alert.alert-danger.text-center {
   padding-left: 8px;
   overflow-y: scroll;
   overflow-x: hidden;
-}
-
-.gallery {
-  height: 318px;
-  overflow-y: scroll;
-  overflow-x: hidden;
-
-  @media (min-width: 780px) {
-    height: 500px;
-    width: 35%;
-    display: inline-block;
-  }
-}
-
-.gallery-map {
-	height: 320px;
-
-  @media (min-width: 415px) {
-    height: 416px;
-  }
-
-  @media (min-width: 780px) {
-    height: 500px;
-    width: 64.5%;
-    display: inline-block;
-  }
-}
-
-.gallery-mural {
-  img {
-    margin: 1% 0 0 1%;
-    width: 32%;
-    float: left;
-  }
-
-  @media (min-width: 415px) {
-    img {
-      margin: 1% 0 0 1%;
-      width: 23.8%;
-    }
-  }
-
-  @media (min-width: 600px) {
-    img {
-      width: 18.9%;
-    }
-  }
-
-  @media (min-width: 780px) {
-    img {
-      margin: 1% 0 0 1%;
-      width: 32%;
-    }
-  }
 }
 
 .tube-sm {
@@ -198,44 +201,8 @@ p.alert.alert-danger.text-center {
   overflow-x: hidden;
 }
 
-.profile-box {
-  width: 49%;
-  display: inline-block;
-  img {
-    position: relative;
-    width: 100%;
-    margin: 1% 0 0 1%;
-    display: inline-block;
-  }
-
-  @media (min-width: 416px) {
-      margin: 1% 0 0 1%;
-      width: 32%;
-      float: left;
-  }
-
-  @media (min-width: 600px) {
-      width: 23.8%;
-  }
-
-  @media (min-width: 800px) {
-      width: 18.9%;
-  }
-}
-
-// break at 780 for gallery in aside
-
 .scrollable .btn {
   margin: 10px 0;
-}
-
-.profile-avatar {
-  float: right;
-  margin-right: 7px;
-}
-
-.avatar {
-  position: relative;
 }
 
 .name-text {
@@ -310,10 +277,6 @@ p.alert.alert-danger.text-center {
 
 footer {
   float: left;
-}
-
-footer .nav {
-
 }
 
 footer .nav li {
