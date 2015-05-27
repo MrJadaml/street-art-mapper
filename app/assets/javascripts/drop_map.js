@@ -81,7 +81,7 @@ var dropMap = function() {
             dataLat = "data-lat='" + mural.latitude + "'",
             dataLng = "data-lng='" + mural.longitude + "'",
             dataArtist = "data-artist-id='" + mural.artist_id + "'",
-            classGMID =  " class='col-md-4 gallery-mural " + mural.mural_id,
+            classGMID =  " class='gallery-mural " + mural.mural_id,
             imgSrc = "<img src='" + mural.image + "'>",
 
             muralImg = "<div " + dataId + dataLat + dataLng + dataArtist + classGMID + "'>" + imgSrc + "</div>";
