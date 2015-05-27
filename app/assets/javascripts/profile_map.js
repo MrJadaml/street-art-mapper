@@ -50,7 +50,7 @@
       });
 
       google.maps.event.addListener(marker, 'mouseout', function() {
-        $(thumbHighlight).parents('.gallery').children().delay(200).fadeTo( 'fast', 1 );
+        $(thumbHighlight).parents('.profile-murals').children().delay(200).fadeTo( 'fast', 1 );
       });
 
       google.maps.event.addListener(marker, 'click', function() {
