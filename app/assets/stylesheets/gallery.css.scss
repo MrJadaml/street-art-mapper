@@ -8,6 +8,10 @@
     width: 35%;
     display: inline-block;
   }
+
+  @media (min-width: 900px) {
+    height: 700px;
+  }
 }
 
 .gallery-map, .profile-map {
@@ -21,6 +25,10 @@
     height: 500px;
     width: 64.5%;
     display: inline-block;
+  }
+
+  @media (min-width: 900px) {
+    height: 700px;
   }
 }
 

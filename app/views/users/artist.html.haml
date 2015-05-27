@@ -1,38 +1,34 @@
 .container-fluid
   .navbar-buffer
   .row
-    .col-md-7.col-sm-12
-      .profile-map
-    .col-md-5.col-sm-12
-      .scrollable
-        .row
-          .col-md-6
-            %div
-              %h1.tube-sm.text-center= @user.first_name
-            %div
-              = link_to image_tag('https://s3.amazonaws.com/streetheart/twitter_icon.jpg'), 'http://www.twitter.com/' + @user.twitter, :target => '_blank' if @user.twitter?
-              = link_to image_tag('https://s3.amazonaws.com/streetheart/instagram_icon.jpg'), 'http://www.instagram.com/' + @user.instagram, :target => '_blank' if @user.instagram?
-              - if current_user.nil?
-              - elsif (@user.id == current_user.id) || (current_user.admin?)
-                -# %p= link_to 'Are you an artist?', foo_path
-                %p= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-info'
-                -# .btn.btn-default
-                -#   %span.glyphicon.glyphicon-cog
+    .profile-map
+    .gallery
+      .profile-body
+        .profile-left
+          %h1.tube-sm.text-center= @user.first_name
+          .social-links
+            = link_to image_tag('https://s3.amazonaws.com/streetheart/twitter_icon.jpg'), 'http://www.twitter.com/' + @user.twitter, :target => '_blank' if @user.twitter?
+            = link_to image_tag('https://s3.amazonaws.com/streetheart/instagram_icon.jpg'), 'http://www.instagram.com/' + @user.instagram, :target => '_blank' if @user.instagram?
+          .profile-buttons
+            - if current_user.nil?
+            - elsif (@user.id == current_user.id) || (current_user.admin?)
+              -# %p= link_to 'Are you an artist?', foo_path
+              = link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-info'
+              -# .btn.btn-default
+              -#   %span.glyphicon.glyphicon-cog
 
-          .col-md-6
-            - if @user.avatar?
-              = image_tag @user.avatar_url(:thumb)
-            - else
-              = image_tag 'https://s3.amazonaws.com/streetheart/default_atom.png'
-        .col-md-12
-          .row
-            .gallery
-              - if @user.murals.any?
-                - @murals.each do |mural|
-                  - unless mural_has_unflagged_images(mural)
-                    .gallery-mural
-                      = link_to mural_path(mural.id) do
-                        = image_tag unflagged_images(mural), class: "galleryImg #{mural.id}"
+        .profile-right
+          - if @user.avatar?
+            = image_tag @user.avatar_url(:thumb)
+          - else
+            = image_tag 'https://s3.amazonaws.com/streetheart/default_atom.png'
+      .profile-murals
+        - if @user.murals.any?
+          - @murals.each do |mural|
+            - unless mural_has_unflagged_images(mural)
+              .gallery-mural
+                = link_to mural_path(mural.id) do
+                  = image_tag unflagged_images(mural), class: "galleryImg #{mural.id}"
 - content_for(:js) do
   :javascript
     $(function(){

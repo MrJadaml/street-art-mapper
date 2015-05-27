@@ -43,7 +43,7 @@ p.alert.alert-danger.text-center {
 }
 
 .navbar-btn {
-  margin-left: 15px;
+  margin-left: 3%;
 }
 
 .navbar-buffer {
@@ -51,7 +51,7 @@ p.alert.alert-danger.text-center {
 }
 
 .auth-btns {
-  padding: 5px;
+  padding: 1%;
 }
 
 .news-item {
@@ -80,6 +80,7 @@ p.alert.alert-danger.text-center {
 
 .profile-body {
   width: 100%;
+  padding: 0 1%;
 }
 
 .profile-left {
@@ -92,18 +93,25 @@ p.alert.alert-danger.text-center {
 }
 
 .profile-right {
-  width: 47%;
+  width: 46%;
   display: inline-block;
+  margin-left: 1%;
 }
 
 .profile-map {
   height: 500px;
   background-color: #CCC;
+
+  @media (min-width: 900px) {
+    height: 700px;
+  }
 }
 
 .profile-avatar {
   img {
     vertical-align: bottom;
+    width: 100%;
+    margin-right: 1%;
   }
 }
 
@@ -137,7 +145,11 @@ p.alert.alert-danger.text-center {
 }
 
 .social-links {
-  margin-bottom: 10px;
+  margin: 0 0 10px 5px;
+}
+
+.profile-buttons {
+  margin-left: 5px;
 }
 
 .new-map {
