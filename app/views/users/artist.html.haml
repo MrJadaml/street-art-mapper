@@ -19,9 +19,11 @@
 
         .profile-right
           - if @user.avatar?
-            = image_tag @user.avatar_url(:thumb)
+            .profile-avatar
+              = image_tag @user.avatar_url(:thumb)
           - else
-            = image_tag 'https://s3.amazonaws.com/streetheart/default_atom.png'
+            .profile-avatar
+              = image_tag 'https://s3.amazonaws.com/streetheart/default_atom.png'
       .profile-murals
         - if @user.murals.any?
           - @murals.each do |mural|

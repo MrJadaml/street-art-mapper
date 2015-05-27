@@ -13,7 +13,7 @@
             - if current_user.nil?
             - elsif (@user.id == current_user.id) || (current_user.admin?)
               -# %p= link_to 'Are you an artist?', foo_path
-              = link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-info'
+              = link_to 'Edit', edit_user_path(@user), class: 'btn btn-info'
               -# .btn.btn-default
               -#   %span.glyphicon.glyphicon-cog
             -if current_user.admin?
