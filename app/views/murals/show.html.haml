@@ -1,8 +1,10 @@
 .container-fluid.navbar-buffer
+  .artist-show-title.tube-lg.text-center
+    %h1= link_to @artist.first_name, artist_path(@artist)
   .row
     .col-md-9.text-center
       - @images.each do |image|
-        .col-md-4.gallery-mural
+        .gallery-mural
           = link_to image_path(image.id) do
             = image_tag image.source.url(:thumb)
             .flagged
@@ -10,21 +12,15 @@
                 = link_to flagged_path(image.id), data: {confirm: "Are you sure you want to report this image for abusive content?"}, method: :patch, action: :flagged do
                   %i.fa.fa-ban.fa-2x
     .col-md-3
-      .scrollable
-        .col-md-6.tube-sm
-          %h1= link_to @artist.first_name, artist_path(@artist)
-        .row
-          .col-md-12
-            .show-map
-            %br
-            = link_to image_tag('https://s3.amazonaws.com/streetheart/twitter_icon.jpg'), 'http://www.twitter.com/' + @artist.twitter, :target => '_blank' if @artist.twitter?
-            = link_to image_tag('https://s3.amazonaws.com/streetheart/instagram_icon.jpg'), 'http://www.instagram.com/' + @artist.instagram, :target => '_blank' if @artist.instagram?
+      .show-map
+      %br
+      = link_to image_tag('https://s3.amazonaws.com/streetheart/twitter_icon.jpg'), 'http://www.twitter.com/' + @artist.twitter, :target => '_blank' if @artist.twitter?
+      = link_to image_tag('https://s3.amazonaws.com/streetheart/instagram_icon.jpg'), 'http://www.instagram.com/' + @artist.instagram, :target => '_blank' if @artist.instagram?
 
-            %br
-            - if current_user.nil?
-            - elsif @artist.id == current_user.id || current_user.admin?
-              = link_to 'Edit', edit_mural_path, class: 'btn btn-primary'
-
+      %br
+      - if current_user.nil?
+      - elsif @artist.id == current_user.id || current_user.admin?
+        = link_to 'Edit', edit_mural_path, class: 'btn btn-primary'
 - content_for(:js) do
   :javascript
     $(function() {
